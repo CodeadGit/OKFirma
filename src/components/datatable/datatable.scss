@@ -1,0 +1,168 @@
+.tableParent{
+    padding: 0px 20px 20px 20px;
+    .tableContainer{
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        margin-top: 0px;
+        margin-right: 20px;
+        width: 100%;
+        .pagination{
+            display: flex;
+            .left{
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 10px 20px;
+                color: #505050;
+            }
+            .right{
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                gap: 8px;
+                padding: 10px 20px;
+                button{
+                    padding: 4px 8px;
+                    background-color: transparent;
+                    border:none;
+                    cursor: pointer;
+                    &:disabled{
+                        opacity: 0.5;
+                        cursor:context-menu;
+                    }
+                    
+                }
+            }
+        }
+        .headerCell{
+            color: white;
+            box-sizing: border-box;
+            flex: 1;
+            
+        }
+        .textCell{
+          
+            box-sizing: border-box;
+            flex: 1;
+
+            
+        }
+
+        #answer{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            div{
+                
+                padding: 10px;
+                border-radius: 5px;
+                color: white;
+                width: 80%;
+                &.grey{
+                    background-color: grey;
+                }
+                &.green{
+                    background-color: var(--green);
+                }
+            }
+        } 
+        
+        
+        
+        .statue{
+            width: max-content;
+            
+            &.Acil{
+                border:1px solid var(--red);
+                color: var(--red);
+                background-color: rgb(235, 181, 181);
+                padding: 10px;
+                border-radius: 5px;
+                
+            }
+            &.Normal{
+                border:1px solid rgb(54, 80, 16);
+                background-color:rgba(167, 175, 155, 0.404);
+                color: rgb(54, 80, 16);
+                padding: 10px;
+                border-radius: 5px;
+                
+            }
+            &.Orta{
+                background-color:rgb(230, 230, 184);
+                color: rgb(116, 116, 5);
+                border:1px solid rgb(116, 116, 5);
+                padding: 10px;
+                border-radius: 5px;
+                
+            }
+        }
+        .tableRowDataContainer{
+
+            background-color: rgb(236, 236, 236);
+            #actionCell{
+                .statue{
+                    text-align: center;
+                    width: 90%;
+                    padding: 0.5rem 1rem;
+                    border-radius: 1rem;
+                    font-weight: 600;
+                &.new{
+                    border:1px solid #1921FA;
+                    color: #1921FA;
+                    background-color: #1920fa17;
+                }
+                &.explored{
+                    border:1px solid #505050;
+                    color: var(--black);
+                    background-color: #5050501c;
+                }
+                &.offered{
+                    border:1px solid var(--yellow);
+                    color: #b69503;
+                    background-color: #f9d74138;
+                }
+                &.approved{
+                    border:1px solid #2490f6;
+                    color: #2490f6;
+                    background-color: #2491f642;
+                }
+                &.refused{
+                    border:1px solid #505050;
+                    color: var(--black);
+                    background-color: #5050501c;
+                }
+                &.cancelled{
+                    border:1px solid var(--orange);
+                    color: var(--orange);
+                    background-color: #ed3f2418;
+                }
+                &.completed{
+                    border:1px solid #2DAB66;
+                    color: #2DAB66;
+                    background-color: #2dab661f;
+                }
+    
+            }
+            
+            }
+        }
+        .Link{
+            background-color: var(--yellow);
+            width: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 4px;
+            color: var(--black);
+            
+        }
+       
+    }
+}
+

@@ -1,0 +1,16 @@
+.liveSupport{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    .liveSupportContainer{
+        flex: 6;
+        box-sizing: border-box;
+        background-color: transparent;
+        height: 100vh;
+        overflow-y: auto;
+        .wrapper{
+            display: flex;
+            padding: 30px;
+        }
+    }
+}

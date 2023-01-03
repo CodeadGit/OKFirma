@@ -1,0 +1,28 @@
+form.pass{
+
+    display: flex;
+    flex-direction: column;
+ .inputver{
+    display: flex;
+    border: 0.5px solid grey;
+    padding: 10px;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: white;
+    width: 80%;
+    max-width: 300px;
+    border-radius: 5px;
+    color: #505050;
+    input{
+        width: 90%;
+        border: none;
+        outline: none;
+    }
+ }
+ ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+ }
+}

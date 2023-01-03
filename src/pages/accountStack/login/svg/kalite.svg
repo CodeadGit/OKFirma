@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="372.525" height="73.177" viewBox="0 0 372.525 73.177">
+  <g id="Group_8757" data-name="Group 8757" transform="translate(-750 -979.222)">
+    <text id="OnlineKeşif_Puanlama_sisteminden_Kalite_Puanı_sistemini_baz_alarak_çalışmaktadır." data-name="OnlineKeşif Puanlama sisteminden Kalite Puanı sistemini baz alarak çalışmaktadır." transform="translate(750 1048.398)" fill="#3d3d3d" font-size="11" font-family="SourceSansPro-Light, Source Sans Pro" font-weight="300"><tspan x="0" y="0">OnlineKeşif Puanlama sisteminden Kalite Puanı sistemini baz alarak çalışmaktadır.</tspan></text>
+    <g id="Group_8756" data-name="Group 8756" transform="translate(-18.27 -5.5)">
+      <path id="Path_3907" data-name="Path 3907" d="M51.588,25.794A25.794,25.794,0,1,1,25.794,0,25.794,25.794,0,0,1,51.588,25.794" transform="translate(831.476 984.723)" fill="#2cab67"/>
+      <path id="Path_3908" data-name="Path 3908" d="M45.784,21.547l-14.839-.006-1.852-5.707-2.73-8.406L21.77,21.535,6.935,21.53l9.72,7.069,2.281,1.658-.9,2.772L14.344,44.37l12.007-8.715,12,8.72L33.777,30.263Z" transform="translate(830.4 983.571)" fill="#fff"/>
+    </g>
+    <text id="Kalite" transform="translate(871 1016.811)" fill="#010000" font-size="34" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="0" y="0">Kali</tspan><tspan y="0" letter-spacing="-0.018em">t</tspan><tspan y="0">e</tspan></text>
+    <text id="Puanı" transform="translate(965.206 1016.811)" fill="#2cab67" font-size="34" font-family="SourceSansPro-Semibold, Source Sans Pro" font-weight="600"><tspan x="0" y="0">Puanı</tspan></text>
+    <rect id="Rectangle_2022" data-name="Rectangle 2022" width="274.376" height="73.176" transform="translate(848.149 979.222)" fill="none"/>
+  </g>
+</svg>

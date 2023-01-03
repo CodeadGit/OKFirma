@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="110.269" height="51.588" viewBox="0 0 110.269 51.588">
+  <g id="Group_8804" data-name="Group 8804">
+    <path id="Path_3907" data-name="Path 3907" d="M51.588,25.794A25.794,25.794,0,1,1,25.794,0,25.794,25.794,0,0,1,51.588,25.794" fill="#2cab67"/>
+    <path id="Path_3908" data-name="Path 3908" d="M45.784,21.547l-14.839-.006-1.852-5.707-2.73-8.406L21.77,21.535,6.935,21.53l9.72,7.069,2.281,1.658-.9,2.772L14.344,44.37l12.007-8.715,12,8.72L33.777,30.263Z" transform="translate(-1.075 -1.152)" fill="#fff"/>
+  </g>
+  <text id="Kalite" transform="translate(63.269 21.174)" fill="#010000" font-size="18" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="0" y="0">Kali</tspan><tspan y="0" letter-spacing="-0.018em">t</tspan><tspan y="0">e</tspan></text>
+  <text id="Puanı" transform="translate(63.269 42.088)" fill="#2cab67" font-size="18" font-family="SourceSansPro-Semibold, Source Sans Pro" font-weight="600"><tspan x="0" y="0">Puanı</tspan></text>
+</svg>

@@ -1,0 +1,37 @@
+
+.empty-area{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    img.empty-img{
+        width: 30%;
+        margin-top: 20px;
+    }
+    .empty-text{
+        font-size: 27px;
+        width: 30%;
+        font-weight: 300;
+        text-align: center;
+        margin: 20px 0px;
+    }
+    .new-button{
+        background-color: var(--green);
+        width: 15%;
+        color: white;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
+        text-decoration: none;
+        margin-bottom: 20px;
+        &:hover{
+            background-color: #3dc1789d;
+        }
+    }
+    
+}

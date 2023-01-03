@@ -1,0 +1,17 @@
+.rightSideBar{
+    flex:1;
+    background-color:white;
+    display: flex;
+    //min-height:1000px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 50px;
+    min-width: 250px;
+    gap: 20px;
+
+}
+
+.newsItem{
+    margin-bottom: 15px;
+}

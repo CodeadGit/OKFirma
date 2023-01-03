@@ -1,0 +1,221 @@
+// .login{
+//     margin: 0;
+//     padding: 0;
+//     max-height: 100vh;
+//     .behindYellow{
+//         position: absolute;
+//         z-index: -5;
+//         right: 0;
+//         height: 100vh;
+    
+//     }
+//     nav{
+//         background-color: transparent;
+//         height: 10vh;
+//         width: 100%;
+//         display: flex;
+//         align-items: center;
+        
+        
+        
+//         .left{
+//             flex: 1;
+//             box-sizing: border-box;
+//             padding:5rem;
+//         }
+//         .right{
+//             flex: 1;
+//             display: flex;
+//             align-items: center;
+//             justify-content: flex-end;
+//             box-sizing: border-box;
+//             padding:5rem;
+//             .loginButton{
+//                 background-color: black;
+                
+//                 padding: 1.2rem 3rem;
+//                 border-radius: 8px;
+//                 font-weight: bold;
+//                 font-size: 10.8px;
+//                 cursor: pointer;
+//                 #btn{
+//                     text-decoration: none;
+//                     color: white;
+                
+//                 }
+//             }
+//             .supportButton{
+//                 background-color: transparent;
+//                 color: black;
+//                 text-decoration: underline;
+//                 padding: 1.5rem 3rem;
+//                 border-radius: 8px;
+//                 font-weight: bold;
+//                 font-size: 12px;
+//                 cursor: pointer;
+//             }
+        
+//         }
+//     }
+//     .loginbody{
+        
+//         height: 80vh;
+//         width: 100%;
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         justify-content: center;
+//         .formbody{
+//             box-sizing: border-box;
+//             -webkit-box-shadow:2px 4px 10px 1px rgba(128, 128, 128, 0.63);
+//             box-shadow:2px 4px 10px 1px rgba(128, 128, 128, 0.329);
+//             width: 65vh;
+//             height: 65vh;
+//             border-radius: 8px;
+//             background-color: #FFE36C;
+//             display: flex;
+//             flex-direction: column;
+//             align-items: center;
+//             justify-content: center;
+//             .formbodylight{
+//                 width: 98%;
+//                 background-color:#FFFDF4;
+//                 border-radius: 8px;
+//                 height: 98%;
+//                 box-sizing: border-box;
+//                 display: flex;
+//                 flex-direction: column;
+//                 align-items: center;
+//                 justify-content: center;
+//                 .innerbody{
+//                     width:75%;
+//                     height: max-content;
+//                     display: flex;
+//                     flex-direction: column;
+//                     align-items: center;
+//                     justify-content: center;
+//                     div.welcome{
+//                         width: max-content;
+//                         display: flex;
+//                         flex-direction: column;
+//                         align-items: center;
+//                         justify-content: space-between;
+//                         //margin-bottom: 3rem;
+//                         .header{
+//                             color: #474747;
+//                             font-size: 30px;
+//                             font-weight: bold;
+//                         }
+//                         .line{
+//                             height: 0.15rem;
+//                             margin-top: 0.2rem;
+//                             background-color: #FFE36C;
+//                             width: 100%;
+//                         }
+//                     }
+//                     input.input,.inputWrapper{
+//                         width: 100%;
+//                         box-sizing: border-box;
+//                         display: flex;
+//                         background-color: white;
+//                         outline: none;
+//                         height: 40px;
+//                         border: 0.5px solid grey;
+//                         border-radius: 5px;
+//                         padding: 8px;
+//                     }
+//                     input.input{
+//                         //margin-bottom: 35px;
+//                     }
+//                     .inputinner{
+//                         width: 95%;
+//                         border: none;
+//                         outline: none;
+//                         padding-left: 0;
+//                     }
+//                     .inputWrapper .icon{
+//                         align-self: center;
+//                         transition: 500ms;
+//                         display: flex;
+//                         align-items: center;
+//                         justify-content: center;
+//                         color: #CDD4D9;
+//                     }
+                    
+//                 .forgotPassword{
+//                     align-self: flex-end;
+//                     margin-top: 10px;
+//                     font-size: 12px;
+//                 }
+//                 .btn_login{
+//                     background-color: black;
+//                     color: white;
+//                     width: 100%;
+//                     box-sizing: border-box;
+//                     padding: 0.7rem;
+//                     font-weight: bold;
+//                     border-radius: 5px;
+//                     margin-bottom: 30px;
+//                     margin-top: 20px;
+//                     cursor: pointer;
+//                 }
+//                 Link{
+//                     color: #474747;
+//                 }
+//                 .btn_signup{
+//                     font-size: 12px;
+//                     font-weight: 600;
+//                     cursor: pointer;
+//                 }
+//                 }
+                
+//             }
+            
+
+            
+//         }
+//     }
+//     footer{
+//         height: 10vh;
+//         background-color: transparent;
+        
+//         display: flex;
+//         align-items: center;
+//         justify-content: space-between;
+//         div.left{
+            
+//             flex: 1;
+//             font-size: 12px;
+//             color: #6B6B6B;
+//             box-sizing: border-box;
+//             span{
+//                 margin-left: 10%;
+//             }
+//         }
+//         div.center{
+            
+//             flex: 1;
+//             display: flex;
+//             align-items: center;
+//             justify-content: center; 
+//         }
+//         div.right{
+            
+//             flex: 1;
+//             display: flex;
+//             justify-content: flex-end;
+//             .items{
+//                 margin-right: 10%;
+//                 display: flex;
+//                 gap: 16px;
+//                 a{
+//                     color: #474747;
+//                     text-decoration: none;
+//                 }
+//                 a#whitetag{
+//                     color: white;
+//                 }
+//             }
+//         }
+//     }
+// }
