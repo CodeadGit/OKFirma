@@ -12,6 +12,7 @@ import { auth, db } from '../../firebase/firebase.config'
 import Footer from '../../components/footer/Footer'
 import RightSideBar from '../../components/RightSideBar/RightSideBar'
 import Loading from '../../components/Loading/Loading'
+import emailjs from '@emailjs/browser';
 
 function Single() {
 
@@ -23,7 +24,28 @@ function Single() {
     const [uploading,setUploading]=useState(false)
   
     var oldSum=state.relatedProducts.map(item=>item.price).reduce((partialSum, a) => partialSum + a, 0)
-var navigate=useNavigate()
+
+    var navigate=useNavigate()
+
+    const sendEmailToUser = () => {
+
+        var params={
+          subject:state?.mainWish+" Servis Talebiniz Hakkında",
+          user_email:state?.email,
+          user_name:"bilgi@onlinekesif.com",
+          message:`${state.mainWish} Servis Talebiniz için bir firma teklif yaptı.`
+          
+      
+        }
+      
+        emailjs.send('onlinekesif_support', 'template_fd5d0vb', params,"az39-SQ3JNFE4N2sA")
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+          
+      };
   const addOffer=async (item) => {
    var row={
       firm:user.uid,
@@ -37,6 +59,7 @@ var navigate=useNavigate()
       totalPrice:newValue,
       KPU:userData.KPU,
       refused:false,
+      email:auth.currentUser.email,
       
       id:Math.random().toString(16).substring(2,9),
     }
@@ -62,6 +85,7 @@ var navigate=useNavigate()
             type:"made Offer as firm"
         })
     }) 
+    sendEmailToUser()
     
   }
 //   const addOffer=async (item) => {
