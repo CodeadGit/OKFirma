@@ -235,7 +235,7 @@ const Login = ({
       </div>
       <footer>
         <div className="left">
-          <span>© Onlinekeşif 2022</span>
+          <span>© Onlinekeşif 2023</span>
         </div>
         {/* <div className="center">
                 <img src={Kalite} alt=""/>
