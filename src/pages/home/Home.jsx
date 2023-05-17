@@ -44,7 +44,7 @@ function Home({setLoading,setAlertMessage}) {
     <>
     <div className='home'>
         <Sidebar setLoading={setLoading}/>
-        <div className="homeContainer">
+        {/* <div className="homeContainer">
            <Navbar/>
            <Path children={pathData}/>
            
@@ -60,7 +60,7 @@ function Home({setLoading,setAlertMessage}) {
            </div>
            }
             
-        </div>
+        </div> */}
         {/* <RightSideBar/> */}
         
         
