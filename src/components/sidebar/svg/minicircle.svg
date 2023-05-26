@@ -1,3 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="9.5" height="9.5" viewBox="0 0 9.5 9.5">
-  <path id="Path_7590" data-name="Path 7590" d="M9,4.5A4.5,4.5,0,1,1,4.5,0,4.5,4.5,0,0,1,9,4.5" transform="translate(0.25 0.25)" fill="none" stroke="#707070" stroke-width="0.5"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+  <g id="Ellipse_370" data-name="Ellipse 370" fill="none" stroke="#f9d641" stroke-width="1">
+    <circle cx="5" cy="5" r="5" stroke="none"/>
+    <circle cx="5" cy="5" r="4.5" fill="none"/>
+  </g>
 </svg>
