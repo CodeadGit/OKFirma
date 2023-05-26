@@ -1,6 +1,6 @@
 .sidebar {
-  flex: 1 1;
   height: 100vh;
+  width: 20vw;
   background-color: transparent;
   min-width: 250px;
   position: relative;
@@ -10,8 +10,7 @@
   justify-content: space-between;
 
   .sidebarLogoArea {
-    width: 22%;
-    height: 16%;
+    height: 17.43810548977395vh;
     background-color: #fff;
     display: flex;
     align-items: center;
@@ -22,19 +21,19 @@
   }
 
   .sidebarInner {
-    width: 22%;
-    height: 82%;
+    height: 81.2vh;
     background-color: #fff;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     flex-direction: column;
     -webkit-border-top-right-radius: 20px;
     -moz-border-radius-topright: 20px;
     border-top-right-radius: 20px;
 
     .sidebarTop {
-      height: 20%;
+      width: 65%;
+
       .sidebarFirmInfo {
         display: flex;
         flex-direction: column;
@@ -46,19 +45,15 @@
     }
 
     .sidebarCenter {
-      height: 50%;
-
+      width: 65%;
       ul {
         list-style: none;
         padding: 0;
-        margin: 0;
       }
       li {
         display: flex;
         align-items: flex-start;
-        padding: 5px;
-        cursor: pointer;
-        margin-bottom: 0.5rem;
+        padding: 0.5rem 0;
         position: relative;
         flex-direction: column;
         transition: 300ms;
@@ -70,292 +65,121 @@
           text-decoration: none;
 
           span {
-            font-size: 16px;
-            font-weight: 400;
+            font-size: 14px;
+            font-weight: 600;
             color: #888;
           }
           &.active {
             span {
-              color: #535353;
-              font-weight: bold;
+              color: #f9d641;
+              font-weight: 600;
               transition: 500ms;
             }
+            img {
+              filter: grayscale(0);
+            }
+          }
+          &.hover {
+            color: #f9d641;
+            font-weight: 600;
+            transition: 500ms;
           }
         }
+
+        .disableLink {
+          display: flex;
+          margin-left: 1rem;
+          align-items: center;
+          text-decoration: none;
+          pointer-events: none;
+          span {
+            font-size: 14px;
+            font-weight: 600;
+            color: #cfcfcf;
+          }
+        }
+
+        .subLinks {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 0.5rem 0rem 0rem 2.5rem;
+        }
+
         .sidelinkmini {
           display: flex;
           align-items: center;
           text-decoration: none;
-          margin-left: 3.2rem;
           margin-bottom: 0.2rem;
           width: 70%;
           span {
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 400;
             color: #888;
-          }
-          &:hover {
-            background-color: #f5f5f5;
+            width: 80px;
           }
           &.active {
             span {
-              color: #535353;
+              color: #f9d641;
               font-weight: bold;
               transition: 500ms;
             }
-          }
-        }
 
-        &:hover {
-          background-color: gainsboro;
+            img {
+              filter: grayscale(0);
+            }
+          }
         }
         .icon {
           width: 1.2rem;
           font-size: 18px;
           margin-right: 1rem;
+          filter: grayscale(1);
         }
+
         .iconmini {
           width: 0.5rem;
           font-size: 18px;
-          margin-right: 1rem;
+          margin-right: 0.2rem;
+          filter: grayscale(1);
         }
-
-        .counter {
-          display: flex;
-          background-color: red;
-          color: white;
-          width: 20px;
-          height: 20px;
-          border-radius: 50%;
-          align-items: center;
-          justify-content: center;
-          font-size: 14px;
-          margin-left: 0.5rem;
-          font-weight: bold;
-        }
-      }
-    }
-    .sidebarBottom {
-      height: 10%;
-    }
-  }
-
-  .sideBarinner {
-    height: 100%;
-    //min-height: 100vh;
-    width: 85%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-right: 0.3px solid #acacac;
-    background-color: #fff;
-    background: radial-gradient(
-      circle,
-      rgba(255, 255, 255, 1) 18%,
-      rgba(232, 232, 232, 1) 38%
-    );
-    //min-height: 100vh;
-    position: relative;
-    -webkit-box-shadow: 9px 14px 21px -17px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 9px 14px 21px -17px rgba(0, 0, 0, 0.75);
-    box-shadow: 9px 14px 21px -17px rgba(0, 0, 0, 0.75);
-
-    .arrow-right {
-      width: 40px;
-      height: 40px;
-      position: absolute;
-      background-color: white;
-      z-index: 5;
-      right: -21px;
-      top: 100px;
-      transform: rotate(45deg);
-      background-color: rgba(232, 232, 232, 1);
-      border-top: 1px solid #acacac;
-      border-right: 1px solid #acacac;
-    }
-
-    .top {
-      //height: 50px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      box-sizing: border-box;
-      height: 10%;
-
-      img#logo {
-        width: 80%;
-        padding: 10%;
-      }
-
-      .logo {
-        color: goldenrod;
-        font-size: 20px;
-        font-weight: bold;
-        cursor: pointer;
       }
     }
     hr {
-      height: 0;
-      border: 0.5px solid lightgrey;
-      width: 90%;
-      align-self: center;
-      margin-left: 7%;
+      height: 0.5px;
+      background-color: #e7e7e7;
+      border: none;
     }
-    .center {
-      //padding-left: 10px;
 
-      height: 70%;
-
-      .center-top {
-        height: 15vh;
-        min-height: 200px;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-
-        align-items: center;
-        justify-content: center;
-        .photo img {
-          width: 80px;
-          height: 80px;
-          object-fit: cover;
-          border-radius: 50%;
-          cursor: pointer;
-        }
-        .logodiv {
-          width: 80px;
-          height: 80px;
-          object-fit: cover;
-          border-radius: 50%;
-          cursor: pointer;
-          -webkit-box-shadow: 9px 14px 21px -17px rgba(0, 0, 0, 0.75);
-          -moz-box-shadow: 9px 14px 21px -17px rgba(0, 0, 0, 0.75);
-          box-shadow: 9px 14px 21px -17px rgba(0, 0, 0, 0.75);
-        }
-      }
-    }
-    .bottom {
+    .sidebarBottom {
+      width: 65%;
       display: flex;
-      align-items: center;
-      align-self: end;
-      flex-direction: column;
-      height: 15%;
-      width: 100%;
-
-      justify-content: center;
-
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-      }
-      li {
-        display: flex;
-        align-items: flex-start;
-        padding: 5px;
-        cursor: pointer;
-        margin-bottom: 0.5rem;
-        position: relative;
-        flex-direction: column;
-        transition: 300ms;
-
-        .sidelink {
-          display: flex;
-          margin-left: 1rem;
-          align-items: center;
-          text-decoration: none;
-
-          span {
-            font-size: 16px;
-            font-weight: 400;
-            color: #888;
-          }
-          &.active {
-            span {
-              color: #535353;
-              font-weight: bold;
-              transition: 500ms;
-            }
-          }
-        }
-        .sidelinkmini {
-          display: flex;
-          align-items: center;
-          text-decoration: none;
-          margin-left: 3.2rem;
-          margin-bottom: 0.2rem;
-          width: 70%;
-          span {
-            font-size: 14px;
-            font-weight: 400;
-            color: #888;
-          }
-          &:hover {
-            background-color: #f5f5f5;
-          }
-          &.active {
-            span {
-              color: #535353;
-              font-weight: bold;
-              transition: 500ms;
-            }
-          }
-        }
-
-        &:hover {
-          background-color: gainsboro;
-        }
-        .icon {
-          width: 1.2rem;
-          font-size: 18px;
-          margin-right: 1rem;
-        }
-        .iconmini {
-          width: 0.5rem;
-          font-size: 18px;
-          margin-right: 1rem;
-        }
-      }
-
-      .icon {
-        cursor: pointer;
-      }
-
-      .colorOptions {
-        width: 20px;
-        height: 20px;
-        border-radius: 5px;
-        border: 1px solid #7451f8;
-        cursor: pointer;
-        margin: 5px;
-        &:nth-child(1) {
-          background-color: whitesmoke;
-        }
-        &:nth-child(2) {
-          background-color: #333;
-        }
-      }
-    }
-    .bottom-bottom {
-      height: 5%;
-      width: 100%;
-
-      align-self: center;
-      padding: 10px;
-      box-sizing: border-box;
-
-      display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+
+      .settings {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        color: #535353;
+      }
 
       .logout {
         display: flex;
         align-items: center;
-        gap: 10px;
         cursor: pointer;
+
+        img {
+          margin-right: 5px;
+        }
       }
+    }
+
+    .sidebarFooter {
+      width: 65%;
+      display: flex;
     }
   }
 }

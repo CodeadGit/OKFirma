@@ -1,0 +1,92 @@
+.tableParent {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 20px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
+  box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
+
+  button {
+    background-color: var(--yellow);
+    height: 70%;
+    border-radius: 4px;
+    padding: 0.15rem 2rem;
+
+    p {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--black);
+      text-transform: capitalize;
+    }
+  }
+
+  .MuiDataGrid-columnHeaderTitleContainer {
+    justify-content: center;
+  }
+
+  .MuiDataGrid-columnHeaderTitle {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .MuiDataGrid-cell {
+    font-size: 16px;
+    justify-content: center !important;
+  }
+
+  .MuiDataGrid-root {
+    height: 98%;
+    width: 100% !important;
+    border: none;
+  }
+
+  .statue {
+    text-align: center;
+    border-radius: 4px;
+    padding: 0.25rem 1rem;
+
+    p {
+      font-size: 14px;
+      font-weight: 400;
+      overflow-wrap: break-word;
+      color: var(--black);
+      text-transform: capitalize;
+    }
+    &.new {
+      border: 1px solid #1921fa;
+      color: #1921fa;
+      background-color: #1920fa17;
+    }
+    &.explored {
+      border: 1px solid #505050;
+      color: var(--black);
+      background-color: #5050501c;
+    }
+    &.offered {
+      border: 1px solid var(--yellow);
+      color: #b69503;
+      background-color: #f9d74138;
+    }
+    &.approved {
+      border: 1px solid #2490f6;
+      color: #2490f6;
+      background-color: #2491f642;
+    }
+    &.refused {
+      border: 1px solid #505050;
+      color: var(--black);
+      background-color: #5050501c;
+    }
+    &.cancelled {
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      background-color: #ed3f2418;
+    }
+    &.completed {
+      border: 1px solid #2dab66;
+      color: #2dab66;
+      background-color: #2dab661f;
+    }
+  }
+}

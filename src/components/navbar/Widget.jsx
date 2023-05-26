@@ -1,56 +1,26 @@
-import React, { useContext, useState } from 'react'
-import "./navbar.scss"
-import Note from "./svg/note.svg"
-import NoteBlack from "./svg/noteBlack.svg"
-import { NavLink, useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import React from "react";
+import "./navbar.scss";
+import { NavLink } from "react-router-dom";
 
-
-function WidgetNew({item,
-  className,setClassName
- 
-}) {
-  const handleClass=()=>{
-    return className===item.id
-}
-
-
-    
-let navigate=useNavigate()
+function WidgetNew({ item }) {
   return (
-    <div
-    className="card"
-    onClick={()=>{
-      setClassName(item.id)
-              if(item.linkable){
-                  
-                  navigate(`${item.link}`)
-            }
-          }
-        }
+    <NavLink
+      to={item.link}
+      className={({ isActive }) => (isActive ? "activeCard" : "card")}
     >
-          <div
-          //to={item.link}
-          className={`layer-top ${handleClass()&&`selected`} ${item.full}`}
-          >
-
-            {item.full&&
-            <div className={`note_container ${handleClass()&&`selected`}`}>
-                <img src={handleClass()?NoteBlack:Note} alt="" />
-            </div>
-}
-            <div className={item.className}>
-                <img src={handleClass()?item.altsvg:item.svg} 
-                className="widgetimg"
-                alt=""/>
-                <h2 id='widgetinfo'>{item.render}</h2>
-            </div>         
-            <div className={`label ${item.style}`}>{item.label}</div>
-          </div>
-          <div className="layer-center"></div>
-          <div className="layer-bottom"></div>
+      <div className="cardInner">
+        <div className="cardLeft">
+          <img src={item.svg} alt="" />
         </div>
-  )
+        <div className="cardText">
+          <div className="cardTop">{item.label}</div>
+          <div className="cardBottom">
+            <h2 id="widgetinfo">{item.render}</h2>
+          </div>
+        </div>
+      </div>
+    </NavLink>
+  );
 }
 
-export default WidgetNew
+export default WidgetNew;

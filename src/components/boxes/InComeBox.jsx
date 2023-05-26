@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
-function InComeBox({children}) {
-  return (
-    <div
-    className='inBox'
-    >{children}</div>
-  )
+function InComeBox({ children }) {
+  return <div className="inBox">{children}</div>;
 }
 
-export default InComeBox
+export default InComeBox;

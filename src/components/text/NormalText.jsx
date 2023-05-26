@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
-function NormalText({children}) {
-  return (
-    <p
-    className='normalText'
-    >{children}</p>
-  )
+function NormalText({ children }) {
+  return <p className="normalText">{children}</p>;
 }
 
-export default NormalText
+export default NormalText;

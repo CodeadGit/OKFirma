@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function SingleFirm() {
-  return (
-    <div>Benim Firmam</div>
-  )
+  return <div>Benim Firmam</div>;
 }
 
-export default SingleFirm
+export default SingleFirm;

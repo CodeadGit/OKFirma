@@ -1,8 +1,5 @@
 import React, { useContext, useState } from "react";
-import {
-  signInWithEmailAndPassword,
-  sendPasswordResetEmail,
-} from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebase/firebase.config";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../register/register.scss";

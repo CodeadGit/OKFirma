@@ -1,12 +1,12 @@
-import {BrowserRouter as Router} from "react-router-dom"
+import { BrowserRouter as Router } from "react-router-dom";
 import { VenderStack } from "./pages/renderStack";
 
 function App() {
   return (
     <>
-        <Router>
-            <VenderStack/>
-        </Router>
+      <Router>
+        <VenderStack />
+      </Router>
     </>
   );
 }

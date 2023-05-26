@@ -1,137 +1,135 @@
-.editContainer{
-    background-color: #FAFAFA;
-    ;
-    margin: 20px;
-    padding: 20px;
-    -webkit-box-shadow:2px 4px 10px 1px rgba(0,0,0,0.47);
-            box-shadow:2px 4px 10px 1px rgba(0,0,0,0.47);
-            .formContainer{
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-                height: max-content;
-                //max-height: 50vh;
-                padding: 50px 0px;
-            .inputContainer{
-                position: relative;
-                width: 50%;
-                
-                @media screen and (max-width:1600px) {
-                    width: 80%;
-                    transition: 300ms;
-                }
-                @media screen and (max-width:1300px) {
-                    width: 90%;
-                    
-                    transition: 300ms;
-                }
-                .myfields{
-                    display: flex;
-                    gap: 1rem;
-                    align-items: center;
-                    .title{
-                        font-weight: 600;
-                    }
-                    .item{
-                        color: white;
-                        background-color: var(--black);
-                        padding: 0.5rem;
-                    }
-                }
-                .alert{
-                    position: absolute;
-                    z-index: 15;
-                    top: 0px;
-                    align-self: center;
-                    width: 100%;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    button{
-                        border: 1px solid blue;
-                        padding: 8px;
-                        margin-left: 30px;
-                        border-radius: 5px;
-                        outline: none;
-                        background-color: transparent;
-                        color: blue;
-                        font-weight: bold;
-                        align-self: flex-end;
-                        cursor: pointer;
-                    }
-                }
-                form{
-                    display: flex;
-                    flex-direction: column;
-                    height: max-content;
-                    width: 100%;
-                    
-                    gap: 20px;
-                    .row{
-                        display: flex;
-                        gap: 30px;
-                        align-items: center;
-                        
-                        
-                        .input{
-                            display: flex;
-                            flex: 1;
-                            flex-direction: column;
-                            input,textarea{
-                                padding: 8px;
-                                box-sizing: border-box;
-                                border: 0.5px solid grey;
-                                border-radius: 5px;
-                                outline: none;
-                                background-color: white;
-                                &:disabled{
-                                    background-color: gainsboro;
-                                }
-                            }
-                            textarea{
-                                height: 90px;
-                            }
+.editContainer {
+  background-color: #fafafa;
+  margin: 20px;
+  padding: 20px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: max-content;
+    //max-height: 50vh;
+    padding: 50px 0px;
+    .inputContainer {
+      position: relative;
+      width: 50%;
 
-                        }
-                        &.buttons{
-                            align-items: center;
-                            
-                            width: 100%;
-                            justify-content: flex-end;
-                            box-sizing: border-box;
+      @media screen and (max-width: 1600px) {
+        width: 80%;
+        transition: 300ms;
+      }
+      @media screen and (max-width: 1300px) {
+        width: 90%;
 
-                            button{
-                                width: 15%;
-                                padding: 5px;
-                                border-radius: 5px;
-                                box-sizing: border-box;
-                                border: none;
-                                &.exit{
-                                    background-color: white;
-                                    border: 0.5px solid grey;
-                                    font-weight: 600;
-                                    cursor: pointer;
-                                }
-                                &.submit{
-                                    background-color:var(--black);
-                                    border: 0.5px solid grey;
-                                    color: white;
-                                    font-weight: 600;
-                                    cursor: pointer;
-                                }
-                            }
-                        }
-                        img{
-                            width: 80px;
-                            height: 80px;
-                            border-radius: 50%;
-                            object-fit: cover;
-                        }
-                    }
-                }
+        transition: 300ms;
+      }
+      .myfields {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        .title {
+          font-weight: 600;
+        }
+        .item {
+          color: white;
+          background-color: var(--black);
+          padding: 0.5rem;
+        }
+      }
+      .alert {
+        position: absolute;
+        z-index: 15;
+        top: 0px;
+        align-self: center;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        button {
+          border: 1px solid blue;
+          padding: 8px;
+          margin-left: 30px;
+          border-radius: 5px;
+          outline: none;
+          background-color: transparent;
+          color: blue;
+          font-weight: bold;
+          align-self: flex-end;
+          cursor: pointer;
+        }
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        height: max-content;
+        width: 100%;
+
+        gap: 20px;
+        .row {
+          display: flex;
+          gap: 30px;
+          align-items: center;
+
+          .input {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            input,
+            textarea {
+              padding: 8px;
+              box-sizing: border-box;
+              border: 0.5px solid grey;
+              border-radius: 5px;
+              outline: none;
+              background-color: white;
+              &:disabled {
+                background-color: gainsboro;
+              }
             }
+            textarea {
+              height: 90px;
             }
+          }
+          &.buttons {
+            align-items: center;
+
+            width: 100%;
+            justify-content: flex-end;
+            box-sizing: border-box;
+
+            button {
+              width: 15%;
+              padding: 5px;
+              border-radius: 5px;
+              box-sizing: border-box;
+              border: none;
+              &.exit {
+                background-color: white;
+                border: 0.5px solid grey;
+                font-weight: 600;
+                cursor: pointer;
+              }
+              &.submit {
+                background-color: var(--black);
+                border: 0.5px solid grey;
+                color: white;
+                font-weight: 600;
+                cursor: pointer;
+              }
+            }
+          }
+          img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
 }

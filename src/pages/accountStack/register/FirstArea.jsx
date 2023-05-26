@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import "./register.scss";
 
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import SlideCard from "./SlideCard";
 
-function FirstArea({ regForm, setRegForm, regEmail, setRegEmail, error }) {
+function FirstArea({ regForm, setRegForm, error }) {
   const items = [
     {
       id: "01",

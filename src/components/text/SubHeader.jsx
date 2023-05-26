@@ -1,10 +1,7 @@
-import React from 'react'
+import React from "react";
 
-function SubHeader({children}) {
-  return (
-    <h3 className='subHeaderText'
-    >{children}</h3>
-  )
+function SubHeader({ children }) {
+  return <h3 className="subHeaderText">{children}</h3>;
 }
 
-export default SubHeader
+export default SubHeader;

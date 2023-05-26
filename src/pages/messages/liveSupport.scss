@@ -1,16 +1,51 @@
-.liveSupport{
-    display: flex;
-    margin: 0;
-    padding: 0;
-    .liveSupportContainer{
-        flex: 6;
-        box-sizing: border-box;
-        background-color: transparent;
-        height: 100vh;
-        overflow-y: auto;
-        .wrapper{
-            display: flex;
-            padding: 30px;
+.chatArea {
+  display: flex;
+  width: 100%;
+  height: 57%;
+  justify-content: space-between;
+
+  .liveChat {
+    width: 70%;
+    background-color: #fff;
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
+    box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
+  }
+  .liveChatStatus {
+    width: 29%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
+    box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
+
+    .innerChatStatus {
+      padding: 1rem;
+
+      hr {
+        margin: 0.5rem 0;
+      }
+      .liveChatHeader {
+        p {
+          font-size: 18;
+          font-weight: bold;
         }
+      }
+
+      .liveChatFooter {
+        button {
+          width: 100%;
+          height: 30px;
+          color: #fff;
+          font-weight: 700;
+          font-size: 12px;
+          background-color: #2cab67;
+          border: none;
+          border-radius: 4px;
+        }
+      }
     }
+  }
 }

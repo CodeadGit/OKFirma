@@ -1,113 +1,105 @@
-
-#hiddenLink{
-    display: none;
+#hiddenLink {
+  display: none;
 }
 @media print {
-    body * {
-      visibility: hidden;
-    }
-    #section-to-print, #section-to-print * {
-      visibility: visible;
-    }
-    #section-to-print {
-      position: absolute;
-      width: 100%;
-      left: 0;
-      top: 0;
-      
-    }
-    #hiddenLink{
-        display: flex;
-        font-size: 16px;
-        color:#333;
-        align-self: flex-end;
-      }
-      #dontShow{
-        display: none;
-      }
-    
+  body * {
+    visibility: hidden;
   }
-.list{
+  #section-to-print,
+  #section-to-print * {
+    visibility: visible;
+  }
+  #section-to-print {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+  #hiddenLink {
     display: flex;
-    .listContainer{
-     flex: 7;
-        #actionCell{
-            display: flex;
-        }
-        .empty_text{
-            margin: 20px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: 500;
-        }
-        .viewButton{
-            padding: 2px 5px;
-            border-radius: 5px;
-            color: darkblue;
-            border: 1px dotted rgba(0, 0, 139, 0.596);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            
-            .link{
+    font-size: 16px;
+    color: #333;
+    align-self: flex-end;
+  }
+  #dontShow {
+    display: none;
+  }
+}
+.list {
+  display: flex;
+  .listContainer {
+    flex: 7;
+    #actionCell {
+      display: flex;
+    }
+    .empty_text {
+      margin: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 500;
+    }
+    .viewButton {
+      padding: 2px 5px;
+      border-radius: 5px;
+      color: darkblue;
+      border: 1px dotted rgba(0, 0, 139, 0.596);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-                text-decoration: none;
-            }
-        }
-        .dropdownable{
-            background-color: yellow;
-            
-        }
-        
-            .statue{
-                text-align: center;
-                width: 90%;
-                padding: 0.5rem 1rem;
-                border-radius: 1rem;
-                font-weight: 600;
-            &.new{
-                border:1px solid #1921FA;
-                color: #1921FA;
-                background-color: #1920fa17;
-            }
-            &.explored{
-                border:1px solid #505050;
-                color: var(--black);
-                background-color: #5050501c;
-            }
-            &.offered{
-                border:1px solid var(--yellow);
-                color: #b69503;
-                background-color: #f9d74138;
-            }
-            &.approved{
-                border:1px solid #2490f6;
-                color: #2490f6;
-                background-color: #2491f642;
-            }
-            &.refused{
-                border:1px solid #505050;
-                color: var(--black);
-                background-color: #5050501c;
-            }
-            &.cancelled{
-                border:1px solid var(--orange);
-                color: var(--orange);
-                background-color: #ed3f2418;
-            }
-            &.completed{
-                border:1px solid #2DAB66;
-                color: #2DAB66;
-                background-color: #2dab661f;
-            }
-
-            
-        }
-        .dropdown{
-            background-color: aqua;
-            
-        }
+      .link {
+        text-decoration: none;
+      }
+    }
+    .dropdownable {
+      background-color: yellow;
     }
 
+    .statue {
+      text-align: center;
+      width: 90%;
+      padding: 0.5rem 1rem;
+      border-radius: 1rem;
+      font-weight: 600;
+      &.new {
+        border: 1px solid #1921fa;
+        color: #1921fa;
+        background-color: #1920fa17;
+      }
+      &.explored {
+        border: 1px solid #505050;
+        color: var(--black);
+        background-color: #5050501c;
+      }
+      &.offered {
+        border: 1px solid var(--yellow);
+        color: #b69503;
+        background-color: #f9d74138;
+      }
+      &.approved {
+        border: 1px solid #2490f6;
+        color: #2490f6;
+        background-color: #2491f642;
+      }
+      &.refused {
+        border: 1px solid #505050;
+        color: var(--black);
+        background-color: #5050501c;
+      }
+      &.cancelled {
+        border: 1px solid var(--orange);
+        color: var(--orange);
+        background-color: #ed3f2418;
+      }
+      &.completed {
+        border: 1px solid #2dab66;
+        color: #2dab66;
+        background-color: #2dab661f;
+      }
+    }
+    .dropdown {
+      background-color: aqua;
+    }
+  }
 }

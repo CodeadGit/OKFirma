@@ -1,115 +1,106 @@
-.box{
-    height: 50vh;
-    width:'100%';
-    padding: 20px;
-    min-width: 1000px;
+.box {
+  height: 50vh;
+  width: "100%";
+  padding: 20px;
+  min-width: 1000px;
 
-    .header{
-        background-color: var(--black);
-        color: white;
-        display: flex;
-        height: 100%;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
-        transition: 500ms;
-        gap: 10px;
-        button{
-            width: 10%;
-            color: white;
-            margin-left: 10px;
-        }
-        &.first{
-            border-top-left-radius: 20px;
-        }
-        &.last{
-            border-top-right-radius: 20px;
-        }
-        &.black{
-            color: var(--black);
-        }
-        
+  .header {
+    background-color: var(--black);
+    color: white;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    transition: 500ms;
+    gap: 10px;
+    button {
+      width: 10%;
+      color: white;
+      margin-left: 10px;
     }
-    .view-button{
-        background-color: var(--yellow);
-        width: 80%;
-        padding: 10px 0;
-        border-radius: 5px;
-        color:var(--black);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        align-self: center;
-        margin: auto;
-        text-decoration: none;
-        
+    &.first {
+      border-top-left-radius: 20px;
     }
-    .datagrid{
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-        height: 100%;
-        overflow: hidden;
-        box-sizing: border-box;
-        
+    &.last {
+      border-top-right-radius: 20px;
     }
-    .cell{
-       
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        align-content: center;
-        
-        
-        .statue{
-            text-align: center;
-            width: 90%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.5rem;
-            border-radius: 1rem;
-            font-weight: 600;
-        &.new{
-            border:1px solid #1921FA;
-            color: #1921FA;
-            background-color: #1920fa17;
-        }
-        &.explored{
-            border:1px solid #505050;
-            color: var(--black);
-            background-color: #5050501c;
-        }
-        &.offered{
-            border:1px solid var(--yellow);
-            color: #b69503;
-            background-color: #f9d74138;
-           
-        }
-        &.approved{
-            border:1px solid #2490f6;
-            color: #2490f6;
-            background-color: #2491f642;
-        }
-        &.refused{
-            border:1px solid #505050;
-            color: var(--black);
-            background-color: #5050501c;
-        }
-        &.cancelled{
-            border:1px solid var(--orange);
-            color: var(--orange);
-            background-color: #ed3f2418;
-        }
-        &.completed{
-            border:1px solid #2DAB66;
-            color: #2DAB66;
-            background-color: #2dab661f;
-        }
-
-        
-    }
-        
+    &.black {
+      color: var(--black);
     }
   }
+  .view-button {
+    background-color: var(--yellow);
+    width: 80%;
+    padding: 10px 0;
+    border-radius: 5px;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    align-self: center;
+    margin: auto;
+    text-decoration: none;
+  }
+  .datagrid {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  .cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+
+    .statue {
+      text-align: center;
+      width: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+      border-radius: 1rem;
+      font-weight: 600;
+      &.new {
+        border: 1px solid #1921fa;
+        color: #1921fa;
+        background-color: #1920fa17;
+      }
+      &.explored {
+        border: 1px solid #505050;
+        color: var(--black);
+        background-color: #5050501c;
+      }
+      &.offered {
+        border: 1px solid var(--yellow);
+        color: #b69503;
+        background-color: #f9d74138;
+      }
+      &.approved {
+        border: 1px solid #2490f6;
+        color: #2490f6;
+        background-color: #2491f642;
+      }
+      &.refused {
+        border: 1px solid #505050;
+        color: var(--black);
+        background-color: #5050501c;
+      }
+      &.cancelled {
+        border: 1px solid var(--orange);
+        color: var(--orange);
+        background-color: #ed3f2418;
+      }
+      &.completed {
+        border: 1px solid #2dab66;
+        color: #2dab66;
+        background-color: #2dab661f;
+      }
+    }
+  }
+}

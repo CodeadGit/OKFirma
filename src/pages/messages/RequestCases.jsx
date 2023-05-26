@@ -1,24 +1,21 @@
-import React, { useState } from 'react'
-import RequestCaseItem from './RequestCaseItem'
+import React from "react";
+import RequestCaseItem from "./RequestCaseItem";
 
-function RequestCases({selected,setSelected,cases}) {
-    
-  
-    return (
+function RequestCases({ selected, setSelected, cases }) {
+  return (
     <div className="subject-selectors">
-        {cases.map((i,index)=>{
-            return(
-
-                <RequestCaseItem 
-                key={index} 
-                item={i}
-                setSelected={setSelected}
-                selected={selected}
-                />
-            )
-        })}
+      {cases.map((i, index) => {
+        return (
+          <RequestCaseItem
+            key={index}
+            item={i}
+            setSelected={setSelected}
+            selected={selected}
+          />
+        );
+      })}
     </div>
-  )
+  );
 }
 
-export default RequestCases
+export default RequestCases;

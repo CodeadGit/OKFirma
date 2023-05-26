@@ -1,0 +1,182 @@
+.infoArea {
+  display: flex;
+  width: 94%;
+  justify-content: space-between;
+  align-items: center;
+  img {
+    width: 100px;
+  }
+  p {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+$bWidth: 50px;
+$deg: 20deg;
+
+$share: #80f2dd;
+$hover: #f2bdbd;
+#hiddenLink {
+  display: none;
+}
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #section-to-print,
+  #section-to-print * {
+    visibility: visible;
+  }
+  #section-to-print {
+    //position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0px;
+    margin: 0;
+    padding: 0;
+    font-size: 0.6rem;
+    .box {
+      .data-grid {
+        font-size: 0.6rem;
+
+        .name {
+          height: 2rem;
+          display: flex;
+          flex-wrap: wrap;
+        }
+      }
+    }
+  }
+  #hiddenLink {
+    display: flex;
+    font-size: 16px;
+    color: #333;
+    align-self: flex-end;
+  }
+  #dontShow {
+    display: none;
+  }
+}
+@page {
+  size: A4 portrait; /* auto is the initial value */
+  font-size: 0.5rem;
+  /* this affects the margin in the printer settings */
+  margin: 25mm 25mm 25mm 25mm;
+}
+
+.singleContainerPdf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 20px;
+  min-height: 100%;
+
+  .teklifBilgiContainerPdf {
+    display: flex;
+    justify-content: space-between;
+    min-height: 30vh;
+    width: 85%;
+    padding: 0.5rem 3rem;
+    border: 1px solid #bfbfbf;
+    border-radius: 16px;
+
+    .teklifDetailsPdf {
+      width: 65%;
+      hr {
+        margin: 0.5rem 0;
+      }
+
+      p {
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      table {
+        display: flex;
+        flex-direction: column;
+        font-size: 11px;
+      }
+      tr {
+        display: flex;
+        border-bottom: 0.5px solid #efefef;
+      }
+      th {
+        display: flex;
+        width: 50%;
+        font-weight: 600;
+      }
+    }
+
+    .teklifRequestPdf {
+      width: 29%;
+
+      hr {
+        margin: 0.5rem 0;
+      }
+      .requestHeaderPdf {
+        p {
+          font-size: 14px;
+          font-weight: 700;
+        }
+      }
+      table {
+        display: flex;
+        flex-direction: column;
+        font-size: 11px;
+      }
+      tr {
+        display: flex;
+        border-bottom: 0.5px solid #efefef;
+      }
+      th {
+        display: flex;
+        width: 60%;
+        font-weight: 600;
+      }
+      .talepNotesAreaPdf {
+        margin-top: 3rem;
+        p {
+          font-size: 11px;
+          font-weight: 700;
+        }
+        .empty-textPdf {
+          align-self: start;
+          color: grey;
+          font-size: 11px;
+        }
+      }
+    }
+  }
+
+  .partListPdf {
+    margin: 0.5rem;
+    p {
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+
+  .MuiDataGrid-columnHeaderTitle {
+    font-size: 13px !important;
+  }
+  .MuiDataGrid-cell--textLeft {
+    font-size: 10px !important;
+  }
+  .MuiDataGrid-row {
+    height: 20px !important;
+  }
+}
+
+.teklifContainerBottomPdf {
+  height: 3rem;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  .priceInfoDivPdf {
+    margin: 1rem 0 0 0;
+    font-size: 16px;
+    font-weight: 700;
+  }
+}

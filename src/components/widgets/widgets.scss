@@ -1,54 +1,54 @@
-.widgetContainer{
-    display: flex;
-    align-self: center;
-    gap: 20px;
-    padding: 20px;
-}
-.widget{
-    display: flex;
-    text-decoration: none;
-    flex: 1;
-    justify-content: space-between;
-    padding: 10px;
-    -webkit-box-shadow:2px 4px 10px 1px rgba(0,0,0,0.47);
-    box-shadow:2px 4px 10px 1px rgba(0,0,0,0.47);
-    border-radius: 10px;
-    height: 100px;
-    .left,.right{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    .title{
-        font-size: 14px;
-        color: rgb(160, 161, 161);
-        font-weight: bold;
-    }
-    .counter{
-        font-size: 28px;
-        font-weight: 300;
-    }
-    .link{
-        font-size: 12px;
-        width: max-content;
-        border-bottom: 1px solid grey;
-    }
-    .percentage{
-        display: flex;
-        align-items: center;
-        font-size: 14px;
+// .widgetContainer{
+//     display: flex;
+//     align-self: center;
+//     gap: 20px;
+//     padding: 20px;
+// }
+// .widget{
+//     display: flex;
+//     text-decoration: none;
+//     flex: 1;
+//     justify-content: space-between;
+//     padding: 10px;
+//     -webkit-box-shadow:2px 4px 10px 1px rgba(0,0,0,0.47);
+//     box-shadow:2px 4px 10px 1px rgba(0,0,0,0.47);
+//     border-radius: 10px;
+//     height: 100px;
+//     .left,.right{
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: space-between;
+//     }
+//     .title{
+//         font-size: 14px;
+//         color: rgb(160, 161, 161);
+//         font-weight: bold;
+//     }
+//     .counter{
+//         font-size: 28px;
+//         font-weight: 300;
+//     }
+//     .link{
+//         font-size: 12px;
+//         width: max-content;
+//         border-bottom: 1px solid grey;
+//     }
+//     .percentage{
+//         display: flex;
+//         align-items: center;
+//         font-size: 14px;
 
-        &.positive{
-            color: green;
-        }
-        &.negative{
-            color: red;
-        }
-    }
-    .icon{
-        font-size: 18px;
-        padding: 5px;
-        align-self: flex-end;
-        border-radius: 5px;
-    }
-}
+//         &.positive{
+//             color: green;
+//         }
+//         &.negative{
+//             color: red;
+//         }
+//     }
+//     .icon{
+//         font-size: 18px;
+//         padding: 5px;
+//         align-self: flex-end;
+//         border-radius: 5px;
+//     }
+// }
