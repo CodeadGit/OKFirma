@@ -22,9 +22,8 @@ function ThirdArea({
       <div className="imgContainer">
         <img className="logodiv" src={URL.createObjectURL(file)} />
         <p className="headerBottomText">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua.
+        Lütfen aşağıdaki bilgileri eksiksiz doldurunuz.
+
         </p>
       </div>
       <div className="zippedArea">
@@ -64,6 +63,8 @@ function ThirdArea({
             />
           )}
         </div>
+        <small><weak>Şifre en az 8, en fazla 15 karakterden ve en az 1 rakam ve 1 büyük harf içermelidir.</weak></small>
+
         <div className="inputWrapper">
           <input
             type={showPass}

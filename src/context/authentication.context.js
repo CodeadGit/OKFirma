@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 //firebase
-import { auth } from "../firebase/firebase.config";
+import { auth, db } from "../firebase/firebase.config";
 import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
@@ -25,9 +25,10 @@ export const AuthenticationProvider = ({ children }) => {
   const [whoAmI, setWhoAmI] = useState(true);
   const [errMessage, setErrMessage] = useState("");
   const [userData, setUserData] = useState({});
-  const [aploading, setAppLoading] = useState(false);
-
-  const handleErrorMessage = (err) => {
+  const [apploading, setAppLoading] = useState(true);
+const [errorMessage,setErrorMessage]=useState(true)
+  
+const handleErrorMessage = (err) => {
     if (err === "Firebase: Error (auth/email-already-exists).") {
       alert(
         "Sağlanan e-posta zaten mevcut bir kullanıcı tarafından kullanılıyor. Her kullanıcının benzersiz bir e-posta adresi olmalıdır"
@@ -46,7 +47,7 @@ export const AuthenticationProvider = ({ children }) => {
       alert(err);
     }
   };
-  const db = getFirestore();
+  //const db = getFirestore();
 
   const register = async (mail, password, name, navigate, setSigning) => {
     try {
@@ -95,9 +96,28 @@ export const AuthenticationProvider = ({ children }) => {
     }
   };
 
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
+  useEffect(()=>{
+        onAuthStateChanged(auth,(currentUser)=>{
+            if(currentUser){
+                setUser(currentUser)
+                const userRef=doc(db,"Users",currentUser.uid)
+                console.log(currentUser)
+                getDoc(userRef)
+                .then(doc=>{
+                
+                setUserData(doc.data())
+                setAppLoading(false)
+                
+            })
+            
+            }else{
+                setAppLoading(false)
+                console.log("user yok")
+            }
+            
+            setErrorMessage(null)
+          })
+    },[user])
 
   const login = async (mail, password, navigate) => {
     setAppLoading(true);
@@ -130,11 +150,6 @@ export const AuthenticationProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    if (user) {
-      getUserData(user);
-    }
-  }, [user]);
 
   return (
     <AuthenticationContext.Provider
@@ -149,7 +164,7 @@ export const AuthenticationProvider = ({ children }) => {
         setUser,
         errMessage,
         userData,
-        aploading,
+        apploading,
         setAppLoading,
       }}
     >

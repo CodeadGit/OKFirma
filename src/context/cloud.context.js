@@ -1,4 +1,4 @@
-import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { addDoc, arrayRemove, collection, deleteDoc, doc, getDoc, onSnapshot, orderBy, query, updateDoc, where } from "firebase/firestore";
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { auth, db } from "../firebase/firebase.config";
 import { AuthenticationContext } from "./authentication.context";
@@ -15,38 +15,45 @@ export const CloudContextProvider = ({ children }) => {
   const [news, setNews] = useState([]);
   const [favoriArea, setFavoriArea] = useState([]);
   const [fetching, setFetching] = useState(false);
+  const [updatingJob, setUpdating] = useState(false);
 
   //get jobs
 
   useEffect(() => {
-    if (user && userData.firm && !userData.client) {
+    if (user) {
       var fields = userData?.fields;
+      var simple=["Klima","Kombi","Doğalgaz"]
       let userid = user.uid;
-      var q = query(collection(db, "Jobs"), where("mainWish", "in", fields));
-      q = query(q, where("adminned", "==", true));
+      var q = query(collection(db, "Jobs"), 
+      orderBy("createdAt","asc"),
+      where("adminned", "==", true)
+      );
       onSnapshot(q, (doc) => {
         var jobs = [];
         doc.forEach((data) => {
-          if (data.data().statue !== 3) {
+          if (data.data().statue !== 3&&!data.data().interestedFirms.includes(auth.currentUser.uid)) {
             jobs.unshift(data.data());
           }
+          
         });
-        if (jobs.length > 0) {
-          var first = jobs.filter(
-            (i) =>
-              new Date().getTime() <
-              new Date(i.publishRemaining.seconds * 1000).getTime()
-          );
-          var second = first.filter(
-            (i) => !i.interestedFirms.includes(auth?.currentUser.uid)
-          );
-          var third = second.filter(
-            (i) => i.statue === 0 || i.statue === 1 || i.statue === 2
-          );
-          setMyPossibleJobs(third);
-        } else {
-          setMyPossibleJobs(jobs);
-        }
+        // if (jobs.length > 0) {
+        //   // var first = jobs.filter(
+        //   //   (i) =>
+        //   //     new Date().getTime() <
+        //   //     new Date(i.publishRemaining.seconds * 1000).getTime()
+        //   // );
+        //   var second = jobs.filter(
+        //     (i) => !i.interestedFirms.includes(auth?.currentUser.uid)
+        //   );
+        //   // var third = second.filter(
+        //   //   (i) => i.statue === 0 || i.statue === 1 || i.statue === 2
+        //   // );
+        //   setMyPossibleJobs(second);
+        //   console.log("işler",second)
+        // } else {
+        //   setMyPossibleJobs(jobs);
+        // }
+        setMyPossibleJobs(jobs);
       });
     }
   }, [user, userData]);
@@ -69,10 +76,11 @@ export const CloudContextProvider = ({ children }) => {
         where("interestedFirms", "array-contains", auth.currentUser.uid)
       );
       onSnapshot(q, (snap) =>
+
         setMyJobsData(snap.docs.map((doc) => doc.data()))
       );
     }
-  }, [user]);
+  }, [user,updatingJob]);
   //get myjobs
 
   useEffect(() => {
@@ -117,6 +125,61 @@ export const CloudContextProvider = ({ children }) => {
     }
   }, [user]);
 
+  const deleteFirmFromJob=async(job)=>{
+    setUpdating(true);
+    var me=auth.currentUser.uid;
+    var referance=doc(db,"Jobs",job.doc);
+    var offerRef=doc(db,"Jobs",job.doc,"Offer",me);
+    var savedOfferRef=collection(db,"Users",me,"SavedOffers");
+    var logRef=collection(db,"Jobs",job.doc,"Logs");
+    let a,b,c,d;
+    try {
+      a=await updateDoc(referance,{
+        interestedFirms:arrayRemove(me),
+      })
+      } catch (error) {
+      setUpdating(false)
+      console.log(error.message)
+    }
+    try {
+      b=await addDoc(logRef,{
+        what:``,
+        when:new Date(),
+        who:me
+      })
+      } catch (error) {
+      setUpdating(false)
+      console.log(error.message)
+    }
+    try {
+      c=await getDoc(offerRef)
+      .then(data=>{
+        try {
+          addDoc(savedOfferRef,{
+            ...data.data()
+          })
+        } catch (error) {
+          setUpdating(false)
+        }
+      })
+      } catch (error) {
+      setUpdating(false)
+      console.log(error.message)
+    }
+    try {
+      d=deleteDoc(offerRef)
+      setUpdating(false)
+      alert(`${job.id} no'lu ${job.kategori} işi listenizden çıkarıldı`)
+    
+    } catch (error) {
+      
+      setUpdating(false)
+      console.log(error.message)
+      
+    }
+    
+return a+b+c+d;
+  }
   return (
     <CloudContext.Provider
       value={{
@@ -127,6 +190,8 @@ export const CloudContextProvider = ({ children }) => {
         myProducts,
         news,
         favoriArea,
+        deleteFirmFromJob,
+        updatingJob,
       }}
     >
       {children}

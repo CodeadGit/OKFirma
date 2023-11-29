@@ -136,6 +136,7 @@ function NewSupport({ setAlert, setError }) {
             className="support-summary"
           />
           <textarea
+            rows={8}
             required
             onChange={handleInputChange}
             name="text"

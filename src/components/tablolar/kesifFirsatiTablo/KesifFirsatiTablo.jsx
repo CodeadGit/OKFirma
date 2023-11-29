@@ -6,17 +6,18 @@ import Moment from "react-moment";
 import { statues } from "../../data/statues";
 import { auth } from "../../../firebase/firebase.config";
 import { Button } from "@mui/material";
+import { LocaleText } from "../../data/localeText";
 
 function KesifFirsatiTablo({ data }) {
-  const dataToView = data
-    .filter((i) => !i.interestedFirms.includes(auth.currentUser.uid))
-    .filter(
-      (i) =>
-        new Date().getTime() <
-        new Date(i.publishRemaining.seconds * 1000).getTime()
-    );
+  // const dataToView = data
+  //   .filter((i) => !i.interestedFirms.includes(auth.currentUser.uid))
+  //   .filter(
+  //     (i) =>
+  //       new Date().getTime() <
+  //       new Date(i.publishRemaining.seconds * 1000).getTime()
+  //   );
 
-  console.log(dataToView);
+  // console.log(dataToView);
   const columns = [
     {
       field: "id",
@@ -75,33 +76,33 @@ function KesifFirsatiTablo({ data }) {
         );
       },
     },
-    {
-      field: "remainingTime",
-      headerName: "Kalan Zaman",
-      type: "date",
-      flex: 1,
-      sortable: false,
-      editable: false,
-      disableColumnMenu: true,
-      renderCell: (props) => {
-        var termin = new Date(props.row.termin.seconds * 1000).getTime();
-        var now = new Date().getTime();
-        if (now > termin) {
-          return <div>Teklif Yapılmadı</div>;
-        } else {
-          return (
-            <>
-              <Moment
-                className="moment"
-                to={new Date(props.row.termin.seconds * 1000)}
-              >
-                {new Date()}
-              </Moment>
-            </>
-          );
-        }
-      },
-    },
+    // {
+    //   field: "remainingTime",
+    //   headerName: "Kalan Zaman",
+    //   type: "date",
+    //   flex: 1,
+    //   sortable: false,
+    //   editable: false,
+    //   disableColumnMenu: true,
+    //   renderCell: (props) => {
+    //     var termin = new Date(props.row.termin.seconds * 1000).getTime();
+    //     var now = new Date().getTime();
+    //     if (now > termin) {
+    //       return <div>Teklif Yapılmadı</div>;
+    //     } else {
+    //       return (
+    //         <>
+    //           <Moment
+    //             className="moment"
+    //             to={new Date(props.row.termin.seconds * 1000)}
+    //           >
+    //             {new Date()}
+    //           </Moment>
+    //         </>
+    //       );
+    //     }
+    //   },
+    // },
     {
       sortable: false,
       editable: false,
@@ -109,7 +110,7 @@ function KesifFirsatiTablo({ data }) {
       flex: 1,
       renderCell: (props) => {
         return (
-          <NavLink to={`${props.row.id}`} state={props.row}>
+          <NavLink to={`${props.row.doc}`} state={props.row}>
             <Button className="datagridButton">
               <p>Görüntüle</p>
             </Button>
@@ -122,10 +123,11 @@ function KesifFirsatiTablo({ data }) {
   return (
     <div className="tableParent">
       <DataGrid
-        rows={dataToView}
+        rows={data}
         density="comfortable"
         columns={columns}
         pageSizeOptions={[5]}
+        localeText={LocaleText}
       />
     </div>
   );

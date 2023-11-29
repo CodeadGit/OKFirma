@@ -8,6 +8,9 @@ import { AuthenticationContext } from "../../context/authentication.context";
 import Navigation from "../../components/boxes/Navigation";
 import Empty from "./svg/empty.svg";
 import { Navigate, NavLink } from "react-router-dom";
+import { Button } from "@mui/material";
+import { addDoc, collection } from "firebase/firestore";
+import { auth, db } from "../../firebase/firebase.config";
 
 function Home({ setLoading }) {
   const { myJobsData } = useContext(CloudContext);
@@ -27,12 +30,34 @@ function Home({ setLoading }) {
     return <Navigate to="onay" />;
   }
 
+  const sendNotification=async()=>{
+    try {
+      await addDoc(collection(db,"Users",auth.currentUser.uid,"Notifications"),{
+        createdAt:new Date(),
+        readen:false,
+        relatedCol:"Jobs",
+        relatedDoc:"5VLOoKPBpjnorEQgl7ud",
+        what:`yeni bildirim 4`,
+        who:"ben",
+        id:new Date().valueOf().toString().substring(6),
+        
+    })
+    alert("gönderildi")
+    } catch (error) {
+      alert(`${error.message}`)
+    }
+  }
   return (
     <>
       <div className="home">
         <Sidebar setLoading={setLoading} />
         <div className="homeContainer">
           <Navbar />
+          {/* <Button
+            onClick={sendNotification}
+          >
+            bildirim gönder
+          </Button> */}
           <Navigation children={pathData} />
           <div className="contentArea">
             {myJobsData?.length > 0 ? (

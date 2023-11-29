@@ -20,6 +20,7 @@ function Kesiflerim({ data }) {
         <Sidebar />
         <div className="homeContainer">
           <Navbar />
+          
           <Navigation children={pathData} />
           {data?.length > 0 ? (
             <TeklifTablosu data={data} />

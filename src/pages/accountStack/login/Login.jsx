@@ -83,7 +83,7 @@ const Login = ({
 
   return (
     <div className="login">
-      <img className="behindYellow" src={Behind} alt="" />
+      {/* <img className="behindYellow" src={Behind} alt="" /> */}
       <nav>
         <div className="left">
           <img src={Logo} alt="" />
@@ -123,11 +123,9 @@ const Login = ({
                   <div className="line"></div>
                 </div>
 
-                <p className="headerBottomText">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat, sed diam voluptua.{" "}
-                </p>
+                {/* <p className="headerBottomText">
+                  Lütfen aşağıdaki bilgileri eksiksiz doldurunuz.
+                </p> */}
 
                 <p>{alertMessage}</p>
 
@@ -173,7 +171,7 @@ const Login = ({
                 </div>
                 <div className="underLoginBox">
                   <div className="rememberMe">
-                    <input type="checkbox" class="checkboxRounded" />
+                    <input type="checkbox" className="checkboxRounded"/>
                     <label className="rememberMeText">Şifremi Hatırla</label>
                   </div>
                   <NavLink to="/sifremi-unuttum" className="forgotPassword">
@@ -205,7 +203,7 @@ const Login = ({
                   </div>
                 </div>
               </div>
-              <div className="bottom">
+              <div className="login-bottom">
                 <div className="bottomTop">
                   <div className="bottomTopText">
                     <p>Online Keşif uygulamasını ücretsiz indir</p>

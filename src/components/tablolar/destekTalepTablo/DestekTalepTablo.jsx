@@ -11,42 +11,31 @@ import {
   where,
 } from "firebase/firestore";
 import { db } from "../../../firebase/firebase.config";
+import { SupportContext } from "../../../context/supportContext";
+import { supportStatues } from "../../data/statues";
+import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
 
 const columns = [
+  // {
+  //   field: "id",
+  //   headerName: "Sıra No",
+  //   flex: 1,
+  //   sortable: false,
+  //   editable: false,
+  //   disableColumnMenu: true,
+  // },
+  // {
+  //   field: "createdAt",
+  //   headerName: "Tarih/Zaman",
+  //   flex: 1,
+  //   sortable: false,
+  //   editable: false,
+  //   disableColumnMenu: true,
+  // },
   {
-    field: "id",
-    headerName: "Sıra No",
-    flex: 1,
-    sortable: false,
-    editable: false,
-    disableColumnMenu: true,
-  },
-  {
-    field: "talepid",
-    headerName: "Talep Id",
-    sortable: false,
-    editable: false,
-    disableColumnMenu: true,
-    flex: 1,
-  },
-  {
-    field: "tarihZaman",
-    headerName: "Tarih/Zaman",
-    flex: 1,
-    sortable: false,
-    editable: false,
-    disableColumnMenu: true,
-  },
-  {
-    field: "durum",
-    headerName: "Durum",
-    flex: 1,
-    sortable: false,
-    editable: false,
-    disableColumnMenu: true,
-  },
-  {
-    field: "konu",
+    field: "subject",
     headerName: "Konu",
     flex: 1,
     sortable: false,
@@ -54,65 +43,65 @@ const columns = [
     disableColumnMenu: true,
   },
   {
-    field: "oncelik",
+    field: "statue",
+    headerName: "Durum",
+    flex: 1,
+    sortable: false,
+    editable: false,
+    disableColumnMenu: true,
+    renderCell:(params)=>{
+      return(
+        <span>{supportStatues[params.row.statue]}</span>
+      )
+    }
+  },
+  
+  {
+    field: "priority",
     headerName: "Öncelik",
     flex: 1,
     sortable: false,
     editable: false,
     disableColumnMenu: true,
   },
+  
   {
+    field:"id",
+    headerName:"",
     sortable: false,
     editable: false,
     disableColumnMenu: true,
     flex: 1,
     renderCell: (e) => {
+
       return (
-        <Button className="datagridButton">
-          <p>Görüntüle</p>
-        </Button>
+        <NavLink 
+        to={`/mesajlarim/Destek-Talebi/${e.row.doc}`}
+        className="datagridButton">
+          <span>Görüntüle</span>
+        </NavLink>
       );
     },
   },
 ];
 
-function DestekTalepTablo() {
-  const [myRequests, setMyRequests] = useState([]);
+function DestekTalepTablo({data}) {
+  
   const { user } = useContext(AuthenticationContext);
-  const getMessages = () => {
-    const msgRef = collection(db, "FirmRequests");
-    const q = query(msgRef, where("from", "==", user?.uid || "bekleniyor"));
-
-    onSnapshot(q, orderBy("createdAt", "asc"), (querySnapshot) => {
-      let msgs = [];
-      querySnapshot.forEach((doc) => {
-        msgs.push(doc.data());
-      });
-
-      setMyRequests(msgs);
-    });
-  };
-  useEffect(() => {
-    getMessages();
-  }, []);
-  const statues = ["Cevap Bekliyor", "Cevaplandı", "Kapandı"];
   const pathData = [
     { text: "Panelim", to: "/", id: "01" },
     { text: "Mesajlarım", to: "/mesajlarim", id: "02" },
     { text: "Destek Taleplerim", to: "/mesajlarim/Destek-Talebi", id: "03" },
   ];
 
-  myRequests.sort((a, b) => b.createdAt.seconds - a.createdAt.seconds);
 
-  const rows = [];
-  console.log(myRequests);
 
   return (
-    <Box sx={{ height: 270, width: "100%" }}>
+    <Box sx={{ height: "auto", width: "100%" }}>
       <DataGrid
         className="dataGridStyles"
         columns={columns}
-        rows={rows}
+        rows={data}
         density="compact"
         hideFooter={true}
         pageSizeOptions={[5]}

@@ -137,7 +137,7 @@ const Register = ({ setAlertMessage, setLoading }) => {
   return (
     <>
       <div className="login">
-        <img className="behindYellow" src={Behind} alt="" />
+        {/* <img className="behindYellow" src={Behind} alt="" /> */}
         <nav>
           <div className="left">
             <img src={Logo} alt="" />
@@ -227,7 +227,7 @@ const Register = ({ setAlertMessage, setLoading }) => {
                     />
                   )}
                 </div>
-                <div className="bottom">
+                <div className="login-bottom">
                   <button
                     className="btn btn_login"
                     onClick={() => {
@@ -245,7 +245,9 @@ const Register = ({ setAlertMessage, setLoading }) => {
                         } else {
                           setError("Bütün alanlara değer girmelisiniz");
                         }
-                      } else if (dolu === "second") {
+                      } 
+                      else if (dolu === "second") 
+                      {
                         if (
                           regForm.firmName &&
                           regForm.TCKN &&
@@ -256,10 +258,17 @@ const Register = ({ setAlertMessage, setLoading }) => {
                           regForm.ZIP &&
                           CheckFile(file)
                         ) {
-                          setDolu((pre) =>
+                          if(regForm.TCKN.length<10){
+                            setErrorSecond("TC No 11 Haneden, Vergi No 10 haneden az olamaz");
+
+                          }else{
+                            setDolu((pre) =>
                             pre === "first" ? "second" : "third"
                           );
                           setErrorSecond("");
+                        
+                          } 
+                          
                         } else {
                           setErrorSecond("Bütün alanlara değer girmelisiniz");
                         }
@@ -300,6 +309,7 @@ const Register = ({ setAlertMessage, setLoading }) => {
                   !CheckFile(file) |
                     !regForm.firmName |
                     !regForm.TCKN |
+                    !regForm.TCKN.length<10|
                     !regForm.firmType |
                     !regForm.Address |
                     !regForm.City |
@@ -323,7 +333,7 @@ const Register = ({ setAlertMessage, setLoading }) => {
                     </Link>
                   </div>
                 </div>
-                <div className="bottom">
+                <div className="login-bottom">
                   <div className="bottomTop">
                     <div className="bottomTopText">
                       <p>Online Keşif uygulamasını ücretsiz indir</p>

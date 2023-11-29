@@ -38,9 +38,7 @@ function FirstArea({ regForm, setRegForm, error }) {
           <div className="line"></div>
         </div>
         <p className="headerBottomText">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua.{" "}
+        Lütfen aşağıdaki bilgileri eksiksiz doldurunuz.
         </p>
       </div>
       <div className="zippedArea">

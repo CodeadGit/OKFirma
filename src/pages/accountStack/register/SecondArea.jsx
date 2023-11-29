@@ -32,9 +32,7 @@ function SecondArea({ regForm, setRegForm, error, file, setFile }) {
 
         <img src={Example} alt="" />
         <p className="headerBottomText">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua.{" "}
+          Lütfen aşağıdaki bilgileri eksiksiz doldurunuz.
         </p>
       </div>
       <div className="zippedSecondArea">
@@ -89,6 +87,7 @@ function SecondArea({ regForm, setRegForm, error, file, setFile }) {
                 /> */}
         </div>
         <textarea
+        rows={4}
           value={regForm.Address}
           placeholder="İş Yeri Adresiniz"
           className={`input ${error && !regForm.Address ? "red" : "valid"}`}

@@ -20,10 +20,17 @@ import Logout from "./svg/logout.svg";
 import Header from "../text/Header";
 import SubHeader from "../text/SubHeader";
 import MiniSubHeader from "../text/MiniSubHeader";
+import { NotAccessible } from "@mui/icons-material";
+import { NotificationAdd } from "@mui/icons-material";
+import { CircleNotifications } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
+import { NotificationsNone } from "@mui/icons-material";
+import { useNotifications } from "../../context/notification.context";
 
 function Sidebar() {
   const { logout, user, userData } = useContext(AuthenticationContext);
 
+  const {toggleNotification,notifications,unreads}=useNotifications()
   const linkList = [
     { img: UserLogo, label: "Panelim", id: "01", to: "/", hasNest: false },
     {
@@ -95,7 +102,7 @@ function Sidebar() {
           <img id="logo" src={Logo} alt="logo" />
         </Link>
       </div>
-
+      
       <div className="sidebarInner">
         <div className="sidebarTop">
           <div
@@ -105,10 +112,12 @@ function Sidebar() {
             <label>
               <img
                 className={`logodiv`}
+                
                 src={user.photoURL ? user.photoURL : AddPhoto}
                 alt=""
               />
             </label>
+
 
             {Object.keys(userData).length > 0 && (
               <Header id="firmName">
@@ -121,6 +130,21 @@ function Sidebar() {
               </SubHeader>
             )}
           </div>
+          <div className="nots-holder">
+              <IconButton
+                size="large"
+                color="primary"
+                className="not-icon"
+                onClick={toggleNotification}
+              >
+                <NotificationsNone
+                
+                />
+                <span className="count">{unreads.length}</span>
+                
+              </IconButton>
+          </div>
+          
         </div>
         <div className="sidebarCenter">
           <ul>

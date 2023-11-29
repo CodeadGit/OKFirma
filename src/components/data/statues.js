@@ -15,9 +15,17 @@ export const statues = [
   },
   { label: "Firma İşe Başladı", class: "started", id: "10", mapindex: 9 },
   {
-    label: "Firma Teklifi İptal Etti",
+    label: "Firma İşi İptal Etti",
     class: "started",
     id: "11",
     mapindex: 10,
   },
+  {
+    label: "Müşteri İşi İptal Etti",
+    class: "cancelled",
+    id: "12",
+    mapindex: 11,
+  },
 ];
+export const supportStatues = ["Cevap Bekliyor", "Cevaplandı", "Kapandı"];
+

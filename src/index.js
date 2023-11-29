@@ -6,13 +6,25 @@ import reportWebVitals from "./reportWebVitals";
 import { AuthenticationProvider } from "./context/authentication.context";
 import { CloudContextProvider } from "./context/cloud.context";
 import Footer from "./components/footer/Footer";
+import { SupportContextProvider } from "./context/supportContext";
+import { UsefulApiProvider } from "./context/api.context";
+import { OfferProvider } from "./context/offer.context";
+import { NotificationProvider } from "./context/notification.context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AuthenticationProvider>
       <CloudContextProvider>
-        <App />
+        <SupportContextProvider>
+          <UsefulApiProvider>
+            <OfferProvider>
+              <NotificationProvider>
+                <App />
+              </NotificationProvider>
+            </OfferProvider>
+          </UsefulApiProvider>
+        </SupportContextProvider>
       </CloudContextProvider>
     </AuthenticationProvider>
   </React.StrictMode>

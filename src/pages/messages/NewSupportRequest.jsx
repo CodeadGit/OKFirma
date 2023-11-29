@@ -4,15 +4,22 @@ import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import NewSupport from "./NewSupport";
 import "./newSupport.scss";
+import Navigation from "../../components/boxes/Navigation";
 
 function NewSupportRequest() {
   const [alert, setAlert] = useState("");
   const [error, setError] = useState("");
+  const pathData = [
+    { text: "Panelim", to: "/", id: "02" },
+    { text: "Mesajlarım", to: "/mesajlarim", id: "02" },
+    { text: "Yeni Destek Talebi", to: "/mesajlarim/Yeni-Destek-Talebi", id: "03" },
+   
+  ];
   return (
     <>
-      <div className="newSupport">
+      <div className="home">
         <Sidebar />
-        <div className="newSupportContainer">
+        <div className="homeContainer">
           {alert ? (
             <Alert
               onClick={() => setAlert("")}
@@ -34,6 +41,7 @@ function NewSupportRequest() {
             </Alert>
           ) : null}
           <Navbar />
+          <Navigation children={pathData} />
           <NewSupport setAlert={setAlert} setError={setError} />
         </div>
         {/* <RightSideBar/> */}

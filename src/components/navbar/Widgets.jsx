@@ -74,7 +74,7 @@ function WidgetsContainer() {
       svg: Kalite,
       altsvg: Kalite,
       label: "kalitepuanı.com'daki Puanınız baz alınmıştır.",
-      render: `${userData.KPU}`,
+      render: `${userData.KPU?userData.KPU:"belirtilmemiş"}`,
       full: false,
       style: "small",
       id: "fourth",

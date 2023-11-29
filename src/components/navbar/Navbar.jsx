@@ -2,6 +2,7 @@ import React from "react";
 import "./navbar.scss";
 import WidgetsContainer from "./Widgets";
 import DestekTaleplerim from "./DestekTaleplerim";
+import { NotificationAdd } from "@mui/icons-material";
 
 function Navbar() {
   return (
@@ -10,7 +11,7 @@ function Navbar() {
         <WidgetsContainer />
       </div>
       <div className="helpRequests">
-        <DestekTaleplerim />
+        <DestekTaleplerim  />
       </div>
     </div>
   );

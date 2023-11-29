@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./teklifTablosu.scss";
 import { auth } from "../../../firebase/firebase.config";
 import { statues } from "../../data/statues";
 import { DataGrid } from "@mui/x-data-grid";
-import { Button } from "@mui/material";
+import { Button, IconButton, Tooltip } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import PriceOfOneRow from "./PriceOfOneRow";
+import OfferStatue from "./OfferStatue";
+import { DeleteForever, RunCircle, RunCircleOutlined, RunningWithErrors } from "@mui/icons-material";
+import { CloudContext } from "../../../context/cloud.context";
 
 function TeklifTablosu({ data }) {
   let TLLocale = Intl.NumberFormat("tr-TR");
 
+  const {
+    deleteFirmFromJob,
+    updatingJob}=useContext(CloudContext)
+  
   const columns = [
     {
       field: "id",
@@ -57,6 +65,11 @@ function TeklifTablosu({ data }) {
       editable: false,
       disableColumnMenu: true,
       flex: 1,
+      renderCell:(params)=>{
+        return(
+          <PriceOfOneRow job={params.row} />
+        )
+      }
     },
     {
       field: "durum",
@@ -64,15 +77,20 @@ function TeklifTablosu({ data }) {
       sortable: false,
       editable: false,
       disableColumnMenu: true,
-      flex: 1,
+      cellClassName:"statue-holder",
+
+      flex: 1.5,
       renderCell: (e) => {
         const statueData = data.map((item) => item.statue);
         return statueData.length < 0 ? (
           <h3>Başka Firma Onaylandı</h3>
         ) : (
+          <>
           <div className={`statue ${statues[e.row.durum].class}`}>
             <p>{statues[e.row.durum].label}</p>
           </div>
+          <OfferStatue job={e.row.doc} />
+          </>
         );
       },
     },
@@ -82,14 +100,31 @@ function TeklifTablosu({ data }) {
       disableColumnMenu: true,
       flex: 1,
       renderCell: (e) => {
-        const stateData = data.find((item) => item.id === e.row.teklifId);
+        //const stateData = data.find((item) => item.id === e.row.teklifId);
 
         return (
-          <NavLink to={`/kesiflerim/${e.row.teklifId}`} state={stateData}>
-            <Button className="datagridButton">
-              <p>Görüntüle</p>
-            </Button>
-          </NavLink>
+          <>
+          {e.row.durum!==11?
+          <NavLink to={`/kesiflerim/${e.row.doc}`}>
+          <Button className="datagridButton">
+            <p>Görüntüle</p>
+          </Button>
+        </NavLink>
+        :
+          <Tooltip
+            title="iş listesinden çıkar"
+          >
+              <IconButton
+                onClick={()=>deleteFirmFromJob(e.row)}
+                disabled={updatingJob?true:false}
+                className="delete-button"
+              >
+                <RunCircleOutlined/>
+              </IconButton>
+          </Tooltip>
+          }
+          
+          </>
         );
       },
     },
@@ -98,6 +133,7 @@ function TeklifTablosu({ data }) {
   return (
     <div className="tableParent">
       <DataGrid
+      autoHeight
         rows={data.map((item, index) => {
           var array = item.Offers;
           var itemIndex = array.findIndex(
@@ -108,6 +144,7 @@ function TeklifTablosu({ data }) {
           return {
             id: index + 1,
             teklifId: item.id,
+            doc:item.doc,
             kategori: item.mainWish,
             tarihZaman: new Date(
               item.createdAt.seconds * 1000
@@ -118,7 +155,7 @@ function TeklifTablosu({ data }) {
             ) : (
               <span>****₺</span>
             ),
-            durum: `${item.statue}`,
+            durum: item.statue,
           };
         })}
         density="comfortable"

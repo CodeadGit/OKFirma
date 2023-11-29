@@ -9,7 +9,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
-import { db } from "../../firebase/firebase.config";
+import { auth, db } from "../../firebase/firebase.config";
 import DatatableNew from "./DatatableNew";
 import "./support.scss";
 import MessageIcon from "../../components/sidebar/svg/messages.svg";
@@ -17,26 +17,45 @@ import Navigation from "../../components/boxes/Navigation";
 import { useContext } from "react";
 import { AuthenticationContext } from "../../context/authentication.context";
 import DestekTalepTablo from "../../components/tablolar/destekTalepTablo/DestekTalepTablo";
+import { CircularProgress } from "@mui/material";
+import RightSideBar from "../../components/RightSideBar/RightSideBar";
 
 function SupportRequest() {
   const [myRequests, setMyRequests] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { user } = useContext(AuthenticationContext);
-  const getMessages = () => {
-    const msgRef = collection(db, "FirmRequests");
-    const q = query(msgRef, where("from", "==", user?.uid || "bekleniyor"));
 
-    onSnapshot(q, orderBy("createdAt", "asc"), (querySnapshot) => {
-      let msgs = [];
-      querySnapshot.forEach((doc) => {
-        msgs.push(doc.data());
-      });
+  useEffect(()=>{
 
-      setMyRequests(msgs);
-    });
-  };
-  useEffect(() => {
-    getMessages();
-  }, []);
+    if(user){
+        let controller = new AbortController();
+
+        (async () => {
+            const q = query(collection(db,"FirmRequests")
+            )       
+            const jobgetting=onSnapshot(q,(snap)=>{
+            var jobs=[];
+            if(!snap.empty){
+                snap.forEach(doc=>{
+                    jobs.push({...doc.data(),id:doc.id})
+                    })
+                setMyRequests(jobs)
+                setLoading(false)
+                console.log(jobs)
+            }
+                                         
+                })
+            return ()=>jobgetting()
+        })();
+          return () => {
+            controller?.abort()
+            
+        };
+    }
+
+   
+
+},[user])
 
   // const myRequests=[
   //   {id:new Date().valueOf(),createdAt:new Date(),statue:0,lastResponse:"Faruk Yılmaz",subject:"Kazan",priority:0,file:"",summary:"Kazan takamadım",body:[{text:"Böle işverenlik olur mu hemşerim kimse cevap vermiyor",from:auth.currentUser.displayName,createdAt:new Date(),media:""}],},
@@ -50,7 +69,13 @@ function SupportRequest() {
     { text: "Destek Taleplerim", to: "/mesajlarim/Destek-Talebi", id: "03" },
   ];
 
-  myRequests.sort((a, b) => b.createdAt.seconds - a.createdAt.seconds);
+  //myRequests.sort((a, b) => b.createdAt.seconds - a.createdAt.seconds);
+
+  if(loading){
+    return(
+      <CircularProgress/>
+    )
+  }
   return (
     <>
       <div className="home">

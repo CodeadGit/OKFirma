@@ -19,6 +19,11 @@
       color: var(--black);
       text-transform: capitalize;
     }
+    &.delete-button{
+      background-color: transparent;
+      width: max-content;
+      height: max-content;
+    }
   }
 
   .MuiDataGrid-columnHeaderTitleContainer {
@@ -41,10 +46,19 @@
     border: none;
   }
 
+  .statue-holder{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
   .statue {
     text-align: center;
     border-radius: 4px;
     padding: 0.25rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     p {
       font-size: 14px;
