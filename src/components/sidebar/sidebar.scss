@@ -1,4 +1,5 @@
 .sidebar {
+  // border: 1px solid red;
   height: 100vh;
   width: 20vw;
   background-color: transparent;
@@ -8,6 +9,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media screen and (max-width: 430px) {
+    width: 100%;
+    justify-content: flex-start;
+  }
 
   .sidebarLogoArea {
     height: 17.43810548977395vh;
@@ -19,33 +25,51 @@
     -moz-border-radius-bottomright: 20px;
     border-bottom-right-radius: 20px;
   }
-  .logodiv{
-    width: 80px;
-    object-fit: contain;
-  }
 
   .sidebarInner {
+    // border: 1px solid red;
     height: 81.2vh;
     background-color: #fff;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    
-    flex-direction: column;
     -webkit-border-top-right-radius: 20px;
     -moz-border-radius-topright: 20px;
     border-top-right-radius: 20px;
 
     .sidebarTop {
+      // border: 1px solid red;
       width: 65%;
       padding-top: 1rem;
-      .nots-holder{
+
+      .sidebarFirmInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .logodiv {
+          width: 80px;
+          object-fit: contain;
+          border-radius: 10px;
+        }
+      }
+
+      .nots-holder {
+        // border: 1px solid red;
         display: flex;
         align-items: center;
         justify-content: flex-end;
         position: relative;
         width: 100%;
-        .count{
+
+        .not-icon {
+          right: 0;
+          font-size: 32px;
+          color: #535353 !important;
+        }
+
+        .count {
           font-size: 1rem;
           position: absolute;
           right: 0;
@@ -57,31 +81,19 @@
           color: #202020;
           background-color: #f8d539;
         }
-      
-      }
-      .not-icon{
-        right: 0;
-        font-size: 32px;
-        color: #535353 !important;
-      
-      }
-      .sidebarFirmInfo {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        img {
-          border-radius: 50px;
-        }
       }
     }
 
     .sidebarCenter {
+      // border: 1px solid red;
       flex: 1;
       width: 65%;
+
       ul {
         list-style: none;
         padding: 0;
       }
+      
       li {
         display: flex;
         align-items: flex-start;
@@ -101,16 +113,20 @@
             font-weight: 600;
             color: #888;
           }
+
           &.active {
+
             span {
               color: #f9d641;
               font-weight: 600;
               transition: 500ms;
             }
+
             img {
               filter: grayscale(0);
             }
           }
+
           &.hover {
             color: #f9d641;
             font-weight: 600;
@@ -124,6 +140,7 @@
           align-items: center;
           text-decoration: none;
           pointer-events: none;
+
           span {
             font-size: 14px;
             font-weight: 600;
@@ -132,6 +149,7 @@
         }
 
         .subLinks {
+          // border: 1px solid red;
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -139,18 +157,23 @@
         }
 
         .sidelinkmini {
+          // border: 1px solid red;
           display: flex;
           align-items: center;
           text-decoration: none;
           margin-bottom: 0.2rem;
-          width: 70%;
+          // width: 70%;
+          gap: .25rem;
+
           span {
             font-size: 12px;
             font-weight: 400;
             color: #888;
             width: 80px;
           }
+
           &.active {
+
             span {
               color: #f9d641;
               font-weight: bold;
@@ -162,6 +185,7 @@
             }
           }
         }
+
         .icon {
           width: 1.2rem;
           font-size: 18px;
@@ -177,6 +201,7 @@
         }
       }
     }
+
     hr {
       height: 0.5px;
       background-color: #e7e7e7;
@@ -184,12 +209,12 @@
     }
 
     .sidebarBottom {
+      // border: 1px solid red;
       width: 65%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 1rem;
-
 
       .settings {
         display: flex;
@@ -198,6 +223,7 @@
         cursor: pointer;
         text-decoration: none;
         color: #535353;
+        font-size: .75rem;
       }
 
       .logout {
@@ -214,9 +240,8 @@
     .sidebarFooter {
       width: 65%;
       display: flex;
-      border-top: .5px solid gainsboro;
-      padding: .3rem;
-      
+      border-top: 0.5px solid gainsboro;
+      padding: 0.3rem;
     }
   }
 }

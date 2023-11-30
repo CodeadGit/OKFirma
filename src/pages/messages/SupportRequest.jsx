@@ -21,6 +21,7 @@ import { CircularProgress } from "@mui/material";
 import RightSideBar from "../../components/RightSideBar/RightSideBar";
 
 function SupportRequest() {
+
   const [myRequests, setMyRequests] = useState([]);
   const [loading, setLoading] = useState(true);
   const { user } = useContext(AuthenticationContext);
@@ -29,10 +30,8 @@ function SupportRequest() {
 
     if(user){
         let controller = new AbortController();
-
         (async () => {
-            const q = query(collection(db,"FirmRequests")
-            )       
+            const q = query(collection(db,"FirmRequests"));       
             const jobgetting=onSnapshot(q,(snap)=>{
             var jobs=[];
             if(!snap.empty){
@@ -41,21 +40,15 @@ function SupportRequest() {
                     })
                 setMyRequests(jobs)
                 setLoading(false)
-                console.log(jobs)
-            }
-                                         
-                })
+            }                                      
+            })
             return ()=>jobgetting()
         })();
           return () => {
-            controller?.abort()
-            
+            controller?.abort();           
         };
     }
-
-   
-
-},[user])
+},[user]); 
 
   // const myRequests=[
   //   {id:new Date().valueOf(),createdAt:new Date(),statue:0,lastResponse:"Faruk Yılmaz",subject:"Kazan",priority:0,file:"",summary:"Kazan takamadım",body:[{text:"Böle işverenlik olur mu hemşerim kimse cevap vermiyor",from:auth.currentUser.displayName,createdAt:new Date(),media:""}],},
@@ -76,6 +69,7 @@ function SupportRequest() {
       <CircularProgress/>
     )
   }
+  
   return (
     <>
       <div className="home">

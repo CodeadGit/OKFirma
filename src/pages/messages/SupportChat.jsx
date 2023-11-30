@@ -8,13 +8,14 @@ import MessageRequest from "./MessageRequest";
 import { useNavigate } from "react-router-dom";
 
 function SupportChat({ item }) {
+
   const [text, setText] = useState("");
   const [img, setImg] = useState("");
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     let url;
     if (img) {
       const imgRef = ref(
@@ -38,6 +39,7 @@ function SupportChat({ item }) {
       .then(() => setImg(""))
       .then(() => navigate("/mesajlarim/Destek-Talebi"));
   };
+  
   return (
     <div className="chatcontainer">
       <div className="chat-center messages">

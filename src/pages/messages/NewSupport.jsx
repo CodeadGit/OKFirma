@@ -7,7 +7,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Loading from "../../components/Loading/Loading";
 import { auth, db, storage } from "../../firebase/firebase.config";
 import RequestCases from "./RequestCases";
@@ -16,11 +16,14 @@ import { useNavigate } from "react-router-dom";
 function NewSupport({ setAlert, setError }) {
   const [file, setFile] = useState("");
   const [selected, setSelected] = useState("seçmedi");
-  const [request, setRequest] = useState("");
+  const [request, setRequest] = useState({
+    summary: "",
+    text: "",
+  });
   const [priority, setPriority] = useState("");
   const [uploading, setUploading] = useState(false);
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     const target = event.target;
@@ -28,6 +31,7 @@ function NewSupport({ setAlert, setError }) {
     const name = target.name;
     setRequest({ ...request, [name]: value });
   };
+
   const handleFileInputChange = (event) => {
     setFile(event.target.files[0]);
   };
@@ -95,6 +99,7 @@ function NewSupport({ setAlert, setError }) {
         setError(e.message);
       });
   };
+
   const caseList = [
     "Kombi",
     "Klima",
@@ -105,6 +110,7 @@ function NewSupport({ setAlert, setError }) {
     "Hesap",
     "Genel",
   ];
+
   const priorityList = ["Normal", "Orta", "Acil"];
 
   return (
@@ -157,7 +163,6 @@ function NewSupport({ setAlert, setError }) {
                 id="file"
                 style={{ display: "none" }}
               />
-
               <label className="add-file" htmlFor="file">
                 <AttachFile />
                 Dosya Ekleyin

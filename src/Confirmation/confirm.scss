@@ -1,14 +1,11 @@
 .confirm {
   padding: 50px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   align-self: center;
-  img.onay {
-    width: 30%;
-  }
+
   .confirmContainer {
     padding: 20px;
     margin: 20px;
@@ -17,6 +14,7 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
+
     img {
       width: 100px;
       height: 100px;
@@ -24,5 +22,9 @@
       -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
       box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
     }
+  }
+  
+  img.onay {
+    width: 30%;
   }
 }

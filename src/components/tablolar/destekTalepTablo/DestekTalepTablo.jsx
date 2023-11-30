@@ -16,7 +16,6 @@ import { supportStatues } from "../../data/statues";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
-
 const columns = [
   // {
   //   field: "id",
@@ -54,8 +53,7 @@ const columns = [
         <span>{supportStatues[params.row.statue]}</span>
       )
     }
-  },
-  
+  }, 
   {
     field: "priority",
     headerName: "Öncelik",
@@ -63,8 +61,7 @@ const columns = [
     sortable: false,
     editable: false,
     disableColumnMenu: true,
-  },
-  
+  },  
   {
     field:"id",
     headerName:"",
@@ -72,8 +69,8 @@ const columns = [
     editable: false,
     disableColumnMenu: true,
     flex: 1,
-    renderCell: (e) => {
 
+    renderCell: (e) => {
       return (
         <NavLink 
         to={`/mesajlarim/Destek-Talebi/${e.row.doc}`}
@@ -88,16 +85,15 @@ const columns = [
 function DestekTalepTablo({data}) {
   
   const { user } = useContext(AuthenticationContext);
+  
   const pathData = [
     { text: "Panelim", to: "/", id: "01" },
     { text: "Mesajlarım", to: "/mesajlarim", id: "02" },
     { text: "Destek Taleplerim", to: "/mesajlarim/Destek-Talebi", id: "03" },
   ];
 
-
-
   return (
-    <Box sx={{ height: "auto", width: "100%" }}>
+    <Box sx={{ height: "auto", width: "100%"}}>
       <DataGrid
         className="dataGridStyles"
         columns={columns}

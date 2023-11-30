@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Navigation from "../../components/boxes/Navigation";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
@@ -10,59 +10,55 @@ import { CircularProgress } from "@mui/material";
 
 function MyReaquestScreen() {
   const { talepId } = useParams();
-  const [thisPage,setThisPage]=useState({})
-  const [loading,setLoading]=useState(true)
-  useEffect(()=>{
-    var document=talepId
+  const [thisPage, setThisPage] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    var document = talepId;
     let controller = new AbortController();
-
     (async () => {
-        var docreferance=doc(db,"FirmRequests",document)
-        try {
-          const response = await getDoc(docreferance,{
-            signal: controller.signal
-
-          });
-          const getData=response.data()
-          setThisPage(getData);
-          setLoading(false)
-          controller = null;
-
-
-        } catch (e) {
-            setLoading(false)
-            alert("bir hata meydana geldi")
-            console.log(e.message)
-        }
+      var docreferance = doc(db, "FirmRequests", document);
+      try {
+        const response = await getDoc(docreferance, {
+          signal: controller.signal,
+        });
+        const getData = response.data();
+        setThisPage(getData);
+        setLoading(false);
+        controller = null;
+      } catch (e) {
+        setLoading(false);
+        alert("bir hata meydana geldi");
+        console.log(e.message);
+      }
     })();
-      return () => controller?.abort();
+    return () => controller?.abort();
+  }, [talepId]);
 
-},[talepId])
   const pathData = [
     { text: "Panelim", to: "/", id: "02" },
     { text: "Mesajlarım", to: "/mesajlarim", id: "02" },
     { text: "Destek Taleplerim", to: "/mesajlarim/Destek-Talebi", id: "03" },
     { text: talepId, to: `/mesajlarim/Destek-Talebi`, id: "04" },
   ];
-  if(loading){
-    return(
-         <>
-            <div className="home">
-                <Sidebar/>
-                <div className="homeContainer">
-                    <Navbar/>
-                    <div className="navigation">
-                        <Navigation children={pathData} />
-                    </div>
-                    <CircularProgress
-                    className='centered-loading'
-                    />
 
-                </div>
+  if (loading) {
+    return (
+      <>
+        <div className="home">
+          <Sidebar />
+          <div className="homeContainer">
+            <Navbar />
+            <div className="navigation">
+              <Navigation children={pathData} />
             </div>
-        </>
-    )
-}
+            <CircularProgress className="centered-loading" />
+          </div>
+        </div>
+      </>
+    );
+  }
+  
   return (
     <div className="home">
       <Sidebar />

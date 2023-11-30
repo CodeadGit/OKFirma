@@ -9,7 +9,6 @@ import Cat from "./svg/cat.svg";
 import WhiteCat from "./svg/whiteCat.svg";
 import Kalite from "./svg/kalite.svg";
 import { CloudContext } from "../../context/cloud.context";
-
 import { AuthenticationContext } from "../../context/authentication.context";
 
 function WidgetsContainer() {

@@ -26,9 +26,9 @@ export const AuthenticationProvider = ({ children }) => {
   const [errMessage, setErrMessage] = useState("");
   const [userData, setUserData] = useState({});
   const [apploading, setAppLoading] = useState(true);
-const [errorMessage,setErrorMessage]=useState(true)
-  
-const handleErrorMessage = (err) => {
+  const [errorMessage, setErrorMessage] = useState(true);
+
+  const handleErrorMessage = (err) => {
     if (err === "Firebase: Error (auth/email-already-exists).") {
       alert(
         "Sağlanan e-posta zaten mevcut bir kullanıcı tarafından kullanılıyor. Her kullanıcının benzersiz bir e-posta adresi olmalıdır"
@@ -91,33 +91,28 @@ const handleErrorMessage = (err) => {
     } catch (error) {
       //handleErrorMessage(error.message)
       alert(handleErrorMessage(error.message));
-
       setSigning(false);
     }
   };
 
-  useEffect(()=>{
-        onAuthStateChanged(auth,(currentUser)=>{
-            if(currentUser){
-                setUser(currentUser)
-                const userRef=doc(db,"Users",currentUser.uid)
-                console.log(currentUser)
-                getDoc(userRef)
-                .then(doc=>{
-                
-                setUserData(doc.data())
-                setAppLoading(false)
-                
-            })
-            
-            }else{
-                setAppLoading(false)
-                console.log("user yok")
-            }
-            
-            setErrorMessage(null)
-          })
-    },[user])
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+        const userRef = doc(db, "Users", currentUser.uid);
+        console.log(currentUser);
+        getDoc(userRef).then((doc) => {
+          // console.log(doc.data());
+          setUserData(doc.data());
+          setAppLoading(false);
+        });
+      } else {
+        setAppLoading(false);
+        console.log("user yok");
+      }
+      setErrorMessage(null);
+    });
+  }, [user]);
 
   const login = async (mail, password, navigate) => {
     setAppLoading(true);
@@ -126,7 +121,6 @@ const handleErrorMessage = (err) => {
         //.then((data)=>setUser(data.user))
         //.then(()=>getUserData())
         .then(() => setAppLoading(false));
-
       navigate();
     } catch (error) {
       setAppLoading(false);
@@ -149,7 +143,6 @@ const handleErrorMessage = (err) => {
       //alert(e.message)
     }
   };
-
 
   return (
     <AuthenticationContext.Provider

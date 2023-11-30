@@ -110,8 +110,8 @@
         align-items: center;
         justify-content: flex-end;
       }
-      &.admin {
-      }
+      // &.admin {
+      // }
     }
     #divider {
       margin: 5px 0px;
@@ -132,6 +132,7 @@
     overflow-y: auto;
     border-bottom: 1px solid var(--color-6);
   }
+
   .chat-bottom {
     background-color: white;
     height: 10%;
@@ -141,18 +142,18 @@
     padding: 10px;
 
     form {
+      // border: 1px solid blue;
       height: 100%;
-
       display: flex;
       width: 100%;
       align-items: center;
       gap: 10px;
+
       .img-box {
         background-color: gainsboro;
         border-radius: 5px;
         position: relative;
         padding: 10px;
-
         text-overflow: ellipsis;
         height: 100%;
         display: flex;
@@ -161,10 +162,12 @@
         width: 5%;
         flex-wrap: wrap;
         overflow: hidden;
+
         small {
           font-size: 10px;
           width: 100%;
         }
+
         .icon {
           font-size: 10px;
           padding: 4px;
@@ -177,6 +180,7 @@
           border-radius: 5px;
         }
       }
+
       input.chat-input {
         border: none;
         outline: none;
@@ -184,7 +188,9 @@
         height: 100%;
         box-sizing: border-box;
         padding: 10px;
+        // border: 1px solid red;
       }
+
       .addFile {
         border-right: 0.5px solid grey;
         height: 100%;
@@ -196,6 +202,7 @@
         padding-right: 10px;
         cursor: pointer;
       }
+
       button.send-chat {
         border: none;
         background-color: #ededed;
@@ -206,6 +213,7 @@
         &.empty {
           opacity: 0.5;
         }
+        
         &.ready {
           opacity: 1;
           cursor: pointer;

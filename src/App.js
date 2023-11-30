@@ -10,30 +10,30 @@ import Confirmation from "./Confirmation/Confirmation";
 import { ConfirmationStack } from "./pages/renderStack/ConfirmationStack";
 
 function App() {
-  const {user,apploading,userData}=useContext(AuthenticationContext)
-  console.log(user)
-  console.log(userData)
-  console.log("app",apploading)
-  
+  const { user, apploading, userData } = useContext(AuthenticationContext);
+  console.log(user);
+  console.log(userData);
+  console.log("app", apploading);
+
   return (
     <>
-      {apploading||(!userData&&user)
-      ?<LoadingGeneral title="yükleniyor" />
-      :!user?<AuthStack/>
-      :userData.confirmed
-          ?<VenderStack />
-            :<ConfirmationStack/>
-        
-              
-      }
+      {apploading || (!userData && user) ? (
+        <LoadingGeneral title="yükleniyor" />
+      ) : !user ? (
+        <AuthStack />
+      ) : userData.confirmed ? (
+        <VenderStack />
+      ) : (
+        <ConfirmationStack />
+      )}
     </>
   );
 }
 
 export default App;
 
-
-{/* <>
+{
+  /* <>
       {apploading||(!userData&&user)
       ?<LoadingGeneral title="yükleniyor" />
       
@@ -44,4 +44,5 @@ export default App;
         :<LoadingGeneral title="kontrol ediliyor" />
               
       }
-    </> */}
+    </> */
+}

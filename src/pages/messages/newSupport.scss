@@ -2,6 +2,7 @@
   display: flex;
   margin: 0;
   padding: 0;
+
   .newSupportContainer {
     flex: 6;
     .alert {
@@ -34,28 +35,37 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  *{
+
+  * {
     box-sizing: border-box;
   }
 
   .header {
+    // border: 1px solid red;
     display: flex;
     margin-bottom: 20px;
     color: #505050;
+
     .header-left {
+      // border: 1px solid red;
       flex: 1;
     }
+
     .header-right {
+      // border: 1px solid red;
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: flex-end;
     }
   }
+
   form.request-form {
     display: flex;
     flex-direction: column;
+
     .subject-selectors {
+      // border: 1px solid red;
       display: flex;
       margin-bottom: 15px;
       gap: 10px;
@@ -67,12 +77,14 @@
         transition: 250ms;
         box-sizing: border-box;
         cursor: pointer;
+
         &.selected {
           background-color: var(--black);
           color: white;
           font-weight: 500;
           transition: 250ms;
         }
+
         &.not-selected {
           border: 0.5px solid grey;
           color: grey;
@@ -81,6 +93,7 @@
         }
       }
     }
+
     input.support-summary {
       padding: 10px;
       border: 0.5px solid grey;
@@ -91,6 +104,7 @@
       outline: none;
       width: 100%;
     }
+
     textarea.support-text {
       padding: 10px;
       border: 0.5px solid grey;
@@ -101,22 +115,29 @@
       width: 100%;
       resize: none;
     }
+
     .support-buttons {
+      // border: 1px solid red;
       display: flex;
       align-items: center;
+
       .support-buttons-left {
         flex: 1;
         display: flex;
         align-items: center;
-        justify-content: start;
+        justify-content: flex-start;
+
         label.add-file {
+          // border: 1px solid red;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           color: #505050;
           font-weight: 300;
+          cursor: pointer;
         }
+
         .file-upload {
           background-color: gainsboro;
           padding: 10px;
@@ -128,9 +149,11 @@
           flex-wrap: wrap;
           text-overflow: ellipsis;
           position: relative;
+
           .icon {
             align-self: flex-end;
             cursor: pointer;
+
             &:hover {
               background-color: white;
               transition: 300ms;
@@ -138,11 +161,14 @@
           }
         }
       }
+
       .support-buttons-right {
+        // border: 1px solid red;
         flex: 1;
         display: flex;
         align-items: center;
         justify-content: flex-end;
+
         button.gonder {
           background-color: var(--black);
           color: white;
@@ -150,6 +176,7 @@
           font-weight: 500;
           padding: 15px;
           border-radius: 8px;
+
           cursor: pointer;
           &:hover {
             background-color: #222121c4;

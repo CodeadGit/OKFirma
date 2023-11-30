@@ -6,8 +6,7 @@ function WidgetNew({ item }) {
   return (
     <NavLink
       to={item.link}
-      className={({ isActive }) => (isActive ? "activeCard" : "card")}
-    >
+      className={({ isActive }) => (isActive ? "activeCard" : "card")}>
       <div className="cardInner">
         <div className="cardLeft">
           <img src={item.svg} alt="" />

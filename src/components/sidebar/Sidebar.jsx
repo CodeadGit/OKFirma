@@ -1,9 +1,7 @@
 import React, { useContext } from "react";
 import "./sidebar.scss";
-
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthenticationContext } from "../../context/authentication.context";
-
 import AddPhoto from "../../pages/accountStack/register/svg/addPhoto.svg";
 //svgs
 import UserLogo from "./svg/user.svg";
@@ -28,11 +26,15 @@ import { NotificationsNone } from "@mui/icons-material";
 import { useNotifications } from "../../context/notification.context";
 
 function Sidebar() {
+
   const { logout, user, userData } = useContext(AuthenticationContext);
 
-  const {toggleNotification,notifications,unreads}=useNotifications()
+  const {toggleNotification,notifications,unreads}=useNotifications();
+
   const linkList = [
-    { img: UserLogo, label: "Panelim", id: "01", to: "/", hasNest: false },
+    { 
+      img: UserLogo, label: "Panelim", id: "01", to: "/", hasNest: false 
+    },
     {
       img: Kesif,
       label: "Keşifler",
@@ -102,7 +104,6 @@ function Sidebar() {
           <img id="logo" src={Logo} alt="logo" />
         </Link>
       </div>
-      
       <div className="sidebarInner">
         <div className="sidebarTop">
           <div
@@ -111,14 +112,11 @@ function Sidebar() {
           >
             <label>
               <img
-                className={`logodiv`}
-                
+                className={`logodiv`}                
                 src={user.photoURL ? user.photoURL : AddPhoto}
                 alt=""
               />
             </label>
-
-
             {Object.keys(userData).length > 0 && (
               <Header id="firmName">
                 {userData ? userData.firmName : user?.displayName}
@@ -137,14 +135,12 @@ function Sidebar() {
                 className="not-icon"
                 onClick={toggleNotification}
               >
-                <NotificationsNone
-                
+                <NotificationsNone               
                 />
                 <span className="count">{unreads.length}</span>
                 
               </IconButton>
-          </div>
-          
+          </div> 
         </div>
         <div className="sidebarCenter">
           <ul>
@@ -192,10 +188,10 @@ function Sidebar() {
           </ul>
         </div>
         <div className="sidebarBottom">
-          <NavLink to="/ayarlar" className="settings">
+          <Link to="/ayarlar" className="settings">
             <img src={Settings} className="icon" alt="" />
             Ayarlar
-          </NavLink>
+          </Link>
           <div onClick={() => logout(navigate)} className="logout">
             <img src={Logout} className="icon" alt="" />
             <SubHeader>Çıkış</SubHeader>

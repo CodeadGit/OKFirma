@@ -7,9 +7,16 @@
   height: 100vh;
   background-color: #f0f0f0;
 
+  @media screen and (max-width:430px) {
+    flex-direction: column;
+    height: auto;
+  }
+
   .homeContainer {
+    // border: 1px solid blue;
     padding: 10px;
     overflow: auto;
+    width: 100%;
 
     &::-webkit-scrollbar {
       width: 8px;

@@ -1,5 +1,5 @@
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Route,
   Routes,
   Navigate,
@@ -26,7 +26,6 @@ import NewSupportRequest from "../messages/NewSupportRequest";
 import MyReaquestScreen from "../messages/MyReaquestScreen";
 import MyFirm from "../MyFirm/MyFirm";
 import Settings from "../settings/Settings";
-import { BrowserRouter } from "react-router-dom";
 import SingleOpportunity from "../kesifler/SingleOpportunity";
 import SingleMyJobNew from "../kesifler/SingleMyJob";
 import NotificationDrawer from "../../components/sidebar/NotificationDrawer";
@@ -46,54 +45,40 @@ export const VenderStack = () => {
 
   return (
     <BrowserRouter>
-      <NotificationDrawer/>
-    <Routes>
-   
+      <NotificationDrawer />
+      <Routes>
         <Route
-        errorElement={<ErrorPage/>}
+          errorElement={<ErrorPage />}
           path="/"
           element={
             <Home setAlertMessage={setAlertMessage} setLoading={setLoading} />
           }
         />
         <Route path="*" element={<Navigate to="/" />} />
-        <Route 
-        errorElement={<ErrorPage/>}
-        path="kesiflerim">
+        <Route errorElement={<ErrorPage />} path="kesiflerim">
           <Route index element={<Kesiflerim data={myJobsData} />} />
           <Route path=":jobDoc" element={<SingleMyJobNew />} />
         </Route>
-        
-        <Route 
-        errorElement={<ErrorPage/>}
-        path="firma-bilgilerim">
-          <Route 
-          errorElement={<ErrorPage/>}
-          index element={<MyFirm />} />
+        <Route errorElement={<ErrorPage />} path="firma-bilgilerim">
+          <Route errorElement={<ErrorPage />} index element={<MyFirm />} />
           <Route path=":userId" element={<SingleFirm />} />
           <Route
-          errorElement={<ErrorPage/>}
+            errorElement={<ErrorPage />}
             path="yeni-firma"
             element={<New inputs={userInputs} title="Yeni Firma Ekle" />}
           />
         </Route>
-        <Route 
-        errorElement={<ErrorPage/>}
-        path="kesifler">
+        <Route errorElement={<ErrorPage />} path="kesifler">
           <Route index element={<Kesifler data={myPossibleJobs} />} />
           <Route path=":docRef" element={<SingleOpportunity />} />
           {/* <Route path=":docRef" element={<Single />} /> */}
         </Route>
-        <Route 
-        errorElement={<ErrorPage/>}
-        path="malzemeler">
+        <Route errorElement={<ErrorPage />} path="malzemeler">
           <Route index element={<List data={myProducts} />} />
           <Route path=":userId" element={<Single />} />
         </Route>
-      
-        <Route 
-        errorElement={<ErrorPage/>}
-        path="mesajlarim">
+
+        <Route errorElement={<ErrorPage />} path="mesajlarim">
           <Route index element={<Messages />} />
           <Route path="Canli-Destek" element={<LiveSupport />} />
           <Route path="Destek-Talebi">
@@ -104,8 +89,7 @@ export const VenderStack = () => {
           <Route path=":userId" element={<Single />} />
         </Route>
         <Route path="ayarlar" element={<Settings />} />
-    
-    </Routes>
+      </Routes>
     </BrowserRouter>
   );
 };

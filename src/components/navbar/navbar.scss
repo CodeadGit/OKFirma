@@ -10,6 +10,7 @@
     display: flex;
 
     .widgetContainer {
+      // border: 1px solid red;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -26,17 +27,25 @@
         -webkit-box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
         -moz-box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
         box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
+
         img {
           width: 3rem;
         }
+
         .cardInner {
+          // border: 1px solid red;
           display: flex;
           align-items: center;
           width: 100%;
           padding: 2rem;
           gap: 1rem;
 
+          .cardLeft {
+            display: block;
+          }
+
           .cardText {
+            // border: 1px solid red;
             width: 100%;
             color: #393939;
             .cardTop {
@@ -61,6 +70,7 @@
         -webkit-box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
         -moz-box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
         box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
+
         img {
           width: 3rem;
         }
@@ -92,18 +102,21 @@
     height: 100%;
 
     .destekInner {
+      // border: 1px solid red;
       width: 100%;
       height: 100%;
       display: flex;
-      justify-content: center;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
       background-color: #fff;
       border-radius: 20px;
       -webkit-box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
       -moz-box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
       box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
+
       .destekHeader {
+        // border: 1px solid red;
         width: 90%;
         height: 20%;
         display: flex;
@@ -115,15 +128,18 @@
           display: flex;
           align-items: center;
           gap: 0.5rem;
+
           img {
             width: 20px;
           }
+
           p {
             color: #717477;
             font-size: 14px;
             font-weight: 700;
           }
         }
+
         .destekHeaderRight {
           display: flex;
           align-items: center;
@@ -140,11 +156,13 @@
             background-color: #2cab67;
             border: none;
             border-radius: 4px;
+            cursor: pointer;
           }
         }
       }
 
       .destekDatagrid {
+        // border: 1px solid red;
         height: 75%;
         width: 88%;
       }

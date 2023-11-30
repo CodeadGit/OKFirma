@@ -7,14 +7,16 @@ import "./newSupport.scss";
 import Navigation from "../../components/boxes/Navigation";
 
 function NewSupportRequest() {
+
   const [alert, setAlert] = useState("");
   const [error, setError] = useState("");
+  
   const pathData = [
     { text: "Panelim", to: "/", id: "02" },
     { text: "Mesajlarım", to: "/mesajlarim", id: "02" },
-    { text: "Yeni Destek Talebi", to: "/mesajlarim/Yeni-Destek-Talebi", id: "03" },
-   
+    { text: "Yeni Destek Talebi", to: "/mesajlarim/Yeni-Destek-Talebi", id: "03" },   
   ];
+  
   return (
     <>
       <div className="home">

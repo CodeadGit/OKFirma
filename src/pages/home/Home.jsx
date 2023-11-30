@@ -44,9 +44,10 @@ function Home({ setLoading }) {
     })
     alert("gönderildi")
     } catch (error) {
-      alert(`${error.message}`)
+      alert(`${error.message}`);
     }
-  }
+  };
+  
   return (
     <>
       <div className="home">

@@ -9,7 +9,7 @@ const NotificationProvider=({children})=>{
     const {user}=useContext(AuthenticationContext)
     const [notifyOpen,setNotifyOpen]=useState(false)
     const [notifications,setNotifications]=useState([])
-    const [unreads,setUnreads]=useState(0)
+    const [unreads,setUnreads]=useState([])
     const [notificationsLoading,setNotificationsLoading]=useState(true)
     const [shouldPlaySound, setShouldPlaySound] = useState(false);
     const [refreshed, setRefreshed] = useState(false);
@@ -28,9 +28,8 @@ const NotificationProvider=({children})=>{
 
     useEffect(()=>{
 
-        if(user){
+        if (user){
             let controller = new AbortController();
-
             (async () => {
                 const q = query(collection(db,"Users",user.uid,"Notifications")
                 , orderBy("createdAt","desc")
@@ -54,13 +53,9 @@ const NotificationProvider=({children})=>{
                 return ()=>jobgetting()
             })();
               return () => {
-                controller?.abort()
-                
+                controller?.abort();               
             };
         }
-
-       
-
     },[user,refreshed])
 
     return(

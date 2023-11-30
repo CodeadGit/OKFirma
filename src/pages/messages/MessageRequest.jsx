@@ -7,13 +7,17 @@ import Logo from "../../pages/accountStack/login/svg/logo.svg";
 import MiniLogo from "../../components/livechat/svg/miniLogo.svg";
 
 function MessageRequest({ message }) {
+
   const isMe = (item) => {
     return item.from === auth.currentUser.uid;
   };
+
   const scrollRef = useRef();
+  
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [message]);
+
   return (
     <div className={isMe(message) ? "isent" : "incoming"} ref={scrollRef}>
       {isMe(message) ? (

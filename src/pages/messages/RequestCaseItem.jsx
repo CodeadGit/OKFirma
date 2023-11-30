@@ -1,9 +1,11 @@
 import React from "react";
 
 function RequestCaseItem({ item, selected, setSelected }) {
+
   const isSelected = (item) => {
     return selected === item;
   };
+
   return (
     <div
       onClick={() => setSelected(item)}
