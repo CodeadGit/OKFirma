@@ -22,9 +22,9 @@ export const AuthenticationContext = createContext();
 
 export const AuthenticationProvider = ({ children }) => {
   const [user, setUser] = useState("");
+  const [userData, setUserData] = useState({});
   const [whoAmI, setWhoAmI] = useState(true);
   const [errMessage, setErrMessage] = useState("");
-  const [userData, setUserData] = useState({});
   const [apploading, setAppLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(true);
 
@@ -100,15 +100,14 @@ export const AuthenticationProvider = ({ children }) => {
       if (currentUser) {
         setUser(currentUser);
         const userRef = doc(db, "Users", currentUser.uid);
-        console.log(currentUser);
         getDoc(userRef).then((doc) => {
-          // console.log(doc.data());
           setUserData(doc.data());
           setAppLoading(false);
         });
       } else {
+        setUserData({});
         setAppLoading(false);
-        console.log("user yok");
+        // console.log("user yok");
       }
       setErrorMessage(null);
     });
@@ -127,7 +126,7 @@ export const AuthenticationProvider = ({ children }) => {
     }
   };
 
-  const logout = async (go) => {
+  const logout = async () => {
     await signOut(auth).then(() => setUser(""));
   };
 

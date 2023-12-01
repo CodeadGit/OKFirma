@@ -30,7 +30,7 @@ useEffect(()=>{
 
 
 
-console.log("stat",thisStatue)
+// console.log("stat",thisStatue)
   return (
     <>
     {thisStatue?

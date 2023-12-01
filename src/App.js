@@ -11,9 +11,10 @@ import { ConfirmationStack } from "./pages/renderStack/ConfirmationStack";
 
 function App() {
   const { user, apploading, userData } = useContext(AuthenticationContext);
-  console.log(user);
-  console.log(userData);
-  console.log("app", apploading);
+
+  // console.log(user);
+  // console.log(userData);
+  // console.log("app", apploading);
 
   return (
     <>

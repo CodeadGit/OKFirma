@@ -27,7 +27,7 @@ import { useNotifications } from "../../context/notification.context";
 
 function Sidebar() {
 
-  const { logout, user, userData } = useContext(AuthenticationContext);
+  const { logout, user, setUser, userData } = useContext(AuthenticationContext);
 
   const {toggleNotification,notifications,unreads}=useNotifications();
 
@@ -192,7 +192,7 @@ function Sidebar() {
             <img src={Settings} className="icon" alt="" />
             Ayarlar
           </Link>
-          <div onClick={() => logout(navigate)} className="logout">
+          <div onClick={logout} className="logout">
             <img src={Logout} className="icon" alt="" />
             <SubHeader>Çıkış</SubHeader>
           </div>

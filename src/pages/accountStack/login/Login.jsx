@@ -19,6 +19,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { Alert } from "@mui/material";
 
 const Login = ({
+  loading,
   setLoading,
   setMessage,
   setAlertMessage,
@@ -31,7 +32,6 @@ const Login = ({
   const [loginPassword, setLoginPassword] = useState("");
   const [showPass, setShowPass] = useState("password");
 
-  let navigate = useNavigate();
   const handleErrorMessage = (err) => {
     if (err === "Firebase: Error (auth/email-already-exists).") {
       setAlertMessage(
@@ -63,7 +63,7 @@ const Login = ({
         auth,
         loginEmail,
         loginPassword
-      ).then(() => navigate("/"));
+      );
       setUser(user.user);
       setLoading(false);
       userData && !userData.firm
@@ -77,10 +77,15 @@ const Login = ({
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    login();
+  };
+
   if (!user || !userData) {
     setAlertMessage("");
   }
-
+  
   return (
     <div className="login">
       {/* <img className="behindYellow" src={Behind} alt="" /> */}
@@ -113,7 +118,7 @@ const Login = ({
         </div>
       )}
       <div className="loginbody">
-        <div className="formbody">
+        <form className="formbody" onSubmit={handleSubmit}>
           <div className="formbodylight">
             <div className="innerbody">
               <div id="loginCenter" className="center">
@@ -145,9 +150,6 @@ const Login = ({
                     onChange={(event) => {
                       setLoginPassword(event.target.value);
                     }}
-                    onSubmit={() =>
-                      login(loginEmail, loginPassword, navigate("/"))
-                    }
                   />
                   {showPass === "text" ? (
                     <VisibilityOffIcon
@@ -171,7 +173,7 @@ const Login = ({
                 </div>
                 <div className="underLoginBox">
                   <div className="rememberMe">
-                    <input type="checkbox" className="checkboxRounded"/>
+                    <input type="checkbox" className="checkboxRounded" />
                     <label className="rememberMeText">Şifremi Hatırla</label>
                   </div>
                   <NavLink to="/sifremi-unuttum" className="forgotPassword">
@@ -180,13 +182,7 @@ const Login = ({
                 </div>
 
                 <div className="btnArea">
-                  <button
-                    className="btn btn_login"
-                    onClick={() => {
-                      setWarnMessage("");
-                      login(loginEmail, loginPassword, navigate("/"));
-                    }}
-                  >
+                  <button className="btn btn_login" type="submit">
                     Giriş Yap
                   </button>
                   <div className="loginRegisterArea">
@@ -226,7 +222,7 @@ const Login = ({
               </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
       <footer>
         <div className="left">
