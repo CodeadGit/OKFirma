@@ -17,7 +17,7 @@ function Kesifler({ data }) {
         <Sidebar />
         <div className="homeContainer">
           <Navbar />
-          <Navigation children={pathData} />
+          {/* <Navigation children={pathData} /> */}
           <KesifFirsatiTablo data={data} />
         </div>
         {/* <RightSideBar/> */}

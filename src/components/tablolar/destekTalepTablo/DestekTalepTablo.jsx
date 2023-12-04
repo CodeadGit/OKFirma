@@ -93,7 +93,7 @@ function DestekTalepTablo({data}) {
   ];
 
   return (
-    <Box sx={{ height: "auto", width: "100%"}}>
+    <Box sx={{ height: "auto", width: "100%" }}>
       <DataGrid
         className="dataGridStyles"
         columns={columns}

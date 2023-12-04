@@ -3,6 +3,14 @@
   font-size: 12px !important;
   height: 200px !important;
 
+  .MuiDataGrid-overlayWrapper {
+    display: none;
+  }
+
+  .MuiDataGrid-columnHeaders {
+    border: none;
+  }
+
   .datagridButton {
     background-color: var(--yellow);
     height: 70%;

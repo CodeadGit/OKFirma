@@ -78,9 +78,9 @@ function TeklifTablosu({ data }) {
       editable: false,
       disableColumnMenu: true,
       cellClassName:"statue-holder",
-
       flex: 1.5,
       renderCell: (e) => {
+        console.log(e);
         const statueData = data.map((item) => item.statue);
         return statueData.length < 0 ? (
           <h3>Başka Firma Onaylandı</h3>
@@ -89,7 +89,7 @@ function TeklifTablosu({ data }) {
           <div className={`statue ${statues[e.row.durum].class}`}>
             <p>{statues[e.row.durum].label}</p>
           </div>
-          <OfferStatue job={e.row.doc} />
+          {/* <OfferStatue job={e.row.doc} /> */}
           </>
         );
       },
@@ -101,7 +101,6 @@ function TeklifTablosu({ data }) {
       flex: 1,
       renderCell: (e) => {
         //const stateData = data.find((item) => item.id === e.row.teklifId);
-
         return (
           <>
           {e.row.durum!==11?
@@ -132,9 +131,9 @@ function TeklifTablosu({ data }) {
 
   return (
     <div className="tableParent">
+      {/* <h1>KEŞİFLER</h1> */}
       <DataGrid
-      autoHeight
-        rows={data.map((item, index) => {
+          rows={data.slice(0,5).map((item, index) => {
           var array = item.Offers;
           var itemIndex = array.findIndex(
             (i) => i.firm === auth.currentUser.uid
@@ -158,9 +157,14 @@ function TeklifTablosu({ data }) {
             durum: item.statue,
           };
         })}
+        sx={{"& .MuiDataGrid-row:hover": {
+          backgroundColor: "inherit"
+        }}}
         density="comfortable"
         columns={columns}
         pageSizeOptions={[5]}
+        hideFooter
+        autoHeight
       />
     </div>
   );
