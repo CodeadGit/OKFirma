@@ -1,12 +1,11 @@
 import React from "react";
 import "./navbar.scss";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function WidgetNew({ item }) {
   return (
-    <NavLink
-      to={item.link}
-      className={({ isActive }) => (isActive ? "activeCard" : "card")}>
+    <div
+      className="card">
       <div className="cardInner">
         <div className="cardLeft">
           <img src={item.svg} alt="" />
@@ -18,7 +17,7 @@ function WidgetNew({ item }) {
           </div>
         </div>
       </div>
-    </NavLink>
+    </div>
   );
 }
 

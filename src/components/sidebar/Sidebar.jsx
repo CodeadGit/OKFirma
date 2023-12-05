@@ -33,13 +33,17 @@ function Sidebar() {
 
   const linkList = [
     { 
-      img: UserLogo, label: "Panelim", id: "01", to: "/", hasNest: false 
+      img: UserLogo, 
+      label: "Panelim", 
+      id: "01", 
+      to: "/", 
+      hasNest: false 
     },
     {
       img: Kesif,
       label: "Keşifler",
       id: "02",
-      to: "/",
+      to: "/kesifler",
       hasNest: true,
       subList: [
         {

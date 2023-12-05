@@ -19,6 +19,7 @@
       .card {
         width: 49%;
         height: 48%;
+        user-select: none;
         display: flex;
         align-items: center;
         background-color: #fff;
@@ -58,42 +59,42 @@
         }
       }
 
-      .activeCard {
-        width: 49%;
-        height: 48%;
-        display: flex;
-        align-items: center;
-        background-color: #fff;
-        border-radius: 20px;
-        text-decoration: none;
-        border: 1px solid #f9d641;
-        -webkit-box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
-        -moz-box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
-        box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
+      // .activeCard {
+      //   width: 49%;
+      //   height: 48%;
+      //   display: flex;
+      //   align-items: center;
+      //   background-color: #fff;
+      //   border-radius: 20px;
+      //   text-decoration: none;
+      //   border: 1px solid #f9d641;
+      //   -webkit-box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
+      //   -moz-box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
+      //   box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
 
-        img {
-          width: 3rem;
-        }
+      //   img {
+      //     width: 3rem;
+      //   }
 
-        .cardInner {
-          display: flex;
-          align-items: center;
-          width: 100%;
-          padding: 2rem;
-          gap: 1rem;
+      //   .cardInner {
+      //     display: flex;
+      //     align-items: center;
+      //     width: 100%;
+      //     padding: 2rem;
+      //     gap: 1rem;
 
-          .cardText {
-            width: 100%;
-            color: #393939;
-            .cardTop {
-              width: 100%;
-              display: flex;
-              justify-content: space-between;
-              color: #787878;
-            }
-          }
-        }
-      }
+      //     .cardText {
+      //       width: 100%;
+      //       color: #393939;
+      //       .cardTop {
+      //         width: 100%;
+      //         display: flex;
+      //         justify-content: space-between;
+      //         color: #787878;
+      //       }
+      //     }
+      //   }
+      // }
     }
   }
 
@@ -165,6 +166,7 @@
         // border: 1px solid red;
         height: 75%;
         width: 88%;
+        overflow-y: hidden;
       }
     }
   }
