@@ -68,6 +68,7 @@ export const CloudContextProvider = ({ children }) => {
     }
   }, [user]);
   //get my jobs que
+
   useEffect(() => {
     if (user) {
       let userid = user.uid;
@@ -114,6 +115,7 @@ export const CloudContextProvider = ({ children }) => {
     } else {
     }
   }, [user]);
+  
   useEffect(() => {
     if (user) {
       const q = query(

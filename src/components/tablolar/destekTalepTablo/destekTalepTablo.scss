@@ -2,6 +2,7 @@
   border: none !important;
   font-size: 12px !important;
   height: 200px !important;
+  font-weight: 600 !important;
 
   .MuiDataGrid-overlayWrapper {
     display: none;
@@ -11,18 +12,23 @@
     border: none;
   }
 
-  .datagridButton {
-    background-color: var(--yellow);
-    height: 70%;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    // p {
-    //   font-size: 11px;
-    //   font-weight: 400;
-    //   color: var(--black);
-    //   text-transform: capitalize;
-    // }
+  .navigate a{
+    text-decoration: none;
   }
+
+  // .datagridButton {
+  //   background-color: var(--yellow);
+  //   height: 70%;
+  //   border-radius: 4px;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+
+  //   p {
+  //     font-size: 11px;
+  //     font-weight: 400;
+  //     color: var(--black);
+  //     text-transform: capitalize;
+  //   }
+  // }
 }

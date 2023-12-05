@@ -8,7 +8,7 @@ import { auth } from "../../../firebase/firebase.config";
 import { Button } from "@mui/material";
 import { LocaleText } from "../../data/localeText";
 
-function KesifFirsatiTablo({ data }) {
+function KesifFirsatiTablo({ data, kesiflerPage }) {
   // const dataToView = data
   //   .filter((i) => !i.interestedFirms.includes(auth.currentUser.uid))
   //   .filter(
@@ -18,6 +18,9 @@ function KesifFirsatiTablo({ data }) {
   //   );
 
   // console.log(dataToView);
+
+  // console.log(data);
+
   const columns = [
     {
       field: "id",
@@ -71,9 +74,30 @@ function KesifFirsatiTablo({ data }) {
       renderCell: (props) => {
         return (
           <div className={`statue ${statues[props.row.statue].class}`}>
-            {statues[props.row.statue].label}
+            <div className={`${statues[props.row.statue].class}`}></div>
+            <p>{statues[props.row.statue].label}</p>
           </div>
         );
+      },
+    },
+    {
+      field: "termin",
+      headerName: "KALAN ZAMAN",
+      flex: 1,
+      sortable: false,
+      editable: false,
+      disableColumnMenu: true,
+      renderCell: (props) => {
+        const timeObject = props.row.termin;
+        const targetTime = timeObject.seconds * 1000 + Math.floor(timeObject.nanoseconds / 1e6);
+        const currentTime = new Date().getTime();
+        const remainingTime = targetTime - currentTime;
+        const remainingSeconds = Math.floor(remainingTime / 1000);
+        const remainingMinutes = Math.floor(remainingSeconds / 60);
+        const remainingHours = Math.floor(remainingMinutes / 60);
+
+        if (remainingHours < 0) return <p>Süre Bitti</p>
+        return <div>{`${remainingHours} SAAT`}</div>;
       },
     },
     // {
@@ -108,12 +132,11 @@ function KesifFirsatiTablo({ data }) {
       editable: false,
       disableColumnMenu: true,
       flex: 1,
+      cellClassName: "navigate",
       renderCell: (props) => {
         return (
           <NavLink to={`${props.row.doc}`} state={props.row}>
-            <Button className="datagridButton">
-              <p>Görüntüle</p>
-            </Button>
+              ...
           </NavLink>
         );
       },
@@ -121,13 +144,31 @@ function KesifFirsatiTablo({ data }) {
   ];
 
   return (
-    <div className="tableParent">
+    <div className={`tableParent ${kesiflerPage ? "kesiflerim" : ""}`}>
+      <div className="tableHeader">
+        <p>Keşif Fırsatlarım</p>
+        <div className="right">
+          <div className="colors">
+            <div className="color"></div>
+            <div className="color"></div>
+            <div className="color"></div>
+            <div className="color"></div>
+            <div className="color"></div>
+          </div>
+          <div className="filters">
+            <p>Filtreler</p>
+            <p>Tarihe Göre Sırala</p>
+            <p>Dışarı Aktar</p>
+          </div>
+        </div>
+      </div>
       <DataGrid
         rows={data}
         density="comfortable"
         columns={columns}
         pageSizeOptions={[5]}
         localeText={LocaleText}
+        autoHeight
       />
     </div>
   );

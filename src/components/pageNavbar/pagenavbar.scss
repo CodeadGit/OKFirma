@@ -1,8 +1,10 @@
 .firm-info {
     // border: 1px solid red;
     width: 100%;
-    height: 10vh;
+    // height: 10vh;
+    height: auto;
     background-color: transparent;
+    border-bottom: 2px solid #f9d641;
 
     .logodiv-new {
       height: 3rem;
@@ -54,11 +56,6 @@
           justify-content: center;
           display: flex;
         }
-      }
-
-      &-line {
-        border-bottom: 2px solid #f9d641;
-        margin-bottom: 1.5rem;
       }
     }
   }

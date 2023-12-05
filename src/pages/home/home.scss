@@ -22,7 +22,13 @@
     overflow: auto;
     // width: 100%;
     flex: 1;
-    // overflow-x: hidden;
+    overflow-x: hidden;
+    gap:1rem;
+
+    &.kesiflerim {
+      justify-content: flex-start;
+      gap: 3rem;
+    }
 
     &::-webkit-scrollbar {
       width: 8px;

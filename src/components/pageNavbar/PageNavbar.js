@@ -70,7 +70,6 @@ const PageNavbar = () => {
           </div>
         </div>
       </div>
-      <div className="top-line"></div>
     </div>
   );
 };

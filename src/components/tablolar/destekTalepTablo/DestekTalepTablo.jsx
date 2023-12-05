@@ -17,22 +17,30 @@ import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 const columns = [
-  // {
-  //   field: "id",
-  //   headerName: "Sıra No",
-  //   flex: 1,
-  //   sortable: false,
-  //   editable: false,
-  //   disableColumnMenu: true,
-  // },
-  // {
-  //   field: "createdAt",
-  //   headerName: "Tarih/Zaman",
-  //   flex: 1,
-  //   sortable: false,
-  //   editable: false,
-  //   disableColumnMenu: true,
-  // },
+  {
+    field: "id",
+    headerName: "No",
+    sortable: false,
+    editable: false,
+    disableColumnMenu: true,
+    width: 60,
+  },
+  {
+    field: "doc",
+    headerName: "Talep ID",
+    flex: 2,
+    sortable: false,
+    editable: false,
+    disableColumnMenu: true,
+  },
+  {
+    field: "createdAt",
+    headerName: "Tarih/Zaman",
+    flex: 1,
+    sortable: false,
+    editable: false,
+    disableColumnMenu: true,
+  },
   {
     field: "subject",
     headerName: "Konu",
@@ -48,11 +56,6 @@ const columns = [
     sortable: false,
     editable: false,
     disableColumnMenu: true,
-    renderCell:(params)=>{
-      return(
-        <span>{supportStatues[params.row.statue]}</span>
-      )
-    }
   }, 
   {
     field: "priority",
@@ -63,19 +66,18 @@ const columns = [
     disableColumnMenu: true,
   },  
   {
-    field:"id",
+    field:"summary",
     headerName:"",
     sortable: false,
     editable: false,
     disableColumnMenu: true,
     flex: 1,
-
+    cellClassName: "navigate",
     renderCell: (e) => {
       return (
         <NavLink 
-        to={`/mesajlarim/Destek-Talebi/${e.row.doc}`}
-        className="datagridButton">
-          <span>Görüntüle</span>
+        to={`/mesajlarim/Destek-Talebi/${e.row.doc}`}>
+          ...
         </NavLink>
       );
     },
@@ -97,7 +99,24 @@ function DestekTalepTablo({data}) {
       <DataGrid
         className="dataGridStyles"
         columns={columns}
-        rows={data}
+        rows={data.map((item, index) => (
+            {
+              id: index + 1,
+              doc: item.id,
+              createdAt: new Date(
+                item.createdAt.seconds * 1000
+              ).toLocaleDateString("tr-TR"),
+              subject: item.subject,
+              statue: item.statue === 0 ? "Cevap Bekliyor" : "Kabul Edildi",
+              priority: item.priority,
+              summary:  (
+                <NavLink 
+                to={`/mesajlarim/Destek-Talebi/${item.doc}`}>
+                  ...
+                </NavLink>
+              )
+            }        
+        ))}
         density="compact"
         hideFooter={true}
         pageSizeOptions={[5]}
