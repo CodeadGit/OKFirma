@@ -16,7 +16,7 @@ export const CloudContextProvider = ({ children }) => {
   const [favoriArea, setFavoriArea] = useState([]);
   const [fetching, setFetching] = useState(false);
   const [updatingJob, setUpdating] = useState(false);
-
+  const [myRequests, setMyRequests] = useState([]);
   //get jobs
 
   useEffect(() => {
@@ -127,6 +127,28 @@ export const CloudContextProvider = ({ children }) => {
     }
   }, [user]);
 
+  useEffect(() => {
+    if (user) {
+      let controller = new AbortController();
+      (async () => {
+        const q = query(collection(db, "FirmRequests"));
+        const jobgetting = onSnapshot(q, (snap) => {
+          var jobs = [];
+          if (!snap.empty) {
+            snap.forEach((doc) => {
+              jobs.push({ ...doc.data(), id: doc.id });
+            });
+            setMyRequests(jobs);
+          }
+        });
+        return () => jobgetting();
+      })();
+      return () => {
+        controller?.abort();
+      };
+    }
+  }, [user]);
+
   const deleteFirmFromJob=async(job)=>{
     setUpdating(true);
     var me=auth.currentUser.uid;
@@ -194,6 +216,7 @@ return a+b+c+d;
         favoriArea,
         deleteFirmFromJob,
         updatingJob,
+        myRequests,
       }}
     >
       {children}

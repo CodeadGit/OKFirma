@@ -1,6 +1,8 @@
 .supportContainer {
   padding: 10px;
   overflow: auto;
+  flex:1;
+  border: 1px solid red;
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -19,7 +21,6 @@
   .request-header-bar {
     display: flex;
     align-items: center;
-
     padding: 20px 20px 10px 20px;
     margin: 0px 20px 0px 20px;
 
