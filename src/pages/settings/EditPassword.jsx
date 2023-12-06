@@ -6,6 +6,7 @@ import { signInWithEmailAndPassword, updatePassword } from "firebase/auth";
 import { auth } from "../../firebase/firebase.config";
 import "./settings.scss";
 import Loading from "../../components/Loading/Loading";
+import Header from "../../components/text/Header";
 
 function EditPassword() {
   const [showOld, setShowOld] = useState("password");
@@ -43,96 +44,99 @@ function EditPassword() {
     return <Loading title="İşleniyor" />;
   }
   return (
-    <div className="formContainer">
-      <div className="inputContainer">
-        <form className="pass" onSubmit={handleSubmit}>
-          <label>Eski Şifreniz</label>
-          <div className="inputver">
-            <input
-              placeholder="eski şifreniz"
-              value={oldPassword}
-              onChange={(e) => setOldPassword(e.target.value)}
-              type={showOld}
-            />
-            <div
-              onClick={() =>
-                setShowOld((pre) => (pre === "password" ? "text" : "password"))
-              }
-              className="eye"
-            >
-              {showOld === "password" ? (
-                <RemoveRedEyeIcon />
-              ) : (
-                <VisibilityOffIcon />
-              )}
-            </div>
-          </div>
+    // <div className="formContainer">
+    <div className="inputContainer">
+      <Header className="header">Şifremi Değiştir</Header>
+      <div className="line-two"></div>
 
-          <label>Yeni Şifreniz</label>
-          <div className="inputver">
-            <input
-              placeholder="yeni şifreniz"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-              type={showNews}
-            />
-            <div
-              onClick={() =>
-                setShowNews((pre) => (pre === "password" ? "text" : "password"))
-              }
-              className="eye"
-            >
-              {showNews === "password" ? (
-                <RemoveRedEyeIcon />
-              ) : (
-                <VisibilityOffIcon />
-              )}
-            </div>
+      <form className="pass" onSubmit={handleSubmit}>
+        <label>Eski Şifreniz</label>
+        <div className="inputver">
+          <input
+            placeholder="eski şifreniz"
+            value={oldPassword}
+            onChange={(e) => setOldPassword(e.target.value)}
+            type={showOld}
+          />
+          <div
+            onClick={() =>
+              setShowOld((pre) => (pre === "password" ? "text" : "password"))
+            }
+            className="eye"
+          >
+            {showOld === "password" ? (
+              <RemoveRedEyeIcon />
+            ) : (
+              <VisibilityOffIcon />
+            )}
           </div>
+        </div>
 
-          <label>Yeni Şifreniz Tekrar</label>
-          <div className="inputver">
-            <input
-              placeholder="yeni şifreniz"
-              value={newPasswordCon}
-              onChange={(e) => setNewPasswordCon(e.target.value)}
-              type={showNews}
-            />
-            <div
-              onClick={() =>
-                setShowNews((pre) => (pre === "password" ? "text" : "password"))
-              }
-              className="eye"
-            >
-              {showNews === "password" ? (
-                <RemoveRedEyeIcon />
-              ) : (
-                <VisibilityOffIcon />
-              )}
-            </div>
+        <label>Yeni Şifreniz</label>
+        <div className="inputver">
+          <input
+            placeholder="yeni şifreniz"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+            type={showNews}
+          />
+          <div
+            onClick={() =>
+              setShowNews((pre) => (pre === "password" ? "text" : "password"))
+            }
+            className="eye"
+          >
+            {showNews === "password" ? (
+              <RemoveRedEyeIcon />
+            ) : (
+              <VisibilityOffIcon />
+            )}
           </div>
-          <ul className="regExp">
-            <li>* Şifre en az 8, en fazla 15 karakterden oluşmalıdır</li>
-            <li>* Şifre en az 1 rakam ve 1 büyük harf içermelidir.</li>
-          </ul>
-          <div className="row buttons">
-            <button
-              onClick={() => {
-                navigate("/");
-                setNewPassword("");
-                setNewPasswordCon("");
-              }}
-              className="exit"
-            >
-              ÇIKIŞ
-            </button>
-            <button type="submit" className="submit">
-              DEĞİŞTİR
-            </button>
+        </div>
+
+        <label>Yeni Şifreniz Tekrar</label>
+        <div className="inputver">
+          <input
+            placeholder="yeni şifreniz"
+            value={newPasswordCon}
+            onChange={(e) => setNewPasswordCon(e.target.value)}
+            type={showNews}
+          />
+          <div
+            onClick={() =>
+              setShowNews((pre) => (pre === "password" ? "text" : "password"))
+            }
+            className="eye"
+          >
+            {showNews === "password" ? (
+              <RemoveRedEyeIcon />
+            ) : (
+              <VisibilityOffIcon />
+            )}
           </div>
-        </form>
-      </div>
+        </div>
+        <ul className="regExp">
+          <li>* Şifre en az 8, en fazla 15 karakterden oluşmalıdır</li>
+          <li>* Şifre en az 1 rakam ve 1 büyük harf içermelidir.</li>
+        </ul>
+        <div className="row buttons">
+          <button
+            onClick={() => {
+              navigate("/");
+              setNewPassword("");
+              setNewPasswordCon("");
+            }}
+            className="exit"
+          >
+            ÇIKIŞ
+          </button>
+          <button type="submit" className="submit">
+            DEĞİŞTİR
+          </button>
+        </div>
+      </form>
     </div>
+    // </div>
   );
 }
 

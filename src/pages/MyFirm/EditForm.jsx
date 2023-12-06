@@ -59,7 +59,8 @@ function EditForm() {
 
   return (
     <div className="formContainer">
-      <Header>Bilgilerim</Header>
+      <Header className="header">Bilgilerim</Header>
+      <div className="line"></div>
       <div className="inputContainer">
         {error ? (
           <Alert className="alert" severity="error">
@@ -80,16 +81,58 @@ function EditForm() {
             </button>
           </Alert>
         ) : null}
+
         <div className="myfields">
-          <p className="title">İş Alanlarım</p>
-          {userData?.fields?.map((i) => {
-            return (
-              <span className="item" key={i}>
-                {i}
-              </span>
-            );
-          })}
+          <div className="row imgContainer">
+            <img
+              //src={auth.currentUser?.photoURL}
+              src={
+                file ? URL.createObjectURL(file) : auth.currentUser?.photoURL
+              }
+              alt=""
+            />
+
+<div class="file-input-container">
+    <input type="file" class="file-input" id="photo" onChange={handleChange}  accept="image/*" aria-label="DEĞİŞTİR"
+/>
+    <button class="custom-button" >Dosya Seç</button>
+  </div>
+
+{/*            
+            <input
+              onChange={handleChange}
+              type="file"
+              id="photo"
+              accept="image/*"
+              aria-label="DEĞİŞTİR"
+            /> */}
+          </div>
+
+          <div className="top-right">
+            <div className="alan">
+              <p className="title">İş Alanlarım</p>
+              {userData?.fields?.map((i) => {
+                return (
+                  <span className="item" key={i}>
+                    {i}
+                  </span>
+                );
+              })}
+            </div>
+
+            <div className="row1">
+              <div className="input1">
+                <label>Hakkımda</label>
+                <textarea
+                  onChange={handleEdit}
+                  name="bio"
+                  placeholder={userData?.bio}
+                />
+              </div>
+            </div>
+          </div>
         </div>
+
         <form onSubmit={handleSubmit}>
           <div className="row">
             <div className="input">
@@ -109,8 +152,6 @@ function EditForm() {
                 type="text"
               />
             </div>
-          </div>
-          <div className="row">
             <div className="input">
               <label>E-Posta</label>
               <input
@@ -121,42 +162,13 @@ function EditForm() {
                 type="text"
               />
             </div>
+          </div>
+
+          <div className="row">
             <div className="input">
               <label>TCKN/VN</label>
               <input disabled placeholder={userData?.TCKN} type="text" />
             </div>
-          </div>
-          <div className="row imgContainer">
-            <img
-              //src={auth.currentUser?.photoURL}
-              src={
-                file ? URL.createObjectURL(file) : auth.currentUser?.photoURL
-              }
-              alt=""
-            />
-
-            <input
-              onChange={handleChange}
-              type="file"
-              id="photo"
-              accept="image/*"
-              aria-label="DEĞİŞTİR"
-              //style={{display:"none"}}
-            />
-          </div>
-
-          <div className="row">
-            <div className="input">
-              <label>Hakkımda</label>
-              <textarea
-                onChange={handleEdit}
-                name="bio"
-                placeholder={userData?.bio}
-              />
-            </div>
-          </div>
-
-          <div className="row">
             <div className="input">
               <label>İş Yeri Adresi</label>
               <input
@@ -171,6 +183,7 @@ function EditForm() {
               <input disabled placeholder={userData?.firmType} type="text" />
             </div>
           </div>
+
           <div className="row">
             <div className="input">
               <label>İl</label>
@@ -185,6 +198,7 @@ function EditForm() {
               <input disabled placeholder={userData?.ZIP} type="text" />
             </div>
           </div>
+
           <div className="row buttons">
             <button
               onClick={() => {
