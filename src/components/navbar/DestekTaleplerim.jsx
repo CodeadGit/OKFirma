@@ -10,6 +10,7 @@ import { CloudContext } from "../../context/cloud.context";
 import KesifTablo from "../tablolar/destekTalepTablo/KesifTablo";
 
 function DestekTaleplerim() {
+  
   const { myJobsData } = useContext(CloudContext);
 
   const navigate = useNavigate();

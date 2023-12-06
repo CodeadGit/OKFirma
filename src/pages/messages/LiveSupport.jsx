@@ -1,7 +1,7 @@
 import React from "react";
 // import Navigation from "../../components/boxes/Navigation";
 import LiveChat from "../../components/livechat/LiveChat";
-import Navbar from "../../components/navbar/Navbar";
+// import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./liveSupport.scss";
 import LiveChatTablo from "../../components/tablolar/liveChatTablo/LiveChatTablo";
