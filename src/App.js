@@ -8,6 +8,8 @@ import LoadingGeneral from "./components/Loading/LoadingGeneral";
 import { AuthStack } from "./pages/renderStack/AuthStack";
 import Confirmation from "./Confirmation/Confirmation";
 import { ConfirmationStack } from "./pages/renderStack/ConfirmationStack";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 function App() {
   const { user, apploading, userData } = useContext(AuthenticationContext);
@@ -17,7 +19,7 @@ function App() {
   // console.log("app", apploading);
 
   return (
-    <>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
       {apploading || (!userData && user) ? (
         <LoadingGeneral title="yükleniyor" />
       ) : !user ? (
@@ -27,7 +29,7 @@ function App() {
       ) : (
         <ConfirmationStack />
       )}
-    </>
+    </LocalizationProvider>
   );
 }
 

@@ -2,21 +2,21 @@ import React, { useContext } from "react";
 import "./teklifTablosu.scss";
 import { auth } from "../../../firebase/firebase.config";
 import { statues } from "../../data/statues";
-import { DataGrid } from "@mui/x-data-grid";
-import { Button, IconButton, Tooltip } from "@mui/material";
+import {
+  DataGrid,
+  GridToolbar,
+  GridToolbarContainer,
+  GridToolbarExport,
+  GridToolbarFilterButton,
+} from "@mui/x-data-grid";
+import { IconButton, Tooltip } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import PriceOfOneRow from "./PriceOfOneRow";
 import OfferStatue from "./OfferStatue";
-import {
-  DeleteForever,
-  RunCircle,
-  RunCircleOutlined,
-  RunningWithErrors,
-} from "@mui/icons-material";
+import { RunCircleOutlined } from "@mui/icons-material";
 import { CloudContext } from "../../../context/cloud.context";
 
 function TeklifTablosu({ data, kesiflerimPage }) {
-
   let TLLocale = Intl.NumberFormat("tr-TR");
 
   const { deleteFirmFromJob, updatingJob } = useContext(CloudContext);
@@ -130,15 +130,37 @@ function TeklifTablosu({ data, kesiflerimPage }) {
     },
   ];
 
-  const sortedData = data.sort((a,b) => b.createdAt - a.createdAt);
+  const sortedData = data.sort((a, b) => b.createdAt - a.createdAt);
 
-  const mydiscoveries = kesiflerimPage ? sortedData : sortedData.slice(0,5);
+  const mydiscoveries = kesiflerimPage ? sortedData : sortedData.slice(0, 5);
 
-  return (
-    <div className={`tableParent ${kesiflerimPage ? "kesiflerim" : ""}`}>
-      <div className="tableHeader">
-        <p>Keşiflerim</p>
-        <div className="right">
+  function CustomToolbar() {
+    return (
+      <GridToolbarContainer
+        sx={{
+          border: "1px solid red",
+          display: "flex",
+          paddingLeft: "2rem",
+        }}
+      >
+        <p className="myKesiflerim">Keşiflerim</p>
+        {/* <div className="tableHeader">
+          <div className="right">
+            <div className="colors">
+              <div className="color"></div>
+              <div className="color"></div>
+              <div className="color"></div>
+              <div className="color"></div>
+              <div className="color"></div>
+            </div>
+            <div className="filters">
+              <p>Filtreler</p>
+              <p>Tarihe Göre Sırala</p>
+              <p>Dışarı Aktar</p>
+            </div>
+          </div>
+        </div> */}
+        <div className="rightSide">
           <div className="colors">
             <div className="color"></div>
             <div className="color"></div>
@@ -146,13 +168,21 @@ function TeklifTablosu({ data, kesiflerimPage }) {
             <div className="color"></div>
             <div className="color"></div>
           </div>
-          <div className="filters">
-            <p>Filtreler</p>
-            <p>Tarihe Göre Sırala</p>
-            <p>Dışarı Aktar</p>
-          </div>
+          <GridToolbarFilterButton  sx={{
+          border: "1px solid red",
+          paddingInline: "0 !important",
+        }}/>
+          <GridToolbarExport sx={{
+          border: "1px solid red",
+          paddingInline: "0 !important"
+        }}/>
         </div>
-      </div>
+      </GridToolbarContainer>
+    );
+  }
+
+  return (
+    <div className={`tableParent ${kesiflerimPage ? "kesiflerim" : ""}`}>
       <DataGrid
         rows={mydiscoveries.map((item, index) => {
           var array = item.Offers;
@@ -184,8 +214,17 @@ function TeklifTablosu({ data, kesiflerimPage }) {
           },
         }}
         density="comfortable"
+        slotProps={{
+          toolbar: {
+            showQuickFilter: true,
+            quickFilterProps: { debounceMs: 500 },
+          },
+        }}
         columns={columns}
         pageSizeOptions={[5]}
+        slots={{
+          toolbar: CustomToolbar,
+        }}
         hideFooter
         autoHeight
       />

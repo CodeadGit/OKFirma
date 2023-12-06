@@ -14,6 +14,51 @@
     height: auto;
   }
 
+  .myKesiflerim {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .rightSide {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    gap: 2.25rem;
+
+    .colors {
+      display: flex;
+      gap: 2.75rem;
+
+      .color {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+
+        &:nth-child(1) {
+          background-color: #f9d641;
+        }
+
+        &:nth-child(2) {
+          background-color: #0d7cdb;
+        }
+
+        &:nth-child(3) {
+          background-color: #00c62f;
+        }
+
+        &:nth-child(4) {
+          background-color: #ed4024;
+        }
+
+        &:nth-child(5) {
+          background-color: #cbcbcb;
+        }
+      }
+    }
+
+  }
+
   .tableHeader {
     // border: 1px solid red;
     padding-inline: 2rem;
@@ -71,7 +116,6 @@
   }
 
   button {
-    background-color: var(--yellow);
     height: 70%;
     border-radius: 4px;
     padding: 0.15rem 2rem;
@@ -82,11 +126,16 @@
       color: var(--black);
       text-transform: capitalize;
     }
+    
     &.delete-button {
       background-color: transparent;
       width: max-content;
       height: max-content;
     }
+  }
+
+  .MuiTextField-root {
+    display: none;
   }
 
   .MuiDataGrid-columnHeaderTitleContainer {
