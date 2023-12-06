@@ -101,7 +101,7 @@ function LiveChat() {
           <div className="end-chat-button">Görüşmeyi Sonlandır</div>
         </div>
       </div>
-      <hr />
+      {/* <hr /> */}
       <div className="chat-center messages">
         {messages.length
           ? messages.map((i, index) => {

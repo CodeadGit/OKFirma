@@ -85,7 +85,7 @@ function LiveChatTablo() {
 
   
   return (
-    <Box sx={{ width: "100%", border: "1px solid red" }}>
+    <Box sx={{ width: "100%" }}>
       <DataGrid
         className="dataGridStyles livechat"
         rows={myRequests}
