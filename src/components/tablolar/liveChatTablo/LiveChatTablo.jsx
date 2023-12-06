@@ -1,81 +1,94 @@
-import * as React from "react";
+import { useContext } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import "./liveChatTablo.scss";
 import { Button, Box } from "@mui/material";
+import { CloudContext } from "../../../context/cloud.context";
+import { supportStatues } from "../../data/statues";
+import { useNavigate } from "react-router-dom";
 
-const columns = [
-  {
-    field: "id",
-    headerName: "Sıra No",
-    flex: 1,
-    sortable: false,
-    editable: false,
-    disableColumnMenu: true,
-  },
-  {
-    field: "durum",
-    headerName: "Durum",
-    flex: 1,
-    sortable: false,
-    editable: false,
-    disableColumnMenu: true,
-  },
-  {
-    sortable: false,
-    editable: false,
-    disableColumnMenu: true,
-    flex: 1,
-    renderCell: (e) => {
-      return (
-        <Button className="datagridButton">
-          <p>Görüntüle</p>
-        </Button>
-      );
-    },
-  },
-];
-
-const rows = [
-  {
-    id: 1,
-    talepid: "29422791",
-    tarihZaman: "13.11.2022",
-    durum: "Cevap Bekliyor",
-    konu: "Genel",
-    oncelik: "Normal",
-  },
-  {
-    id: 2,
-    talepid: "29422791",
-    tarihZaman: "13.11.2022",
-    durum: "Cevap Bekliyor",
-    konu: "Genel",
-    oncelik: "Normal",
-  },
-  {
-    id: 3,
-    talepid: "29422791",
-    tarihZaman: "13.11.2022",
-    durum: "Cevap Bekliyor",
-    konu: "Genel",
-    oncelik: "Normal",
-  },
-  {
-    id: 4,
-    talepid: "29422791",
-    tarihZaman: "13.11.2022",
-    durum: "Cevap Bekliyor",
-    konu: "Genel",
-    oncelik: "Normal",
-  },
-];
+// const rows = [
+//   {
+//     id: 1,
+//     talepid: "29422791",
+//     tarihZaman: "13.11.2022",
+//     durum: "Cevap Bekliyor",
+//     konu: "Genel",
+//     oncelik: "Normal",
+//   },
+//   {
+//     id: 2,
+//     talepid: "29422791",
+//     tarihZaman: "13.11.2022",
+//     durum: "Cevap Bekliyor",
+//     konu: "Genel",
+//     oncelik: "Normal",
+//   },
+//   {
+//     id: 3,
+//     talepid: "29422791",
+//     tarihZaman: "13.11.2022",
+//     durum: "Cevap Bekliyor",
+//     konu: "Genel",
+//     oncelik: "Normal",
+//   },
+//   {
+//     id: 4,
+//     talepid: "29422791",
+//     tarihZaman: "13.11.2022",
+//     durum: "Cevap Bekliyor",
+//     konu: "Genel",
+//     oncelik: "Normal",
+//   },
+// ];
 
 function LiveChatTablo() {
+
+  const navigate = useNavigate();
+
+  const columns = [
+    {
+      field: "id",
+      flex: 1,
+      sortable: false,
+      editable: false,
+      disableColumnMenu: true,
+    },
+    {
+      field: "durum",
+      flex: 1,
+      sortable: false,
+      editable: false,
+      disableColumnMenu: true,
+      renderCell: (params) => {
+        return <p>{supportStatues[params.row.statue]}</p>
+      }
+    },
+    {
+      sortable: false,
+      editable: false,
+      disableColumnMenu: true,
+      flex: 1,
+      renderCell: (e) => {
+        console.log(e.id)
+        return (
+          <Button className="datagridButton" onClick={() => navigate(`/mesajlarim/Destek-Talebi/${e.id}`)}>
+            ...
+          </Button>
+        );
+      },
+    },
+  ];
+
+  const { myRequests } = useContext(CloudContext);
+
+  console.log(myRequests)
+
+  
   return (
-    <Box sx={{ height: 270, width: "100%" }}>
+    <Box sx={{ width: "100%", border: "1px solid red" }}>
       <DataGrid
-        className="dataGridStyles"
-        rows={rows}
+        className="dataGridStyles livechat"
+        rows={myRequests}
         columns={columns}
         density="compact"
         hideFooter={true}

@@ -8,6 +8,8 @@ const PriceOfOneRow = ({job}) => {
     const [thisInfo,setThisInfo]=useState(0)
     const {doviz} = useApis()
 
+    console.log(job)
+
     var docRef=job.doc
     useEffect(()=>{
             let controller = new AbortController();

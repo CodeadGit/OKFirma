@@ -10,25 +10,28 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { db } from "../../../firebase/firebase.config";
-import { SupportContext } from "../../../context/supportContext";
-import { supportStatues } from "../../data/statues";
-import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import PriceOfOneRow from "../teklifTablosu/PriceOfOneRow";
+import { auth } from "../../../firebase/firebase.config";
 
 const columns = [
   {
     field: "id",
-    headerName: "No",
+    headerName: "Sıralama",
     sortable: false,
     editable: false,
     disableColumnMenu: true,
-    width: 60,
   },
   {
     field: "doc",
-    headerName: "Talep ID",
-    flex: 2.5,
+    headerName: "Teklif ID",
+    sortable: false,
+    editable: false,
+    disableColumnMenu: true,
+  },
+  {
+    field: "kategori",
+    headerName: "Kategori",
     sortable: false,
     editable: false,
     disableColumnMenu: true,
@@ -36,35 +39,18 @@ const columns = [
   {
     field: "createdAt",
     headerName: "Tarih/Zaman",
-    flex: 1.25,
     sortable: false,
     editable: false,
     disableColumnMenu: true,
   },
   {
-    field: "subject",
-    headerName: "Konu",
-    flex: 1,
+    field: "adresBilgileri",
+    headerName: "Adres Bilgileri",
     sortable: false,
     editable: false,
     disableColumnMenu: true,
+    flex: 1,
   },
-  {
-    field: "statue",
-    headerName: "Durum",
-    flex: 1.5,
-    sortable: false,
-    editable: false,
-    disableColumnMenu: true,
-  }, 
-  {
-    field: "priority",
-    headerName: "Öncelik",
-    flex: 1,
-    sortable: false,
-    editable: false,
-    disableColumnMenu: true,
-  },  
   {
     field:"summary",
     headerName:"",
@@ -73,10 +59,10 @@ const columns = [
     disableColumnMenu: true,
     flex: 1,
     cellClassName: "navigate",
-    renderCell: (e) => {
+    renderCell: (params) => {
       return (
         <NavLink 
-        to={`/mesajlarim/Destek-Talebi/${e.row.doc}`}>
+        to={`/kesiflerim/${params.row.summary}`}>
           ...
         </NavLink>
       );
@@ -84,9 +70,11 @@ const columns = [
   },
 ];
 
-function DestekTalepTablo({data}) {
+function KesifTablo({data}) {
   
   const { user } = useContext(AuthenticationContext);
+
+  let TLLocale = Intl.NumberFormat("tr-TR");
   
   const pathData = [
     { text: "Panelim", to: "/", id: "01" },
@@ -99,24 +87,23 @@ function DestekTalepTablo({data}) {
       <DataGrid
         className="dataGridStyles"
         columns={columns}
-        rows={data.map((item, index) => (
-            {
+        rows={data.map((item, index) => {
+            var array = item.Offers;
+            var itemIndex = array.findIndex(
+              (i) => i.firm === auth.currentUser.uid
+            );
+            var priceelement = array[itemIndex];
+            return {
               id: index + 1,
               doc: item.id,
+              kategori: item.mainWish,
               createdAt: new Date(
                 item.createdAt.seconds * 1000
               ).toLocaleDateString("tr-TR"),
-              subject: item.subject,
-              statue: item.statue === 0 ? "Cevap Bekliyor" : "Kabul Edildi",
-              priority: item.priority,
-              summary:  (
-                <NavLink 
-                to={`/mesajlarim/Destek-Talebi/${item.doc}`}>
-                  ...
-                </NavLink>
-              )
-            }        
-        ))}
+              adresBilgileri: `${item.city}/${item.region}`,
+              summary: item.doc,
+            }}    
+        )}
         density="compact"
         hideFooter={true}
         pageSizeOptions={[5]}
@@ -125,4 +112,4 @@ function DestekTalepTablo({data}) {
   );
 }
 
-export default DestekTalepTablo;
+export default KesifTablo;

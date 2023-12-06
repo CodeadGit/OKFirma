@@ -76,7 +76,7 @@ function SupportRequest() {
         <Sidebar />
         <div className="supportContainer">
           <Navbar />
-          <Navigation children={pathData} />
+          {/* <Navigation children={pathData} /> */}
           <div className="request-header-bar">
             <div className="left">
               <img src={MessageIcon} alt="" />
