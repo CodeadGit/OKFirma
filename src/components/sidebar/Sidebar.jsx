@@ -103,14 +103,17 @@ function Sidebar() {
 
   return (
     <div className="sidebar">
-      <div className="sidebarLogoArea">
+     
+      <div className="sidebarInner">
+        <div className="sidebarTop">
+
+ <div className="sidebarLogoArea">
         <Link to="/" style={{ textDecoration: "none" }}>
           <img id="logo" src={Logo} alt="logo" />
         </Link>
       </div>
-      <div className="sidebarInner">
-        <div className="sidebarTop">
-          <div
+
+          {/* <div
             onClick={() => navigate("/firma-bilgilerim")}
             className="sidebarFirmInfo"
           >
@@ -131,8 +134,8 @@ function Sidebar() {
                 Üye Numarası: {new Date().valueOf().toString().substring(0, 6)}
               </SubHeader>
             )}
-          </div>
-          <div className="nots-holder">
+          </div> */}
+          {/* <div className="nots-holder">
               <IconButton
                 size="large"
                 color="primary"
@@ -144,7 +147,7 @@ function Sidebar() {
                 <span className="count">{unreads.length}</span>
                 
               </IconButton>
-          </div> 
+          </div>  */}
         </div>
         <div className="sidebarCenter">
           <ul>
@@ -185,13 +188,12 @@ function Sidebar() {
                         })}
                     </div>
                   </li>
-                  <hr />
                 </div>
               );
             })}
           </ul>
         </div>
-        <div className="sidebarBottom">
+        {/* <div className="sidebarBottom">
           <Link to="/ayarlar" className="settings">
             <img src={Settings} className="icon" alt="" />
             Ayarlar
@@ -200,11 +202,12 @@ function Sidebar() {
             <img src={Logout} className="icon" alt="" />
             <SubHeader>Çıkış</SubHeader>
           </div>
-        </div>
+        </div> */}
         <div className="sidebarFooter">
           <MiniSubHeader>© Versiyon 1.1</MiniSubHeader>
         </div>
       </div>
+      
     </div>
   );
 }

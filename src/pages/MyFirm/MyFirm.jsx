@@ -4,6 +4,8 @@ import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import EditForm from "./EditForm";
 import "./myFirm.scss";
+import Edittwo from "./Edittwo";
+import PageNavbar from "../../components/pageNavbar/PageNavbar";
 
 function MyFirm() {
   const pathData = [
@@ -16,10 +18,13 @@ function MyFirm() {
       <div className="home">
         <Sidebar />
         <div className="homeContainer">
+        <PageNavbar />
           <Navbar />
-          <Navigation children={pathData} />
+          {/* <Navigation children={pathData} /> */}
+
           <div className="editContainer">
             <EditForm />
+            <Edittwo />
           </div>
         </div>
         {/* <RightSideBar/> */}
