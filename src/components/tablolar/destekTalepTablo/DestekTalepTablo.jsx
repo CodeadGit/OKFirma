@@ -19,11 +19,11 @@ import { NavLink } from "react-router-dom";
 const columns = [
   {
     field: "id",
-    headerName: "No",
+    headerName: "Sıra No",
     sortable: false,
     editable: false,
     disableColumnMenu: true,
-    width: 60,
+    width: 70,
   },
   {
     field: "doc",
@@ -41,6 +41,14 @@ const columns = [
     editable: false,
     disableColumnMenu: true,
   },
+   {
+    field: "statue",
+    headerName: "Durum",
+    flex: 1.5,
+    sortable: false,
+    editable: false,
+    disableColumnMenu: true,
+  }, 
   {
     field: "subject",
     headerName: "Konu",
@@ -49,14 +57,6 @@ const columns = [
     editable: false,
     disableColumnMenu: true,
   },
-  {
-    field: "statue",
-    headerName: "Durum",
-    flex: 1.5,
-    sortable: false,
-    editable: false,
-    disableColumnMenu: true,
-  }, 
   {
     field: "priority",
     headerName: "Öncelik",
@@ -120,6 +120,8 @@ function DestekTalepTablo({data}) {
         density="compact"
         hideFooter={true}
         pageSizeOptions={[5]}
+        // autoHeight={true}
+
       />
     </Box>
   );

@@ -6,7 +6,7 @@ import {
   where,
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import { auth, db } from "../../firebase/firebase.config";
@@ -19,12 +19,20 @@ import { AuthenticationContext } from "../../context/authentication.context";
 import DestekTalepTablo from "../../components/tablolar/destekTalepTablo/DestekTalepTablo";
 import { CircularProgress } from "@mui/material";
 import RightSideBar from "../../components/RightSideBar/RightSideBar";
+import PageNavbar from "../../components/pageNavbar/PageNavbar";
+import LiveIcon from "./svg/liveIcon.svg";
+import HelpRequest from "./svg/helpRequest.svg";
+import LiveChatTablo from "../../components/tablolar/liveChatTablo/LiveChatTablo";
+import LiveChat from "../../components/livechat/LiveChat";
 
 function SupportRequest() {
 
   const [myRequests, setMyRequests] = useState([]);
   const [loading, setLoading] = useState(true);
   const { user } = useContext(AuthenticationContext);
+
+  const navigate = useNavigate();
+
 
   useEffect(()=>{
 
@@ -69,20 +77,67 @@ function SupportRequest() {
       <CircularProgress/>
     )
   }
-  
+
   return (
     <>
       <div className="home">
         <Sidebar />
         <div className="supportContainer">
-          <Navbar />
+                  <div className="homeContainer">
+            <PageNavbar />
+            {/* <Navbar /> */}
           {/* <Navigation children={pathData} /> */}
+          <div className="messagesButtons">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "leftButton active" : "leftButton"
+              }
+              to="/mesajlarim/Canli-Destek"
+            >
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "link active" : "link"
+                }
+                to="/mesajlarim/Canli-Destek"
+              >
+                <img src={LiveIcon} alt="" />
+                Canlı Destek
+              </NavLink>
+            </NavLink>
+
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "rightButton active" : "rightButton"
+              }
+              to="/mesajlarim/Destek-Talebi"
+            >
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "link2 active" : "link2"
+                }
+                to="/mesajlarim/Destek-Talebi"
+              >
+                <img src={HelpRequest} alt="" />
+                Destek Talebi
+              </NavLink>
+            </NavLink>
+          </div>
+
+          <div className="request-components">
+
+
+<div className="request-tabel">
           <div className="request-header-bar">
             <div className="left">
               <img src={MessageIcon} alt="" />
               <h4>Destek Talepleriniz</h4>
             </div>
             <div className="right">
+
+                <div className="right-text">Filtreler</div>
+                <div className="right-text">Tarihe Göre Sırala</div>
+                <div className="right-text">Dışarı Aktar</div>
+
               {myRequests.length > 0 ? (
                 <NavLink
                   className="add-button"
@@ -93,9 +148,27 @@ function SupportRequest() {
               ) : null}
             </div>
           </div>
+
           <DestekTalepTablo data={myRequests} statues={statues} />
+       
+       </div>
+       
+
+       <div className="small-chatArea">
+            <div className="small-liveChat">
+              <LiveChat />
+            </div>
+          </div>
+       
+</div>
+
         </div>
+
+
         {/* <RightSideBar/> */}
+                </div>
+
+
       </div>
     </>
   );

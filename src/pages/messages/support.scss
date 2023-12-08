@@ -1,8 +1,9 @@
 .supportContainer {
-  padding: 10px;
+  // padding: 10px;
   overflow: auto;
   flex:1;
-  // border: 1px solid red;
+
+ 
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -18,17 +19,32 @@
     border-radius: 10px;
   }
 
+  .request-components{
+    display: flex;
+    gap: 1rem;
+
+  .request-tabel{
+    // border: 1px solid red;
+    background-color: white;
+    border-radius: 28px;
+    width: 73%;
+    height: auto;
+    // border: 1px solid red;
+
+
   .request-header-bar {
     display: flex;
     align-items: center;
     padding: 20px 20px 10px 20px;
     margin: 0px 20px 0px 20px;
+    
 
     .left {
       flex: 1;
       display: flex;
       align-items: center;
       gap: 10px;
+      
 
       h4 {
         font-weight: 500;
@@ -40,16 +56,66 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      gap: 1.4rem;
       
+      &-text{
+        font-size: 16px;
+        font-weight: 600;
+        color: #535353;
+        
+      }
+
       .add-button {
         display: flex;
         text-decoration: none;
         background-color: var(--green);
         color: white;
-        padding: 20px;
+        padding: .6rem;
         border-radius: 5px;
-        font-size: 18px;
+        font-size: 12px;
+        font-weight: 600;
+        // height: 37px;
+        
       }
     }
   }
 }
+}
+
+
+.small-chatArea{
+  // border: 1px solid blue;
+  display: flex;
+  width: 25%;
+  flex: 1;
+  gap: 1rem;
+  // justify-content: space-between;
+  
+
+.small-liveChat{
+    width: 60%;
+    flex: 28;
+    background-color: #fff;
+    border-radius: 20px;
+    // -webkit-box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
+    // -moz-box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
+    // box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
+
+    .chatcontainer .chat-top .chat-top-left img{
+      width: 108px;
+    }
+
+    .chatcontainer .chat-top .chat-top-right .end-chat-button{
+      font-size: 13px;
+    }
+
+  }
+
+}
+.css-12u49z-MuiDataGrid-root .MuiDataGrid-withBorderColor {
+  border: none ;
+  
+}
+}
+
+

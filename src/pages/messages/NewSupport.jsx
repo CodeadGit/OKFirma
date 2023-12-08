@@ -118,7 +118,9 @@ function NewSupport({ setAlert, setError }) {
       <div className="header">
         <div className="header-left">Yeni Talep Oluştur</div>
         <div className="header-right">
-          <small>{new Date().toLocaleString()}</small>
+          <small>
+            <strong>{new Date().toLocaleString()}</strong>
+          </small>
         </div>
       </div>
       {uploading ? (
@@ -129,11 +131,14 @@ function NewSupport({ setAlert, setError }) {
           id="create-request-form"
           className="request-form"
         >
+          <div className="kategori-textbutton">
+          <div className="kategori-textbutton-text">Kategoriler</div>
           <RequestCases
             selected={selected}
             setSelected={setSelected}
             cases={caseList}
           />
+          </div>
           <input
             required
             onChange={handleInputChange}
@@ -149,12 +154,19 @@ function NewSupport({ setAlert, setError }) {
             className="support-text"
             placeholder="Yaşadığınız Sorunu Detaylı Olarak Yazınız"
           />
-          <RequestCases
-            selected={priority}
-            setSelected={setPriority}
-            cases={priorityList}
-          />
+
           <div className="support-buttons">
+
+            <div className="support-buttons-textbutton">
+
+            <div className="support-buttons-textbutton-text">Talep Önceliği</div>
+            <RequestCases
+            
+              selected={priority}
+              setSelected={setPriority}
+              cases={priorityList}
+            />
+            </div>
             <div className="support-buttons-left">
               <input
                 onChange={handleFileInputChange}
@@ -173,11 +185,12 @@ function NewSupport({ setAlert, setError }) {
                   <small>{file.name}</small>
                 </div>
               ) : null}
-            </div>
-            <div className="support-buttons-right">
-              <button name="send" type="submit" className="gonder">
-                TALEP GÖNDER
-              </button>
+
+              <div className="support-buttons-right">
+                <button name="send" type="submit" className="gonder">
+                  TALEP GÖNDER
+                </button>
+              </div>
             </div>
           </div>
         </form>
