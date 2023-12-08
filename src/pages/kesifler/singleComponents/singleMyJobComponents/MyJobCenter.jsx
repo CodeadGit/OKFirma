@@ -273,6 +273,8 @@ const MyJobCenter = ({ job, products }) => {
           </div>
         </div>
       </div>
+
+      
       <div className="one-job-center-bottom">
         <h4>Parça Listesi</h4>
         <div className="this-products-table">
