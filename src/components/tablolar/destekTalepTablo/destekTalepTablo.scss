@@ -12,7 +12,11 @@
     border: none;
   }
 
-  .navigate a{
+  .MuiDataGrid-withBorderColor {
+    border: none !important;
+  }
+
+  .navigate a {
     text-decoration: none;
   }
 

@@ -4,7 +4,6 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import "../kesifler/kesifler.scss";
 import { NavLink, useLocation } from "react-router-dom";
 import Empty from "../home/svg/empty.svg";
-
 import TeklifTablosu from "../../components/tablolar/teklifTablosu/TeklifTablosu";
 // import Navigation from "../../components/boxes/Navigation";
 import PageNavbar from "../../components/pageNavbar/PageNavbar";

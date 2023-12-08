@@ -26,18 +26,17 @@ import { NotificationsNone } from "@mui/icons-material";
 import { useNotifications } from "../../context/notification.context";
 
 function Sidebar() {
-
   const { logout, user, setUser, userData } = useContext(AuthenticationContext);
 
-  const {toggleNotification,notifications,unreads}=useNotifications();
+  const { toggleNotification, notifications, unreads } = useNotifications();
 
   const linkList = [
-    { 
-      img: UserLogo, 
-      label: "Panelim", 
-      id: "01", 
-      to: "/", 
-      hasNest: false 
+    {
+      img: UserLogo,
+      label: "Panelim",
+      id: "01",
+      to: "/",
+      hasNest: false,
     },
     {
       img: Kesif,
@@ -103,15 +102,13 @@ function Sidebar() {
 
   return (
     <div className="sidebar">
-     
       <div className="sidebarInner">
         <div className="sidebarTop">
-
- <div className="sidebarLogoArea">
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <img id="logo" src={Logo} alt="logo" />
-        </Link>
-      </div>
+          <div className="sidebarLogoArea">
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <img id="logo" src={Logo} alt="logo" />
+            </Link>
+          </div>
 
           {/* <div
             onClick={() => navigate("/firma-bilgilerim")}
@@ -207,7 +204,6 @@ function Sidebar() {
           <MiniSubHeader>© Versiyon 1.1</MiniSubHeader>
         </div>
       </div>
-      
     </div>
   );
 }

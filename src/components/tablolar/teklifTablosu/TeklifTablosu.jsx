@@ -1,22 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./teklifTablosu.scss";
 import { auth } from "../../../firebase/firebase.config";
 import { statues } from "../../data/statues";
 import {
   DataGrid,
-  GridToolbar,
   GridToolbarContainer,
   GridToolbarExport,
   GridToolbarFilterButton,
 } from "@mui/x-data-grid";
 import { IconButton, Tooltip } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import PriceOfOneRow from "./PriceOfOneRow";
-import OfferStatue from "./OfferStatue";
+// import OfferStatue from "./OfferStatue";
 import { RunCircleOutlined } from "@mui/icons-material";
 import { CloudContext } from "../../../context/cloud.context";
+import { calculateFilterDays } from "../../../functions";
 
 function TeklifTablosu({ data, kesiflerimPage }) {
+
   let TLLocale = Intl.NumberFormat("tr-TR");
 
   const { deleteFirmFromJob, updatingJob } = useContext(CloudContext);
@@ -132,57 +133,63 @@ function TeklifTablosu({ data, kesiflerimPage }) {
 
   const sortedData = data.sort((a, b) => b.createdAt - a.createdAt);
 
-  const mydiscoveries = kesiflerimPage ? sortedData : sortedData.slice(0, 5);
+  const [allRowsData, setallRowsData] = useState(sortedData);
 
-  function CustomToolbar() {
-    return (
-      <GridToolbarContainer
-        sx={{
-          border: "1px solid red",
-          display: "flex",
-          paddingLeft: "2rem",
-        }}
-      >
-        <p className="myKesiflerim">Keşiflerim</p>
-        {/* <div className="tableHeader">
-          <div className="right">
-            <div className="colors">
-              <div className="color"></div>
-              <div className="color"></div>
-              <div className="color"></div>
-              <div className="color"></div>
-              <div className="color"></div>
-            </div>
-            <div className="filters">
-              <p>Filtreler</p>
-              <p>Tarihe Göre Sırala</p>
-              <p>Dışarı Aktar</p>
-            </div>
-          </div>
-        </div> */}
-        <div className="rightSide">
-          <div className="colors">
-            <div className="color"></div>
-            <div className="color"></div>
-            <div className="color"></div>
-            <div className="color"></div>
-            <div className="color"></div>
-          </div>
-          <GridToolbarFilterButton  sx={{
-          border: "1px solid red",
-          paddingInline: "0 !important",
-        }}/>
-          <GridToolbarExport sx={{
-          border: "1px solid red",
-          paddingInline: "0 !important"
-        }}/>
-        </div>
-      </GridToolbarContainer>
-    );
-  }
+  const mydiscoveries = kesiflerimPage ? allRowsData : allRowsData.slice(0, 5);
+
+  // const [filteredArray, setFilteredArray] = useState(sortedData);
+  // const [wanted, setWanted] = useState({
+  //   filterLabel:"",
+  //   wantedArray:[]
+  // });
+
+  // const arr=[
+  //   {id:"01",label:"birinci filtreledi",timer:"1"},
+  //   {id:"02",label:"ikinci filtreledi",timer:"2"},
+  //   {id:"03",label:"üçüncü filtreledi",timer:"3"},
+  //   {id:"04",label:"dördüncü filtreledi",timer:"4"},
+  //   {id:"05",label:"beşinci filtreledi",timer:"5"},
+  // ]
+  // const trial=[
+  //   {id:"01",label:"ilk değer",value:"1"},
+  //   {id:"02",label:"ikinci değer",value:"2"},
+  //   {id:"03",label:"üçüncü değer",value:"3"},
+  //   {id:"04",label:"dördüncü değer",value:"4"},
+  //   {id:"05",label:"beşinci değer",value:"5"},
+  // ]
+
+  // const handleChange=(e)=>{
+  //   const {name,value}=e.target;
+
+  //   var newArray=arr.filter(i=>i.timer===value)
+  //   setWanted({
+  //     filterLabel:value,
+  //     wantedArray:newArray
+  //   }) 
+  // };
 
   return (
     <div className={`tableParent ${kesiflerimPage ? "kesiflerim" : ""}`}>
+      {/* <select
+        onChange={handleChange}
+        name="filter"
+        value={wanted.filterLabel}
+      >
+        <option value={""} selected hidden >seçim yapınız</option>
+        {trial.map((t,tdx)=>{
+          return(
+            <option value={t.value} key={tdx}>{t.label}</option>
+          )
+        })}
+      </select>
+      <span>{wanted.filterLabel}</span>
+      <br/>
+      {wanted.wantedArray?.map((w,wdx)=>{
+        return(
+          <span key={wdx}>{w?.label}</span>
+        )
+      })} */}
+      
       <DataGrid
         rows={mydiscoveries.map((item, index) => {
           var array = item.Offers;
@@ -190,7 +197,6 @@ function TeklifTablosu({ data, kesiflerimPage }) {
             (i) => i.firm === auth.currentUser.uid
           );
           var priceelement = array[itemIndex];
-
           return {
             id: index + 1,
             teklifId: item.id,
@@ -223,7 +229,7 @@ function TeklifTablosu({ data, kesiflerimPage }) {
         columns={columns}
         pageSizeOptions={[5]}
         slots={{
-          toolbar: CustomToolbar,
+          toolbar: () => <CustomToolbar calculateFilterDays={calculateFilterDays} data={data} setallRowsData={setallRowsData} />
         }}
         hideFooter
         autoHeight
@@ -233,3 +239,100 @@ function TeklifTablosu({ data, kesiflerimPage }) {
 }
 
 export default TeklifTablosu;
+
+export function CustomToolbar({calculateFilterDays, data, setallRowsData}) {
+
+  const location = useLocation();
+
+  const isFirsatlarim = location.pathname === "/kesifler";
+
+  const values = [
+    {
+      id: 1,
+      label: "Hepsi",
+      value: "all", 
+    },
+    {
+      id: 2,
+      label: "2 Gün",
+      value: "2", 
+    },
+    {
+      id: 3,
+      label: "1 Hafta",
+      value: "7", 
+    },
+    {
+      id: 4,
+      label: "10 Gün",
+      value: "10", 
+    },
+    {
+      id: 5,
+      label: "2 Hafta",
+      value: "14", 
+    },
+  ];
+
+  const [filteredArray, setFilteredArray] = useState(values[0]);
+
+  return (
+    <GridToolbarContainer
+      sx={{
+        border: "1px solid blue",
+        display: "flex",
+        paddingLeft: "2rem",
+      }}
+    >
+      <p className="myKesiflerim">{isFirsatlarim ? "Keşif Fırsatlarım" : "Keşifler"}</p>
+      <div className="rightSide">
+        <div className="colors">
+          <div className="color"></div>
+          <div className="color"></div>
+          <div className="color"></div>
+          <div className="color"></div>
+          <div className="color"></div>
+        </div>
+        <select value={filteredArray} onChange={(e) => 
+          calculateFilterDays(data, e.target.value, setallRowsData)
+}>
+          <option hidden value="">Aralık Seçiniz</option>
+        {
+          values.map((item) => (
+            <option key={item.id} value={item.value}>{item.label}</option>
+          ))
+        }
+        </select>
+        <div class="input-container">
+          <input
+            onChange={(e) => console.log(new Date(e.target.value))}
+            id="effective-date"
+            type="date"
+            name="effective-date"
+            minlength="1"
+            maxlength="64"
+            placeholder=" "
+            style={{ opacity: 0, position: "absolute" }}
+            autocomplete="nope"
+            required="required"
+          ></input>
+          <span class="bar">Tarihe Göre Sırala</span>
+        </div>
+
+        <GridToolbarFilterButton
+          sx={{
+            border: "1px solid red",
+            paddingInline: "0 !important",
+          }}
+        />
+        <GridToolbarExport
+          sx={{
+            border: "1px solid red",
+            paddingInline: "0 !important",
+          }}
+        />
+      </div>
+    </GridToolbarContainer>
+  );
+}
+
