@@ -4,17 +4,38 @@
   height: 200px !important;
   font-weight: 600 !important;
 
+  
   .MuiDataGrid-overlayWrapper {
     display: none;
+    
   }
 
   .MuiDataGrid-columnHeaders {
     border: none;
+    font-size: 16px;
+    color: #717477;
+    margin-bottom: .8rem;
+    // font-weight: 600;
   }
 
   .navigate a{
     text-decoration: none;
+    
   }
+
+  .MuiDataGrid-cell {
+font-size: 15px;
+font-weight: 600 ;
+ 
+ }
+
+
+ .MuiDataGrid-virtualScrollerRenderZone{
+  gap: 1rem;
+
+ }
+
+
 
   // .datagridButton {
   //   background-color: var(--yellow);
@@ -31,4 +52,6 @@
   //     text-transform: capitalize;
   //   }
   // }
+
+
 }

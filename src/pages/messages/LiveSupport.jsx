@@ -9,9 +9,9 @@ import PageNavbar from "../../components/pageNavbar/PageNavbar";
 import { NavLink, useNavigate } from "react-router-dom";
 import LiveIcon from "./svg/liveIcon.svg";
 import HelpRequest from "./svg/helpRequest.svg";
+import Mesajlar from "../../components/sidebar/svg/messages.svg";
 
 function LiveSupport() {
-
   const pathData = [
     { text: "Panelim", to: "/", id: "01" },
     { text: "Mesajlarım", to: "/mesajlarim", id: "02" },
@@ -28,20 +28,43 @@ function LiveSupport() {
           {/* <Navbar /> */}
           {/* <Navigation children={pathData} /> */}
           <PageNavbar />
+
           <div className="messagesButtons">
-            <div className="leftButton">
-              <NavLink to="/mesajlarim/Canli-Destek">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "leftButton active" : "leftButton"
+              }
+              to="/mesajlarim/Canli-Destek"
+            >
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "link active" : "link"
+                }
+                to="/mesajlarim/Canli-Destek"
+              >
                 <img src={LiveIcon} alt="" />
                 Canlı Destek
               </NavLink>
-            </div>
-            <div className="rightButton">
-              <NavLink to="/mesajlarim/Destek-Talebi">
+            </NavLink>
+
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "rightButton active" : "rightButton"
+              }
+              to="/mesajlarim/Destek-Talebi"
+            >
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "link2 active" : "link2"
+                }
+                to="/mesajlarim/Destek-Talebi"
+              >
                 <img src={HelpRequest} alt="" />
                 Destek Talebi
               </NavLink>
-            </div>
+            </NavLink>
           </div>
+
           <div className="chatArea">
             <div className="liveChat">
               <LiveChat />
@@ -49,13 +72,23 @@ function LiveSupport() {
             <div className="liveChatStatus">
               <div className="innerChatStatus">
                 <div className="liveChatHeader">
-                  <p>Destek Talepleriniz</p>
+
+                 <img className="mesaj-icon" src={Mesajlar} alt="" />
+
+                  <p>
+                    Destek Talepleriniz
+                  </p>
+
                 </div>
                 <hr />
                 <LiveChatTablo />
                 <hr />
                 <div className="liveChatFooter">
-                  <button onClick={() => navigate("/mesajlarim/Yeni-Destek-Talebi")}>Yeni Talep Oluştur</button>
+                  <button
+                    onClick={() => navigate("/mesajlarim/Yeni-Destek-Talebi")}
+                  >
+                    Yeni Talep Oluştur
+                  </button>
                 </div>
               </div>
             </div>

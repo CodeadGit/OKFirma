@@ -1,15 +1,23 @@
 .dataGridStyles {
   border: none !important;
   font-size: 12px !important;
-  height: 225px !important;
+  height: 600px !important;
+
 
   &.livechat {
    height: auto !important;
 
+
    .MuiDataGrid-columnHeaders {
     min-height: 0 !important;
     height: 0;
+
    }
+
+   
+.MuiDataGrid-withBorderColor {
+  border: none;
+}
   }
 
   .datagridButton {
@@ -18,4 +26,8 @@
     cursor: pointer;
     color: #000;
   }
+
+
+
 }
+

@@ -10,7 +10,7 @@
 
   .chat-top {
     background-color: white;
-    height: 10%;
+    height: 12%;
     // border-radius: 10px;
     box-sizing: border-box;
     // padding: 10px;
@@ -31,13 +31,15 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
+
       .end-chat-button {
         cursor: pointer;
         background-color: #f0f0f6;
         padding: 10px 15px;
-        border-top-left-radius: 15px;
-        border-bottom-left-radius: 15px;
-        border-top-right-radius: 15px;
+        border-radius: 16px;
+        // border-top-left-radius: 15px;
+        // border-bottom-left-radius: 15px;
+        // border-top-right-radius: 15px;
         width: max-content;
       }
     }
@@ -145,11 +147,11 @@
   .chat-bottom {
     background-color: white;
     height: 4rem;
-    border: 0.5px solid rgb(180, 177, 177);
+    border: 0.5px solid #E6E6E6;
     border-radius: 28px;
     box-sizing: border-box;
     padding: 10px;
-    border: 1px  solid red;
+    // border: 1px  solid red;
 
     form {
       // border: 1px solid blue;
@@ -202,7 +204,7 @@
       }
 
       .addFile {
-        border-right: 0.5px solid grey;
+        border-right: 0.5px solid #E6E6E6;
         height: 100%;
         box-sizing: border-box;
         display: flex;
@@ -216,13 +218,12 @@
       button.send-chat {
         border: none;
         background-color: #ededed;
-        color: #000;
+        color: #000000;
         border-radius: 14px;
         padding: 0.5rem 1.2rem;
+        font-size: 14px;
 
-        &.empty {
-          opacity: 0.5;
-        }
+        
         
         &.ready {
           opacity: 1;
