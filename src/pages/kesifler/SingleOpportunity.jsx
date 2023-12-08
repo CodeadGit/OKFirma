@@ -135,8 +135,10 @@ const SingleOpportunity = () => {
             <Navigation children={pathData} />
           </div> */}
           <PageNavbar />
+
+
           <div className="talep-info">
-            <h3>Keşif Bilgileri</h3>
+            <h3>Keşif Talebi Bilgileri</h3>
             <div className="titles">
               <span>Teklif No</span>
               <span>Ana Talep</span>
@@ -160,9 +162,11 @@ const SingleOpportunity = () => {
               <span>{calculateRemainingTime(thisPage.termin)}</span>
             </div>
           </div>
+
           <div className="one-job-container">
             <MyJobCenter products={thisProducts} job={thisPage} />
           </div>
+          
         </div>
       </div>
     </>
