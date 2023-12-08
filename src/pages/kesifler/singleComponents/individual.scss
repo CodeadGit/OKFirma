@@ -1,3 +1,27 @@
+.talep-info {
+    background-color: #fff;
+    padding: 3rem;
+    border-radius: 16px;
+
+    .titles,
+    .infos {
+        border: 1px solid red;
+        width: 100%;
+        display: flex;
+        margin-top: .5rem;
+
+        span {
+        border: 1px solid red;
+        flex: 1;
+        text-align: center;
+
+        &:first-child {
+            text-align: left;
+        }
+        }
+    }
+}
+
 .one-job-container{
     -webkit-box-shadow: 1px 1px 10px 0px rgba(144,144,144,1);
     -moz-box-shadow: 1px 1px 10px 0px rgba(144,144,144,1);
@@ -10,9 +34,12 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    border: 1px solid red;
+
     div{
         box-sizing: border-box;
     }
+
     .section-individual{
         font-size: 0.8rem;
         width: 100%;
@@ -26,9 +53,9 @@
             
 
         }
-        .dots{
+        // .dots{
 
-        }
+        // }
         .row-text{
             flex: 1;
             &.listed{
@@ -37,10 +64,9 @@
                 gap:0.5rem;
                 
             }
-            .sub-text{
+            // .sub-text{
                 
-            }
-
+            // }
         }
     }
 
@@ -48,9 +74,12 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        .form-logo{
+        border: 1px solid red;
+        
+        // .form-logo{
 
-        }
+        // }
+
         .form-id{
             color: #505050;
             font-weight: 500;

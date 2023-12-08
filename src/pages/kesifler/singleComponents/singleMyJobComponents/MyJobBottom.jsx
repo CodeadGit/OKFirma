@@ -14,7 +14,7 @@ const MyJobBottom = ({job,data,handleSubmit,uploading,showButton}) => {
 );
 let TLLocale = Intl.NumberFormat('tr-TR');
 let Dolar = Intl.NumberFormat("us-US");
-console.log(doviz)
+// console.log(doviz);
     
   return (
     <div className="one-job-bottom">

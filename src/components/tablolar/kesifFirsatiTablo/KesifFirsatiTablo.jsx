@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../teklifTablosu/teklifTablosu.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { NavLink } from "react-router-dom";
@@ -7,20 +7,11 @@ import { statues } from "../../data/statues";
 import { auth } from "../../../firebase/firebase.config";
 import { Button } from "@mui/material";
 import { LocaleText } from "../../data/localeText";
+import { CustomToolbar } from "../teklifTablosu/TeklifTablosu";
+import { calculateFilterDays } from "../../../functions";
 
 function KesifFirsatiTablo({ data, kesiflerPage }) {
-  // const dataToView = data
-  //   .filter((i) => !i.interestedFirms.includes(auth.currentUser.uid))
-  //   .filter(
-  //     (i) =>
-  //       new Date().getTime() <
-  //       new Date(i.publishRemaining.seconds * 1000).getTime()
-  //   );
-
-  // console.log(dataToView);
-
-  // console.log(data);
-
+  
   const columns = [
     {
       field: "id",
@@ -143,32 +134,58 @@ function KesifFirsatiTablo({ data, kesiflerPage }) {
     },
   ];
 
+  const [rowsData, setRowsData] = useState(data);
+
+  useEffect(() => {
+    setRowsData(data);
+  }, [data]);
+
+  const values = [
+    {
+      id: 1,
+      label: "Hepsi",
+      value: "all", 
+    },
+    {
+      id: 2,
+      label: "2 Gün",
+      value: "2", 
+    },
+    {
+      id: 3,
+      label: "1 Hafta",
+      value: "7", 
+    },
+    {
+      id: 4,
+      label: "10 Gün",
+      value: "10", 
+    },
+    {
+      id: 5,
+      label: "2 Hafta",
+      value: "14", 
+    },
+  ];
+
   return (
     <div className={`tableParent ${kesiflerPage ? "kesiflerim" : ""}`}>
-      <div className="tableHeader">
-        <p>Keşif Fırsatlarım</p>
-        <div className="right">
-          <div className="colors">
-            <div className="color"></div>
-            <div className="color"></div>
-            <div className="color"></div>
-            <div className="color"></div>
-            <div className="color"></div>
-          </div>
-          <div className="filters">
-            <p>Filtreler</p>
-            <p>Tarihe Göre Sırala</p>
-            <p>Dışarı Aktar</p>
-          </div>
-        </div>
-      </div>
       <DataGrid
-        rows={data}
+        rows={rowsData}
         density="comfortable"
         columns={columns}
         pageSizeOptions={[5]}
         localeText={LocaleText}
+        slotProps={{
+          toolbar: {
+            showQuickFilter: true,
+            quickFilterProps: { debounceMs: 500 },
+          },
+        }}
         autoHeight
+        slots={{
+          toolbar: () => <CustomToolbar calculateFilterDays={calculateFilterDays} data={data} setallRowsData={setRowsData} values={values} />
+        }}
       />
     </div>
   );

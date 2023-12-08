@@ -47,14 +47,12 @@ const MyJobCenter = ({ job, products }) => {
     console.log(value);
     setConditions((pre) => ({ ...pre, [name]: value }));
   };
+
   const handleConditionBoolean = (selector, bool) => {
     var oldObject = conditions[selector];
     setConditions((pre) => ({ ...pre, [selector]: bool }));
   };
 
-  //notes
-
-  //
   const handleChange = (event, index) => {
     const { value, name } = event.target;
     var oldList = [...thisProducts];
@@ -212,6 +210,8 @@ const MyJobCenter = ({ job, products }) => {
       alert("Not eklediyseniz bir değer yazmalısınız");
     }
   };
+
+  console.log(job)
 
   return (
     <div className="one-job-center">
