@@ -46,7 +46,6 @@ function LiveSupport() {
                 Canlı Destek
               </NavLink>
             </NavLink>
-
             <NavLink
               className={({ isActive }) =>
                 isActive ? "rightButton active" : "rightButton"
@@ -72,9 +71,7 @@ function LiveSupport() {
             <div className="liveChatStatus">
               <div className="innerChatStatus">
                 <div className="liveChatHeader">
-
                  <img className="mesaj-icon" src={Mesajlar} alt="" />
-
                   <p>
                     Destek Talepleriniz
                   </p>

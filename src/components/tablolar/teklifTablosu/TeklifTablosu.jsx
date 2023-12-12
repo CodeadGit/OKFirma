@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./teklifTablosu.scss";
 import { auth } from "../../../firebase/firebase.config";
 import { statues } from "../../data/statues";
@@ -137,59 +137,15 @@ function TeklifTablosu({ data, kesiflerimPage }) {
 
   const mydiscoveries = kesiflerimPage ? allRowsData : allRowsData.slice(0, 5);
 
-  // const [filteredArray, setFilteredArray] = useState(sortedData);
-  // const [wanted, setWanted] = useState({
-  //   filterLabel:"",
-  //   wantedArray:[]
-  // });
+  const [filteredInterval, setFilteredInterval] = useState("");
 
-  // const arr=[
-  //   {id:"01",label:"birinci filtreledi",timer:"1"},
-  //   {id:"02",label:"ikinci filtreledi",timer:"2"},
-  //   {id:"03",label:"üçüncü filtreledi",timer:"3"},
-  //   {id:"04",label:"dördüncü filtreledi",timer:"4"},
-  //   {id:"05",label:"beşinci filtreledi",timer:"5"},
-  // ]
-  // const trial=[
-  //   {id:"01",label:"ilk değer",value:"1"},
-  //   {id:"02",label:"ikinci değer",value:"2"},
-  //   {id:"03",label:"üçüncü değer",value:"3"},
-  //   {id:"04",label:"dördüncü değer",value:"4"},
-  //   {id:"05",label:"beşinci değer",value:"5"},
-  // ]
-
-  // const handleChange=(e)=>{
-  //   const {name,value}=e.target;
-
-  //   var newArray=arr.filter(i=>i.timer===value)
-  //   setWanted({
-  //     filterLabel:value,
-  //     wantedArray:newArray
-  //   }) 
-  // };
+  const handleChange = (e) => {
+    const { value } = e.target;
+    setFilteredInterval(value);
+  };
 
   return (
     <div className={`tableParent ${kesiflerimPage ? "kesiflerim" : ""}`}>
-      {/* <select
-        onChange={handleChange}
-        name="filter"
-        value={wanted.filterLabel}
-      >
-        <option value={""} selected hidden >seçim yapınız</option>
-        {trial.map((t,tdx)=>{
-          return(
-            <option value={t.value} key={tdx}>{t.label}</option>
-          )
-        })}
-      </select>
-      <span>{wanted.filterLabel}</span>
-      <br/>
-      {wanted.wantedArray?.map((w,wdx)=>{
-        return(
-          <span key={wdx}>{w?.label}</span>
-        )
-      })} */}
-      
       <DataGrid
         rows={mydiscoveries.map((item, index) => {
           var array = item.Offers;
@@ -218,6 +174,7 @@ function TeklifTablosu({ data, kesiflerimPage }) {
           "& .MuiDataGrid-row:hover": {
             backgroundColor: "inherit",
           },
+          width: "100%"
         }}
         density="comfortable"
         slotProps={{
@@ -229,7 +186,7 @@ function TeklifTablosu({ data, kesiflerimPage }) {
         columns={columns}
         pageSizeOptions={[5]}
         slots={{
-          toolbar: () => <CustomToolbar calculateFilterDays={calculateFilterDays} data={data} setallRowsData={setallRowsData} />
+          toolbar: () => <CustomToolbar calculateFilterDays={calculateFilterDays} data={data} setallRowsData={setallRowsData} handleChange={handleChange} filteredInterval={filteredInterval} />
         }}
         hideFooter
         autoHeight
@@ -240,7 +197,7 @@ function TeklifTablosu({ data, kesiflerimPage }) {
 
 export default TeklifTablosu;
 
-export function CustomToolbar({calculateFilterDays, data, setallRowsData}) {
+export function CustomToolbar({calculateFilterDays, data, setallRowsData, filteredInterval, handleChange}) {
 
   const location = useLocation();
 
@@ -274,14 +231,11 @@ export function CustomToolbar({calculateFilterDays, data, setallRowsData}) {
     },
   ];
 
-  const [filteredArray, setFilteredArray] = useState(values[0]);
-
   return (
     <GridToolbarContainer
       sx={{
-        border: "1px solid blue",
         display: "flex",
-        paddingLeft: "2rem",
+        padding: "1rem 2.25rem 0",
       }}
     >
       <p className="myKesiflerim">{isFirsatlarim ? "Keşif Fırsatlarım" : "Keşifler"}</p>
@@ -293,9 +247,10 @@ export function CustomToolbar({calculateFilterDays, data, setallRowsData}) {
           <div className="color"></div>
           <div className="color"></div>
         </div>
-        <select value={filteredArray} onChange={(e) => 
-          calculateFilterDays(data, e.target.value, setallRowsData)
-}>
+        <select style={{outline:"none", cursor:"pointer"}} value={filteredInterval} onChange={(e) => {
+          handleChange(e);
+          calculateFilterDays(data, e.target.value, setallRowsData);
+        }}>
           <option hidden value="">Aralık Seçiniz</option>
         {
           values.map((item) => (
@@ -321,13 +276,11 @@ export function CustomToolbar({calculateFilterDays, data, setallRowsData}) {
 
         <GridToolbarFilterButton
           sx={{
-            border: "1px solid red",
             paddingInline: "0 !important",
           }}
         />
         <GridToolbarExport
           sx={{
-            border: "1px solid red",
             paddingInline: "0 !important",
           }}
         />

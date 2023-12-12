@@ -3,8 +3,6 @@
   overflow: auto;
   flex:1;
 
- 
-
   &::-webkit-scrollbar {
     width: 8px;
   }
@@ -29,10 +27,9 @@
     border-radius: 28px;
     width: 73%;
     height: auto;
-    // border: 1px solid red;
-
 
   .request-header-bar {
+    // border: 2px solid red;
     display: flex;
     align-items: center;
     padding: 20px 20px 10px 20px;
@@ -47,7 +44,8 @@
       
 
       h4 {
-        font-weight: 500;
+        font-weight: 700;
+        color: #727477;
       }
     }
 

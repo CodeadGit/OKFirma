@@ -48,14 +48,14 @@ function LiveChatTablo() {
   const columns = [
     {
       field: "id",
-      flex: 1,
+      flex: 2,
       sortable: false,
       editable: false,
       disableColumnMenu: true,
     },
     {
       field: "durum",
-      flex: 1,
+      flex: 1.25,
       sortable: false,
       editable: false,
       disableColumnMenu: true,
@@ -69,7 +69,6 @@ function LiveChatTablo() {
       disableColumnMenu: true,
       flex: 1,
       renderCell: (e) => {
-        console.log(e.id)
         return (
           <Button className="datagridButton" onClick={() => navigate(`/mesajlarim/Destek-Talebi/${e.id}`)}>
             ...
@@ -82,7 +81,6 @@ function LiveChatTablo() {
   const { myRequests } = useContext(CloudContext);
 
   console.log(myRequests)
-
   
   return (
     <Box sx={{ width: "100%" }}>

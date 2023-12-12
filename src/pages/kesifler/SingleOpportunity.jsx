@@ -15,6 +15,10 @@ import MyJobTop from "./singleComponents/singleMyJobComponents/MyJobTop";
 import MyJobCenter from "./singleComponents/singleMyJobComponents/MyJobCenter";
 import MyJobBottom from "./singleComponents/singleMyJobComponents/MyJobBottom";
 import PageNavbar from "../../components/pageNavbar/PageNavbar";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import Brightness1Icon from "@mui/icons-material/Brightness1";
+import { ReactComponent as Dowland } from "./singleComponents/singleMyJobComponents/download.svg";
+import { ReactComponent as Print } from "./singleComponents/singleMyJobComponents/print.svg";
 
 const SingleOpportunity = () => {
   const { docRef } = useParams();
@@ -67,7 +71,6 @@ const SingleOpportunity = () => {
     })();
     return () => controller?.abort();
   }, [docRef, thisPageChanged]);
-
   // useEffect(()=>{
   //     let controller = new AbortController();
 
@@ -105,7 +108,7 @@ const SingleOpportunity = () => {
     const remainingHours = Math.floor(remainingMinutes / 60);
 
     if (remainingHours < 0) return "Süre Bitti";
-    return `${remainingHours} SAAT`
+    return `${remainingHours} SAAT`;
   };
 
   if (thisPageLoading) {
@@ -136,6 +139,28 @@ const SingleOpportunity = () => {
           </div> */}
           <PageNavbar />
 
+          <div className="keşif-top-router">
+            <div className="keşif-top-router-left">
+              <ArrowBackIosIcon fontSize="small" color="action" />
+              <Brightness1Icon color="primary" />
+              <div>Teklif Yapıldı</div>
+            </div>
+
+            <div className="keşif-top-router-right">
+              <button className="keşif-top-router-right-text">
+                Teklifi İptal Et
+              </button>
+              <button className="keşif-top-router-right-button">
+                <Print /> Çıktı Al
+              </button>
+              <button className="keşif-top-router-right-button">
+                <Dowland /> PDF İndir
+              </button>
+              <button className="keşif-top-router-right-buttontwo">
+                Güncelle
+              </button>
+            </div>
+          </div>
 
           <div className="talep-info">
             <h3>Keşif Talebi Bilgileri</h3>
@@ -166,7 +191,6 @@ const SingleOpportunity = () => {
           <div className="one-job-container">
             <MyJobCenter products={thisProducts} job={thisPage} />
           </div>
-          
         </div>
       </div>
     </>

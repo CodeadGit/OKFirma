@@ -19,10 +19,6 @@
     font-size: 1rem;
   }
 
-  .MuiDataGrid-filterForm {
-    background-color: red !important;
-  }
-
   .rightSide {
     display: flex;
     align-items: center;
@@ -58,63 +54,6 @@
         &:nth-child(5) {
           background-color: #cbcbcb;
         }
-      }
-    }
-
-  }
-
-  .tableHeader {
-    // border: 1px solid red;
-    padding-inline: 2rem;
-    padding-top: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 600;
-    margin: 1rem 0 0.25rem;
-
-    .right {
-      // border: 1px solid red;
-      width: 45%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 3rem;
-
-      .colors {
-        display: flex;
-        gap: 2.75rem;
-
-        .color {
-          width: 1rem;
-          height: 1rem;
-          border-radius: 50%;
-
-          &:nth-child(1) {
-            background-color: #f9d641;
-          }
-
-          &:nth-child(2) {
-            background-color: #0d7cdb;
-          }
-
-          &:nth-child(3) {
-            background-color: #00c62f;
-          }
-
-          &:nth-child(4) {
-            background-color: #ed4024;
-          }
-
-          &:nth-child(5) {
-            background-color: #cbcbcb;
-          }
-        }
-      }
-
-      .filters {
-        display: flex;
-        gap: 2.5rem;
       }
     }
   }
@@ -263,13 +202,13 @@
   position: absolute;
   z-index: 10;
   background-color:white;
-
 }
 
 //
-#day-diff{
-  //display: none;
-}
+// #day-diff{
+//   display: none;
+// }
+
 .input-container input {
   border: none;
   box-sizing: border-box;
@@ -292,4 +231,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   right: 0;
   top: 0;
   width: auto;
+}
+
+.MuiDataGrid-filterForm {
+  background-color: #fff;
+  position: absolute;
+  z-index: 999;
+  left: 1000px;
+  top: -70px;
 }

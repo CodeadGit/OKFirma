@@ -13,18 +13,21 @@ import Mesajlar from "../../components/sidebar/svg/messages.svg";
 import LiveChatTablo from "../../components/tablolar/liveChatTablo/LiveChatTablo";
 
 function NewSupportRequest() {
-
   const [alert, setAlert] = useState("");
   const [error, setError] = useState("");
-  
+
   const navigate = useNavigate();
 
   const pathData = [
     { text: "Panelim", to: "/", id: "02" },
     { text: "Mesajlarım", to: "/mesajlarim", id: "02" },
-    { text: "Yeni Destek Talebi", to: "/mesajlarim/Yeni-Destek-Talebi", id: "03" },   
+    {
+      text: "Yeni Destek Talebi",
+      to: "/mesajlarim/Yeni-Destek-Talebi",
+      id: "03",
+    },
   ];
-  
+
   return (
     <>
       <div className="home">
@@ -51,10 +54,9 @@ function NewSupportRequest() {
             </Alert>
           ) : null}
 
-<PageNavbar />
+          <PageNavbar />
 
-
-<div className="messagesButtons">
+          <div className="messagesButtons">
             <NavLink
               className={({ isActive }) =>
                 isActive ? "leftButton active" : "leftButton"
@@ -90,28 +92,17 @@ function NewSupportRequest() {
             </NavLink>
           </div>
 
+          <div className="newrequest-duble">
+            {/* <Navbar /> */}
+            {/* <Navigation children={pathData} /> */}
+            <NewSupport setAlert={setAlert} setError={setError} />
 
-
-<div className="newrequest-duble">
-
-          {/* <Navbar /> */}
-          {/* <Navigation children={pathData} /> */}
-          <NewSupport setAlert={setAlert} setError={setError} />
-
-
-
-
-
-          <div className="liveChatStatus">
+            <div className="liveChatStatus">
               <div className="innerChatStatus">
                 <div className="liveChatHeader">
+                  <img className="mesaj-icon" src={Mesajlar} alt="" />
 
-                 <img className="mesaj-icon" src={Mesajlar} alt="" />
-
-                  <p>
-                    Destek Talepleriniz
-                  </p>
-
+                  <p>Destek Talepleriniz</p>
                 </div>
                 <hr />
                 <LiveChatTablo />
@@ -125,12 +116,9 @@ function NewSupportRequest() {
                 </div>
               </div>
             </div>
-
-
-</div>
-        {/* <RightSideBar/> */}
-                </div>
-
+          </div>
+          {/* <RightSideBar/> */}
+        </div>
       </div>
     </>
   );
