@@ -12,6 +12,7 @@ import Loading from "../../components/Loading/Loading";
 import { auth, db, storage } from "../../firebase/firebase.config";
 import RequestCases from "./RequestCases";
 import { useNavigate } from "react-router-dom";
+import Attach from "../../components/livechat/svg/attachment.svg";
 
 function NewSupport({ setAlert, setError }) {
   const [file, setFile] = useState("");
@@ -176,7 +177,7 @@ function NewSupport({ setAlert, setError }) {
                 style={{ display: "none" }}
               />
               <label className="add-file" htmlFor="file">
-                <AttachFile />
+                <img src={Attach} />
                 Dosya Ekleyin
               </label>
               {file ? (

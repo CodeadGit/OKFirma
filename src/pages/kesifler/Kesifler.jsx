@@ -1,6 +1,6 @@
 import React from "react";
-import Navigation from "../../components/boxes/Navigation";
-import Navbar from "../../components/navbar/Navbar";
+// import Navigation from "../../components/boxes/Navigation";
+// import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./kesifler.scss";
 import KesifFirsatiTablo from "../../components/tablolar/kesifFirsatiTablo/KesifFirsatiTablo.jsx";

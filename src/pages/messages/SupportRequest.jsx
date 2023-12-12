@@ -26,56 +26,45 @@ import LiveChatTablo from "../../components/tablolar/liveChatTablo/LiveChatTablo
 import LiveChat from "../../components/livechat/LiveChat";
 
 function SupportRequest() {
-
   const [myRequests, setMyRequests] = useState([]);
   const [loading, setLoading] = useState(true);
   const { user } = useContext(AuthenticationContext);
 
-  const navigate = useNavigate();
-
-
-  useEffect(()=>{
-
-    if(user){
-        let controller = new AbortController();
-        (async () => {
-            const q = query(collection(db,"FirmRequests"));       
-            const jobgetting=onSnapshot(q,(snap)=>{
-            var jobs=[];
-            if(!snap.empty){
-                snap.forEach(doc=>{
-                    jobs.push({...doc.data(),id:doc.id})
-                    })
-                setMyRequests(jobs)
-                setLoading(false)
-            }                                      
-            })
-            return ()=>jobgetting()
-        })();
-          return () => {
-            controller?.abort();           
-        };
+  useEffect(() => {
+    if (user) {
+      let controller = new AbortController();
+      (async () => {
+        const q = query(collection(db, "FirmRequests"));
+        const jobgetting = onSnapshot(q, (snap) => {
+          var jobs = [];
+          if (!snap.empty) {
+            snap.forEach((doc) => {
+              jobs.push({ ...doc.data(), id: doc.id });
+            });
+            setMyRequests(jobs);
+            setLoading(false);
+          }
+        });
+        return () => jobgetting();
+      })();
+      return () => {
+        controller?.abort();
+      };
     }
-},[user]); 
+  }, [user]);
 
-  // const myRequests=[
-  //   {id:new Date().valueOf(),createdAt:new Date(),statue:0,lastResponse:"Faruk Yılmaz",subject:"Kazan",priority:0,file:"",summary:"Kazan takamadım",body:[{text:"Böle işverenlik olur mu hemşerim kimse cevap vermiyor",from:auth.currentUser.displayName,createdAt:new Date(),media:""}],},
-  //   {id:new Date().valueOf(),createdAt:new Date(),statue:0,lastResponse:"Faruk Yılmaz",subject:"Kazan",priority:0,file:"",summary:"Kazan takamadım",body:[{text:"Böle işverenlik olur mu hemşerim kimse cevap vermiyor",from:auth.currentUser.displayName,createdAt:new Date(),media:""}],},
-  //   {id:new Date().valueOf(),createdAt:new Date(),statue:0,lastResponse:"Faruk Yılmaz",subject:"Kazan",priority:0,file:"",summary:"Kazan takamadım",body:[{text:"Böle işverenlik olur mu hemşerim kimse cevap vermiyor",from:auth.currentUser.displayName,createdAt:new Date(),media:""}],},
-  // ]
   const statues = ["Cevap Bekliyor", "Cevaplandı", "Kapandı"];
-  const pathData = [
-    { text: "Panelim", to: "/", id: "01" },
-    { text: "Mesajlarım", to: "/mesajlarim", id: "02" },
-    { text: "Destek Taleplerim", to: "/mesajlarim/Destek-Talebi", id: "03" },
-  ];
+
+  // const pathData = [
+  //   { text: "Panelim", to: "/", id: "01" },
+  //   { text: "Mesajlarım", to: "/mesajlarim", id: "02" },
+  //   { text: "Destek Taleplerim", to: "/mesajlarim/Destek-Talebi", id: "03" },
+  // ];
 
   //myRequests.sort((a, b) => b.createdAt.seconds - a.createdAt.seconds);
 
-  if(loading){
-    return(
-      <CircularProgress/>
-    )
+  if (loading) {
+    return <CircularProgress />;
   }
 
   return (
@@ -83,92 +72,76 @@ function SupportRequest() {
       <div className="home">
         <Sidebar />
         <div className="supportContainer">
-                  <div className="homeContainer">
+          <div className="homeContainer">
             <PageNavbar />
-            {/* <Navbar /> */}
-          {/* <Navigation children={pathData} /> */}
-          <div className="messagesButtons">
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "leftButton active" : "leftButton"
-              }
-              to="/mesajlarim/Canli-Destek"
-            >
+            <div className="messagesButtons">
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "link active" : "link"
+                  isActive ? "leftButton active" : "leftButton"
                 }
                 to="/mesajlarim/Canli-Destek"
               >
-                <img src={LiveIcon} alt="" />
-                Canlı Destek
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "link active" : "link"
+                  }
+                  to="/mesajlarim/Canli-Destek"
+                >
+                  <img src={LiveIcon} alt="" />
+                  Canlı Destek
+                </NavLink>
               </NavLink>
-            </NavLink>
 
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "rightButton active" : "rightButton"
-              }
-              to="/mesajlarim/Destek-Talebi"
-            >
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "link2 active" : "link2"
+                  isActive ? "rightButton active" : "rightButton"
                 }
                 to="/mesajlarim/Destek-Talebi"
               >
-                <img src={HelpRequest} alt="" />
-                Destek Talebi
-              </NavLink>
-            </NavLink>
-          </div>
-
-          <div className="request-components">
-
-
-<div className="request-tabel">
-          <div className="request-header-bar">
-            <div className="left">
-              <img src={MessageIcon} alt="" />
-              <h4>Destek Talepleriniz</h4>
-            </div>
-            <div className="right">
-
-                <div className="right-text">Filtreler</div>
-                <div className="right-text">Tarihe Göre Sırala</div>
-                <div className="right-text">Dışarı Aktar</div>
-
-              {myRequests.length > 0 ? (
                 <NavLink
-                  className="add-button"
-                  to="/mesajlarim/Yeni-Destek-Talebi"
+                  className={({ isActive }) =>
+                    isActive ? "link2 active" : "link2"
+                  }
+                  to="/mesajlarim/Destek-Talebi"
                 >
-                  Yeni Talep Oluştur
+                  <img src={HelpRequest} alt="" />
+                  Destek Talebi
                 </NavLink>
-              ) : null}
+              </NavLink>
             </div>
-          </div>
-
-          <DestekTalepTablo data={myRequests} statues={statues} />
-       
-       </div>
-       
-
-       <div className="small-chatArea">
-            <div className="small-liveChat">
-              <LiveChat />
-            </div>
-          </div>
-       
-</div>
-
-        </div>
-
-
-        {/* <RightSideBar/> */}
+            <div className="request-components">
+              <div className="request-tabel">
+                <div className="request-header-bar">
+                  <div className="left">
+                    <img src={MessageIcon} alt="" />
+                    <h4>Destek Talepleriniz</h4>
+                  </div>
+                  <div className="right">
+                    <div className="right-text">Filtreler</div>
+                    <div className="right-text">Tarihe Göre Sırala</div>
+                    <div className="right-text">Dışarı Aktar</div>
+                    {myRequests.length > 0 ? (
+                      <NavLink
+                        className="add-button"
+                        to="/mesajlarim/Yeni-Destek-Talebi"
+                      >
+                        Yeni Talep Oluştur
+                      </NavLink>
+                    ) : null}
+                  </div>
                 </div>
+                <DestekTalepTablo data={myRequests} statues={statues} padding />
+              </div>
+              <div className="small-chatArea">
+                <div className="small-liveChat">
+                  <LiveChat />
+                </div>
+              </div>
+            </div>
+          </div>
 
-
+          {/* <RightSideBar/> */}
+        </div>
       </div>
     </>
   );

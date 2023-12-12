@@ -3,21 +3,21 @@
   font-size: 12px !important;
   height: 600px !important;
 
-
   &.livechat {
-   height: auto !important;
+    height: auto !important;
 
+    .MuiDataGrid-columnHeaders {
+      min-height: 0 !important;
+      height: 0;
+    }
 
-   .MuiDataGrid-columnHeaders {
-    min-height: 0 !important;
-    height: 0;
+    .MuiDataGrid-withBorderColor {
+      border: none;
+    }
 
-   }
-
-   
-.MuiDataGrid-withBorderColor {
-  border: none;
-}
+    .MuiDataGrid-virtualScroller {
+      height: 610px;
+    }
   }
 
   .datagridButton {
@@ -26,8 +26,4 @@
     cursor: pointer;
     color: #000;
   }
-
-
-
 }
-

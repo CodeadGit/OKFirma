@@ -104,7 +104,6 @@ const MyJobCenter = ({ job, products }) => {
     }
     return true; // All prices are defined
   }
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const allPricesDefined = checkPriceDefined(thisProducts, "price");
@@ -217,8 +216,8 @@ const MyJobCenter = ({ job, products }) => {
     <div className="one-job-center">
       <div className="one-job-center-top">
         <div className="one-job-center-top-left">
-          <h4>Detaylar</h4>
-          <Divider />
+          <h3>Detaylar</h3>
+          {/* <Divider /> */}
           <span>{job.summary}</span>
 
           {wishDetailArray.map((i, idx) => {
@@ -252,11 +251,14 @@ const MyJobCenter = ({ job, products }) => {
               </>
             );
           })}
-          <Divider />
+
+          {/* <Divider />
           <h4>Keşif Notları</h4>
-          <JobNotes job={job} />
+          <JobNotes job={job} /> */}
+        
         </div>
-        <div className="one-job-center-top-right">
+
+        {/* <div className="one-job-center-top-right">
           <div className="one-job-center-top-right-top">
             <h4>Talep</h4>
             <Divider />
@@ -271,12 +273,13 @@ const MyJobCenter = ({ job, products }) => {
               <span className="row-text">{job.mainWish}</span>
             </div>
           </div>
-        </div>
+        </div> */}
+
       </div>
 
-      
+
       <div className="one-job-center-bottom">
-        <h4>Parça Listesi</h4>
+        <h3>Parça Listesi</h3>
         <div className="this-products-table">
           <RelatedProducts handleChange={handleChange} data={thisProducts} />
           <MyJobBottom
@@ -288,22 +291,27 @@ const MyJobCenter = ({ job, products }) => {
           />
         </div>
       </div>
+
+
       <div className="one-job-center-bottom">
         {/* <h4>Keşif Notları (Müşteri Görmeyektir)</h4>
                 <JobNotes
 
                   job={job}
                 /> */}
-        <h4>Teklif Notları</h4>
+        <h3>Teklif Notları</h3>
         <div className="this-notes-table">
-          <OfferNotes
+          <OfferNotes 
             conditions={conditions}
             job={job}
             handleCondition={handleCondition}
             handleConditionBoolean={handleConditionBoolean}
-          />
+                
+        />
+        
         </div>
       </div>
+
       <MyJobBottom
         handleSubmit={handleSubmit}
         data={thisProducts}

@@ -15,6 +15,7 @@ import { SupportContext } from "../../../context/supportContext";
 import { supportStatues } from "../../data/statues";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import { Padding } from "@mui/icons-material";
 
 const columns = [
   {
@@ -84,7 +85,7 @@ const columns = [
   },
 ];
 
-function DestekTalepTablo({data}) {
+function DestekTalepTablo({data, padding}) {
   
   const { user } = useContext(AuthenticationContext);
   
@@ -94,8 +95,10 @@ function DestekTalepTablo({data}) {
     { text: "Destek Taleplerim", to: "/mesajlarim/Destek-Talebi", id: "03" },
   ];
 
+  const paddingLeft = padding ? "30px" : "0";
+
   return (
-    <Box sx={{ height: "auto", width: "100%" , marginTop:"1.25rem" }}>
+    <Box sx={{ height: "auto", width: "100%", paddingLeft }}>
       <DataGrid
         className="dataGridStyles"
         columns={columns}
