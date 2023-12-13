@@ -12,7 +12,7 @@ import { InputBase, Paper } from "@mui/material";
 
 const PageNavbar = () => {
 
-  const { userData, user } = useContext(AuthenticationContext);
+  const { logout,userData, user } = useContext(AuthenticationContext);
 
   return (
     <div className="firm-info">
@@ -66,8 +66,13 @@ const PageNavbar = () => {
           </div>
 
           <div className="top-right-exit">
+          <div onClick={logout} className="logout">
+          
             <img src={exit} />
           </div>
+        </div>
+
+
         </div>
       </div>
     </div>

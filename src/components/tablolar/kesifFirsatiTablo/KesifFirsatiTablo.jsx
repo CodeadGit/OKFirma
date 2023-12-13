@@ -135,6 +135,12 @@ function KesifFirsatiTablo({ data, kesiflerPage }) {
   ];
 
   const [rowsData, setRowsData] = useState(data);
+  const [filteredInterval, setFilteredInterval] = useState("");
+
+  const handleChange = (e) => {
+    const { value } = e.target;
+    setFilteredInterval(value);
+  };
 
   useEffect(() => {
     setRowsData(data);
@@ -184,7 +190,7 @@ function KesifFirsatiTablo({ data, kesiflerPage }) {
         }}
         autoHeight
         slots={{
-          toolbar: () => <CustomToolbar calculateFilterDays={calculateFilterDays} data={data} setallRowsData={setRowsData} values={values} />
+          toolbar: () => <CustomToolbar calculateFilterDays={calculateFilterDays} data={data} setallRowsData={setRowsData} values={values} handleChange={handleChange} filteredInterval={filteredInterval} />
         }}
       />
     </div>
