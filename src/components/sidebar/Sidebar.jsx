@@ -190,16 +190,19 @@ function Sidebar() {
             })}
           </ul>
         </div>
+
         {/* <div className="sidebarBottom">
           <Link to="/ayarlar" className="settings">
             <img src={Settings} className="icon" alt="" />
             Ayarlar
           </Link>
+
           <div onClick={logout} className="logout">
             <img src={Logout} className="icon" alt="" />
             <SubHeader>Çıkış</SubHeader>
           </div>
         </div> */}
+
         <div className="sidebarFooter">
           <MiniSubHeader>© Versiyon 1.1</MiniSubHeader>
         </div>
