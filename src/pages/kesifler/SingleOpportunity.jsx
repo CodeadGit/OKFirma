@@ -19,6 +19,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Brightness1Icon from "@mui/icons-material/Brightness1";
 import { ReactComponent as Dowland } from "./singleComponents/singleMyJobComponents/download.svg";
 import { ReactComponent as Print } from "./singleComponents/singleMyJobComponents/print.svg";
+import { statues } from "../../components/data/statues";
 
 const SingleOpportunity = () => {
   const { docRef } = useParams();
@@ -111,6 +112,8 @@ const SingleOpportunity = () => {
     return `${remainingHours} SAAT`;
   };
 
+  console.log(thisPage)
+
   if (thisPageLoading) {
     return (
       <>
@@ -142,8 +145,9 @@ const SingleOpportunity = () => {
           <div className="keşif-top-router">
             <div className="keşif-top-router-left">
               <ArrowBackIosIcon fontSize="small" color="action" />
-              <Brightness1Icon color="primary" />
-              <div>Teklif Yapıldı</div>
+              {/* <Brightness1Icon color="primary" /> */}
+              <div className={`status ${statues[thisPage.statue].class}`}></div>
+              <div>{`${statues[thisPage.statue].label}`}</div>
             </div>
 
             <div className="keşif-top-router-right">
