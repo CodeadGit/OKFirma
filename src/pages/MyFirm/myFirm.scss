@@ -1,12 +1,10 @@
 .editContainer {
   display: flex;
-  // gap: 1rem;
+  flex: 1;
 
   .formContainer {
     background-color: white;
-    // margin: 20px;
     padding: 20px;
-
     padding-left: 48px;
     padding-right: 48px;
     border-radius: 20px;
@@ -15,35 +13,36 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    // align-items: center;
-    justify-content: center;
+    // justify-content: center;
     width: 100%;
-    height: max-content;
-    //max-height: 50vh;
-    // padding: 50px 0px;
 
     .line {
       border-bottom: 0.5px solid #707070;
     }
 
     .inputContainer {
+      // border: 1px solid green;
       position: relative;
       width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
       @media screen and (max-width: 1600px) {
         width: 80%;
         transition: 300ms;
       }
+
       @media screen and (max-width: 1300px) {
         width: 90%;
-
         transition: 300ms;
       }
+
       .myfields {
         display: flex;
         gap: 5.5rem;
         align-items: flex-start;
-        // border: 1px solid red;
         margin-bottom: 2rem;
 
         .title {
@@ -67,6 +66,7 @@
             object-fit: cover;
             // border: 1px solid red;
           }
+
           input {
             height: 2rem;
             width: 6.5rem;
@@ -74,14 +74,14 @@
           }
 
 
-        
+
           .file-input {
             position: absolute;
             opacity: 0;
             cursor: pointer;
           }
-      
-       
+
+
           .custom-button {
             background-color: transparent;
             color: #898989;
@@ -92,10 +92,10 @@
             width: 106px;
           }
 
-          
+
         }
 
-        
+
 
         .top-right {
           width: 100%;
@@ -127,6 +127,7 @@
                 padding-left: .5rem;
                 // border: 1px solid red;
               }
+
               Label {
                 font-weight: 600;
                 color: #717477;
@@ -163,6 +164,7 @@
 
           // border: 1px solid red;
         }
+
         Label {
           font-weight: 600;
           color: #717477;
@@ -193,10 +195,11 @@
           cursor: pointer;
         }
       }
+
       form {
         display: flex;
+        flex: 1;
         flex-direction: column;
-        height: max-content;
         width: 100%;
         gap: 30px;
 
@@ -223,12 +226,14 @@
           //   // background-color: gainsboro;
           // }
         }
+
         textarea {
           height: 90px;
         }
 
         .row,
         .buttons {
+          // border: 1px solid blue;
           align-items: center;
           width: 100%;
           justify-content: flex-start;
@@ -243,6 +248,7 @@
             box-sizing: border-box;
             border: none;
             margin-top: 7rem;
+
             &.exit {
               background-color: var(--black);
               // border: 0.5px solid grey;
@@ -250,6 +256,7 @@
               cursor: pointer;
               color: white;
             }
+
             &.submit {
               background-color: #f9d641;
               // border: 0.5px solid grey;
@@ -259,7 +266,23 @@
             }
           }
         }
+
+        .buttons {
+          margin-top: auto;
+        }
       }
     }
+  }
+
+  .editpass {
+    background-color: white;
+    margin-left: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    // -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    // box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    width: 40%;
+    border-radius: 20px;
   }
 }
