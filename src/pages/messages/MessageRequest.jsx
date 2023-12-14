@@ -28,7 +28,7 @@ function MessageRequest({ message }) {
               <span>{auth.currentUser.displayName}</span>
             </div>
             <div className="right">
-              Tarih / Saat:{" "}
+            {" "}
               {new Date(message.createdAt.seconds * 1000).toLocaleString()}
             </div>
           </div>
@@ -48,10 +48,10 @@ function MessageRequest({ message }) {
           <div className="message-header admin">
             <div className="left">
               <img src={MiniLogo} alt="" />
-              <p>Online Keşif</p>
+              <span>Online Keşif</span>
             </div>
             <div className="right">
-              Tarih / Saat:{" "}
+              {" "}
               {new Date(message.createdAt.seconds * 1000).toLocaleString()}
             </div>
           </div>

@@ -7,6 +7,24 @@
   gap: 1rem;
   padding: 20px;
   box-sizing: border-box;
+  background-color: white;
+  border-radius: 28px;
+
+&-top{
+  justify-content: space-between;
+  // border: 1px solid red;
+  display:flex;
+  margin-left: 20px;
+}
+
+
+
+  hr{
+width: 90%; 
+display: flex;
+margin-left: 1.5rem;
+ 
+}
 
   .chat-top {
     background-color: white;
@@ -18,6 +36,7 @@
     display: flex;
     align-items: center;
     border-bottom: .5px solid #707070;
+    
 
     .chat-top-left {
       flex: 1;
@@ -67,8 +86,8 @@
     }
     .irequested {
       width: max-content;
-      background-color: #484848;
-      color: white;
+      background-color: #F0F0F6;
+      // color: white;
       min-width: 450px;
       max-width: 800px;
       padding: 0px;
@@ -81,6 +100,7 @@
       }
     }
     .theyAnswered {
+
       width: max-content;
       background-color: white;
       color: black;
@@ -90,6 +110,8 @@
       border-radius: 28px 28px 28px 0px;
       display: flex;
       flex-direction: column;
+      box-shadow: 1px 1px 2px 1px #707070;
+
       p {
         padding: 5px 15px 5px 25px;
         text-align: left;
@@ -108,10 +130,12 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
+        gap: 1rem;
         img {
           width: 60px;
           height: 60px;
           border-radius: 50%;
+          
         }
       }
       .right {
@@ -119,13 +143,15 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
+        margin-right: 1rem;
       }
       // &.admin {
       // }
     }
-    #divider {
-      margin: 5px 0px;
-    }
+    // #divider {
+    //   margin: 5px ;
+
+    // }
     .end-of-conv {
       width: 100%;
       display: flex;
