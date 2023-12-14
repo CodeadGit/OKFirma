@@ -5,7 +5,7 @@ import EditPassword from "../settings/EditPassword";
 function Edittwo() {
   return (
     <div className="editpass">
-      <EditPassword></EditPassword>
+      <EditPassword />
     </div>
   );
 }
