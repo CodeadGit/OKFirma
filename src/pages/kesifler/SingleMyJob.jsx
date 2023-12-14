@@ -18,6 +18,8 @@ import Top from "./singleComponents/Top";
 import Center from "./singleComponents/Center";
 import Bottom from "./singleComponents/Bottom";
 import "./singleComponents/individual.scss";
+import PageNavbar from "../../components/pageNavbar/PageNavbar";
+
 
 const SingleMyJobNew = () => {
   const { jobDoc } = useParams();
@@ -76,6 +78,19 @@ const SingleMyJobNew = () => {
     { text: "Keşifler", to: "/kesifler", id: "02" },
     { text: `${jobDoc}`, to: `/kesifler/${jobDoc}`, id: "03" },
   ];
+const calculateRemainingTime = (time) => {
+    const targetTime = time.seconds * 1000 + Math.floor(time.nanoseconds / 1e6);
+    const currentTime = new Date().getTime();
+    const remainingTime = targetTime - currentTime;
+    const remainingSeconds = Math.floor(remainingTime / 1000);
+    const remainingMinutes = Math.floor(remainingSeconds / 60);
+    const remainingHours = Math.floor(remainingMinutes / 60);
+
+    if (remainingHours < 0) return "Süre Bitti";
+    return `${remainingHours} SAAT`;
+  };
+
+
 
   if (thisPageLoading) {
     return (
@@ -98,12 +113,44 @@ const SingleMyJobNew = () => {
       <div className="home">
         <Sidebar />
         <div className="homeContainer">
-          <Navbar />
-          <div className="navigation">
-            <Navigation children={pathData} />
+          {/* <Navbar /> */}
+
+          <PageNavbar />
+
+          <div className="">
+
+
+          <div className="talep-info">
+            <h3>Keşif Talebi Bilgileri</h3>
+            <div className="titles">
+              <span>Teklif No</span>
+              <span>Ana Talep</span>
+              <span>Müşteri İsmi</span>
+              <span>Müşteri Telefon</span>
+              <span>Müşteri Adres</span>
+              <span>Keşif Talebi</span>
+              <span>Teklif Kalan Zaman</span>
+            </div>
+            <div className="infos">
+              <span>{thisPage.id}</span>
+              <span>{thisPage.mainWish}</span>
+              <span>{thisPage.name}</span>
+              <span>{thisPage.phone.substring(0, 4).concat("*******")}</span>
+              <span>{`${thisPage.city}/${thisPage.region}`}</span>
+              <span>
+                {new Date(thisPage.createdAt.seconds * 1000).toLocaleDateString(
+                  "tr-TR"
+                )}
+              </span>
+              <span>{calculateRemainingTime(thisPage.termin)}</span>
+            </div>
+          </div>
+
+
+            {/* <Navigation children={pathData} /> */}
           </div>
           <div className="one-job-container">
-            <Top job={thisPage} />
+            {/* <Top job={thisPage} /> */}
             <Center job={thisPage} products={thisProducts} />
             <Bottom job={thisPage} />
           </div>
