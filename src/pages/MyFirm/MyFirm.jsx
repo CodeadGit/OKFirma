@@ -19,7 +19,7 @@ function MyFirm() {
         <Sidebar />
         <div className="homeContainer">
         <PageNavbar />
-          <Navbar />
+          {/* <Navbar /> */}
           {/* <Navigation children={pathData} /> */}
 
           <div className="editContainer">
