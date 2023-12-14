@@ -44,11 +44,9 @@ function EditPassword() {
     return <Loading title="İşleniyor" />;
   }
   return (
-    // <div className="formContainer">
     <div className="inputContainer">
       <Header className="header">Şifremi Değiştir</Header>
       <div className="line-two"></div>
-
       <form className="pass" onSubmit={handleSubmit}>
         <label>Eski Şifreniz</label>
         <div className="inputver">
@@ -136,7 +134,7 @@ function EditPassword() {
         </div>
       </form>
     </div>
-    // </div>
+
   );
 }
 
