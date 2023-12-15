@@ -68,11 +68,19 @@ export default function PricedTable({job,data,handleChange}) {
         
       },
       {
+        field: "kdv",
+        headerName: "KDV",
+        flex: .5,
+        headerAlign: "center",
+        align: "center",
+      },
+  
+      {
         field: 'adet',
         headerName: 'Adet',
         flex: .5,
-        headerAlign:"left",
-        align:"left"
+        headerAlign:"center",
+        align:"center"
       },
       {
         field: 'id',

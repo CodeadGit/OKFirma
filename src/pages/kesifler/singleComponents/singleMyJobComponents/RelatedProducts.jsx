@@ -13,22 +13,23 @@ import { useApis } from "../../../../context/api.context";
 export default function RelatedProducts({ job, data, handleChange }) {
   console.log(data);
   const { doviz } = useApis();
+  let TLLocale = Intl.NumberFormat('tr-TR');
 
   const columns = [
     {
       field: "sira",
       headerName: "Sıra No",
       flex: 0.5,
-      headerAlign: "start",
-      align: "start",
+      headerAlign: "center",
+      align: "center",
     },
 
     {
       field: "id",
       headerName: "Parça Kodu",
       flex: 1,
-      headerAlign: "start",
-      align: "start",
+      headerAlign: "center",
+      align: "center",
     },
 
     {
@@ -42,8 +43,8 @@ export default function RelatedProducts({ job, data, handleChange }) {
       field: "adet",
       headerName: "Adet",
       flex: 0.3,
-      headerAlign: "start",
-      align: "start",
+      headerAlign: "center",
+      align: "center",
       sortable: false
     },
 
@@ -51,8 +52,8 @@ export default function RelatedProducts({ job, data, handleChange }) {
       field: "price",
       headerName: "Birim Fiyat (₺)",
       flex: 1.5,
-      headerAlign: "start",
-      align: "start",
+      headerAlign: "center",
+      align: "center",
       //editable: true,
 
       renderCell: (params) => {
@@ -85,17 +86,20 @@ export default function RelatedProducts({ job, data, handleChange }) {
     {
       field: "kdv",
       headerName: "KDV",
-      flex: 0.3,
-      headerAlign: "start",
-      align: "start",
+      flex: .6,
+      headerAlign: "center",
+      align: "center",
     },
 
     {
       field: "toplamfiyat",
       headerName: "TOPLAM FİYAT",
-      flex: 0.3,
-      headerAlign: "start",
-      align: "start",
+      flex: 0.6,
+      headerAlign: "center",
+      align: "center",
+      renderCell:(params)=>(
+        <span>{TLLocale.format(Number(params.row.price)*Number(params.row.adet))} {params.row.curr}</span>
+      )
     },
   ];
   return (
