@@ -7,6 +7,10 @@ import SupportChat from "./SupportChat";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase.config";
 import { CircularProgress } from "@mui/material";
+import PageNavbar from "../../components/pageNavbar/PageNavbar";
+import { NavLink, useNavigate } from "react-router-dom";
+import LiveIcon from "./svg/liveIcon.svg";
+import HelpRequest from "./svg/helpRequest.svg";
 
 function MyReaquestScreen() {
   const { talepId } = useParams();
@@ -48,7 +52,7 @@ function MyReaquestScreen() {
         <div className="home">
           <Sidebar />
           <div className="homeContainer">
-            <Navbar />
+            <Navbar/>
             <div className="navigation">
               <Navigation children={pathData} />
             </div>
@@ -63,8 +67,56 @@ function MyReaquestScreen() {
     <div className="home">
       <Sidebar />
       <div className="homeContainer">
-        <Navbar />
-        <Navigation children={pathData} />
+        {/* <Navbar /> */}
+        <PageNavbar />
+
+
+
+
+
+        <div className="messagesButtons">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "leftButton active" : "leftButton"
+              }
+              to="/mesajlarim/Canli-Destek"
+            >
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "link active" : "link"
+                }
+                to="/mesajlarim/Canli-Destek"
+              >
+                <img src={LiveIcon} alt="" />
+                Canlı Destek
+              </NavLink>
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "rightButton active" : "rightButton"
+              }
+              to="/mesajlarim/Destek-Talebi"
+            >
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "link2 active" : "link2"
+                }
+                to="/mesajlarim/Destek-Talebi"
+              >
+                <img src={HelpRequest} alt="" />
+                Destek Talebi
+              </NavLink>
+            </NavLink>
+          </div>
+
+
+
+
+
+
+
+
+        {/* <Navigation children={pathData} /> */}
         <div className="wrapper">
           <SupportChat item={thisPage} />
         </div>

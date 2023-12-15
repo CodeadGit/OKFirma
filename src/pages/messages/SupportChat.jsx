@@ -6,6 +6,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import Attach from "../../components/livechat/svg/attachment.svg";
 import MessageRequest from "./MessageRequest";
 import { useNavigate } from "react-router-dom";
+import { Divider } from "@mui/material";
+import Logokesif from "./svg/logokesif.svg"
 
 function SupportChat({ item }) {
 
@@ -42,7 +44,16 @@ function SupportChat({ item }) {
   
   return (
     <div className="chatcontainer">
+                  
+             <div className="chatcontainer-top">
+              <img src={Logokesif}></img>
+                <div></div>
+              </div>     
+              <Divider/>
+
+
       <div className="chat-center messages">
+        
         {item.content.length
           ? item.content.map((i, index) => {
               return (
