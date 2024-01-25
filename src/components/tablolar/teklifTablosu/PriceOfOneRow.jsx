@@ -26,7 +26,7 @@ const PriceOfOneRow = ({job}) => {
                 const initialValue = 0;
                 const sumWithInitial = totalProducts.reduce(
                     (accumulator, currentValue) => accumulator + 
-                (Number(currentValue.price)*Number(currentValue.adet)*Number(doviz[currentValue?.curr].satis)),
+                (Number(currentValue.price)*Number(currentValue.adet)*Number(doviz[currentValue?.curr]?.satis)),
                 initialValue
                 );
                 setThisInfo(sumWithInitial)
@@ -37,8 +37,8 @@ const PriceOfOneRow = ({job}) => {
             
               return () => controller?.abort();
         
-        
-    
+
+              
     },[])
 
  

@@ -22,7 +22,7 @@ export default function PricedTable({job,data,handleChange}) {
         const initialValue = 0;
               const sumWithInitial = data.reduce(
                   (accumulator, currentValue) => accumulator + 
-              (Number(currentValue.price)*Number(currentValue.adet)*Number(doviz[currentValue?.curr].satis)),
+              (Number(currentValue.price)*Number(currentValue.adet)*Number(doviz[currentValue?.curr]?.satis)),
               initialValue
               );
               setThistotal(sumWithInitial)
@@ -110,6 +110,7 @@ export default function PricedTable({job,data,handleChange}) {
             },
           },
         }}
+        getRowId={(row) => row}
         pageSizeOptions={[25,50,75]}
         localeText={LocaleText}
         autoHeight
@@ -121,8 +122,10 @@ export default function PricedTable({job,data,handleChange}) {
           }
         onCellEditStop={(params, event) => {
            handleChange(params.row.index,event)
+           
+           
           }}
-        
+  
       />
       <div className="totalAmount">
         <span className='amount-title'>
