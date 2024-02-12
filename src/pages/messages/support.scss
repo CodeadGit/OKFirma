@@ -20,6 +20,9 @@
   .request-components{
     display: flex;
     gap: 1rem;
+    @media screen and (max-width:1000px) {
+      display: block;
+    }
 
   .request-tabel{
     // border: 1px solid red;
@@ -27,6 +30,9 @@
     border-radius: 28px;
     width: 73%;
     height: auto;
+    @media screen and (max-width:1000px) {
+width: 100%;   
+ }
 
   .request-header-bar {
     // border: 2px solid red;
@@ -88,6 +94,11 @@
   flex: 1;
   gap: 1rem;
   // justify-content: space-between;
+  @media screen and (max-width:1000px) {
+    width: 100%;   
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+     }
   
 
 .small-liveChat{

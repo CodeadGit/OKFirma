@@ -7,6 +7,7 @@ import Empty from "../home/svg/empty.svg";
 import TeklifTablosu from "../../components/tablolar/teklifTablosu/TeklifTablosu";
 // import Navigation from "../../components/boxes/Navigation";
 import PageNavbar from "../../components/pageNavbar/PageNavbar";
+import SidebarBottom from "../../components/sidebar/SidebarBottom";
 
 function Kesiflerim({ data }) {
 
@@ -23,6 +24,8 @@ function Kesiflerim({ data }) {
     <>
       <div className="home">
         <Sidebar />
+        <SidebarBottom></SidebarBottom>
+
         <div className={`homeContainer ${kesiflerimPage ? "kesiflerim" : ""}`}>
           {/* <Navbar />     
           <Navigation children={pathData} /> */}

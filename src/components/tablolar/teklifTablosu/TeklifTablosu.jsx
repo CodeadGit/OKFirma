@@ -63,6 +63,7 @@ function TeklifTablosu({ data, kesiflerimPage }) {
       disableColumnMenu: true,
       flex: 1,
     },
+    
     {
       field: "fiyat",
       headerName: "Fiyat",

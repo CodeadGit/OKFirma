@@ -64,8 +64,8 @@ function KesifFirsatiTablo({ data, kesiflerPage }) {
       disableColumnMenu: true,
       renderCell: (props) => {
         return (
-          <div className={`statue ${statues[props.row.statue].class}`}>
-            <div className={`${statues[props.row.statue].class}`}></div>
+          <div className={`statue ${statues[props.row.statue]?.class}`}>
+            <div className={`${statues[props.row.statue]?.class}`}></div>
             <p>{statues[props.row.statue].label}</p>
           </div>
         );

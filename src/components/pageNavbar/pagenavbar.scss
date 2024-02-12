@@ -12,6 +12,12 @@
       border-radius: 100px;
       object-fit: cover;
       margin-right: 1rem;
+      @media screen and (max-width:600px) {
+        height: 2rem;
+        width: 2rem;
+        margin-right: .2rem;
+
+           }
     }
 
     .top {
@@ -19,12 +25,18 @@
       height: 8rem;
       display: flex;
       justify-content: space-between;
+      
 
       .top-profile {
         display: flex;
         align-items: center;
         // border: 1px solid red;
         // margin-top: 3rem;
+        @media screen and (max-width:600px) {
+        
+          font-size: 12px;
+
+             }
       }
 
       .top-right {
@@ -40,15 +52,30 @@
           align-items: center;
           justify-content: center;
           display: flex;
+          // @media screen and (max-width:600px) {
+          //   height: 3rem;
+          //   width: 3rem;     
+          //   border-radius: .5rem;
+
+          //      }
 
           img {
             cursor: pointer;
+            // @media screen and (max-width:600px) {
+            //   height: 1rem;
+            //   width: 1rem;     s
+            //      }
           }
         }
 
         .top-right-input {
           height: 3rem;
           width: 18rem;
+          @media screen and (max-width:600px) {
+            width: 4rem;
+            
+
+          }
         }
 
         .top-right-exit {

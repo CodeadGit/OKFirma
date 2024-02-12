@@ -7,6 +7,7 @@ import LiveIcon from "./svg/liveIcon.svg";
 import HelpRequest from "./svg/helpRequest.svg";
 import "./messages.scss";
 import PageNavbar from "../../components/pageNavbar/PageNavbar";
+import SidebarBottom from "../../components/sidebar/SidebarBottom";
 
 function Messages() {
 
@@ -19,11 +20,13 @@ function Messages() {
     <>
       <div className="home">
         <Sidebar />
+        <SidebarBottom></SidebarBottom>
         <div className="homeContainer">
           <PageNavbar />
           <Navbar />
           {/* <Navigation children={pathData} /> */}
           <div className="messagesArea">
+            
             <div className="left innerArea">
               <NavLink to="/mesajlarim/Canli-Destek">
                 <img src={LiveIcon} alt="" />

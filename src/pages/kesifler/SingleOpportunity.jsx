@@ -20,6 +20,7 @@ import Brightness1Icon from "@mui/icons-material/Brightness1";
 import { ReactComponent as Dowland } from "./singleComponents/singleMyJobComponents/download.svg";
 import { ReactComponent as Print } from "./singleComponents/singleMyJobComponents/print.svg";
 import { statues } from "../../components/data/statues";
+import Link from "@mui/material";
 
 const SingleOpportunity = () => {
   const { docRef } = useParams();
@@ -29,6 +30,8 @@ const SingleOpportunity = () => {
   const [thisProductsLoading, setThisProductsLoading] = useState(false);
   const [thisPageChanged, setThisPagechanged] = useState(false);
 
+
+  
   useEffect(() => {
     var document = docRef;
     let controller = new AbortController();
@@ -94,6 +97,22 @@ const SingleOpportunity = () => {
 
   // },[thisPage,docRef,thisPageLoading])
 
+  const onButtonClick = () => {
+     
+    fetch("SamplePDF.pdf").then((response) => {
+        response.blob().then((blob) => {
+         
+            const fileURL =
+                window.URL.createObjectURL(blob);
+                 
+            let alink = document.createElement("a");
+            alink.href = fileURL;
+            alink.download = "Keşif.pdf";
+            alink.click();
+        });
+    });
+};
+
   const pathData = [
     { text: "Panelim", to: "/", id: "01" },
     { text: "Keşifler", to: "/kesifler", id: "02" },
@@ -113,6 +132,10 @@ const SingleOpportunity = () => {
   };
 
   console.log(thisPage)
+
+  function handlePrint() {
+    window.print()
+}
 
   if (thisPageLoading) {
     return (
@@ -144,25 +167,26 @@ const SingleOpportunity = () => {
 
           <div className="keşif-top-router">
             <div className="keşif-top-router-left">
-              <ArrowBackIosIcon fontSize="small" color="action" />
+             <a href="/kesifler"><ArrowBackIosIcon fontSize="small" color="action"/></a>
               {/* <Brightness1Icon color="primary" /> */}
               <div className={`status ${statues[thisPage.statue].class}`}></div>
               <div>{`${statues[thisPage.statue].label}`}</div>
             </div>
 
             <div className="keşif-top-router-right">
-              <button className="keşif-top-router-right-text">
+              {/* <button className="keşif-top-router-right-text">
                 Teklifi İptal Et
-              </button>
-              <button className="keşif-top-router-right-button">
+              </button> */}
+              <button className="keşif-top-router-right-button" onClick={handlePrint}>
                 <Print /> Çıktı Al
               </button>
-              <button className="keşif-top-router-right-button">
+
+              <button className="keşif-top-router-right-button" onClick={onButtonClick}>
                 <Dowland /> PDF İndir
               </button>
-              <button className="keşif-top-router-right-buttontwo">
+              {/* <button className="keşif-top-router-right-buttontwo">
                 Güncelle
-              </button>
+              </button> */}
             </div>
           </div>
 

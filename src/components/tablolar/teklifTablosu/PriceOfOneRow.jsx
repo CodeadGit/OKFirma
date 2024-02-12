@@ -14,22 +14,36 @@ const PriceOfOneRow = ({job}) => {
     useEffect(()=>{
             let controller = new AbortController();
             (async () => {
+                
                 const q = query(collection(db,"Jobs",docRef,"RelatedProducts"))
     
                 const querySnapshot = await getDocs(q);
-                const fetchedProducts = querySnapshot.docs.map((doc) => doc.data().id)
+                const fetchedProducts = !querySnapshot.empty?querySnapshot.docs.map((doc) => doc.data().id):[]
                 //setThisProducts(fetchedProducts)
                 const q2 = query(doc(db,"Jobs",docRef,"Offers",auth.currentUser.uid))
     
                 const querySnapshot2 = await getDoc(q2);
-                var totalProducts=fetchedProducts.map(i=>({...querySnapshot2.data()[i]}));
+                var totalProducts= querySnapshot2.exists()?fetchedProducts.map(i=>({...querySnapshot2.data()[i]})):[]
                 const initialValue = 0;
-                const sumWithInitial = totalProducts.reduce(
-                    (accumulator, currentValue) => accumulator + 
-                (Number(currentValue.price)*Number(currentValue.adet)*Number(doviz[currentValue?.curr]?.satis)),
-                initialValue
-                );
-                setThisInfo(sumWithInitial)
+                if(doviz){
+                    
+                
+                    const sumWithInitial = totalProducts.reduce(
+                        (accumulator, currentValue) => accumulator + 
+                    (Number(currentValue.price)*Number(currentValue.adet)*Number(doviz[currentValue?.curr]?.satis)),
+                    initialValue
+                    );
+                    setThisInfo(sumWithInitial)    
+                }else{
+                    const sumWithInitial = totalProducts.reduce(
+                        (accumulator, currentValue) => accumulator + 
+                    (Number(currentValue?.price)*Number(currentValue?.adet)),
+                    initialValue
+                    );
+
+                    setThisInfo(sumWithInitial)
+                }
+                
     
                 
 
@@ -39,13 +53,13 @@ const PriceOfOneRow = ({job}) => {
         
 
               
-    },[])
+    },[doviz,docRef])
 
  
 let TLLocale = Intl.NumberFormat('tr-TR');
 return (
     <div>
-        {TLLocale.format(thisInfo)} ₺
+        {isNaN(thisInfo)?"-":TLLocale.format(thisInfo)} ₺
 
     </div>
   )

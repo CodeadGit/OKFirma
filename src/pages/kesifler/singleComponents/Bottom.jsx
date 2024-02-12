@@ -49,14 +49,14 @@ const {deleteFirmFromJob,updatingJob}=useContext(CloudContext)
               const q = query(collection(db,"Jobs",docRef,"RelatedProducts"))
   
               const querySnapshot = await getDocs(q);
-              const fetchedProducts = querySnapshot.docs.map((doc) => doc.data().id)
+              const fetchedProducts = !querySnapshot.empty? querySnapshot.docs.map((doc) => doc.data().id):[]
               //setThisProducts(fetchedProducts)
               const q2 = query(doc(db,"Jobs",docRef,"Offers",auth.currentUser.uid))
   
               const querySnapshot2 = await getDoc(q2);
-              var totalProducts=fetchedProducts.map(i=>({...querySnapshot2.data()[i]}));
+              var totalProducts=querySnapshot2.exists()? fetchedProducts?.map(i=>({...querySnapshot2?.data()[i]})):[]
               const initialValue = 0;
-              const sumWithInitial = totalProducts.reduce(
+              const sumWithInitial = totalProducts?.reduce(
                   (accumulator, currentValue) => accumulator + 
               (Number(currentValue.price)*Number(currentValue.adet)*Number(doviz[currentValue?.curr]?.satis)),
               initialValue
@@ -345,7 +345,7 @@ if(loading){
           offerButtons.map((i,idx)=>{
             return(
               <>
-              {thisOffer.active===i.active
+              {thisOffer&&thisOffer?.active===i?.active
               &&thisOffer.notRefused&&
               <Button
                 disabled={updating?true:false}
@@ -367,7 +367,7 @@ if(loading){
           })
         }
             <Tooltip
-              title={`teklifinizi ${job.id} no.lu işin teklif listesinden kaldırır ve teklifinizi diğer klasöre alır.`}
+              title={`teklifinizi ${job?.id||""} no.lu işin teklif listesinden kaldırır ve teklifinizi diğer klasöre alır.`}
             >
               <Button
                 className={`button delete`}

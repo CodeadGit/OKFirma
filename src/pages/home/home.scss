@@ -23,6 +23,11 @@
     overflow-x: hidden;
     gap:1rem;
     height: auto;
+    @media screen and (max-width:600px) {
+      padding-inline: 1rem;
+
+    }
+   
 
     &.kesiflerim {
       justify-content: flex-start;
@@ -43,4 +48,17 @@
       border-radius: 10px;
     }
   }
+
+.contentArea{
+  @media screen and (max-width:1000px) {
+margin-top: 20rem;
+  }
+
+  @media screen and (max-width:500px) {
+    margin-top: 10rem;
+      }
+}
+
+
+
 }

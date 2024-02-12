@@ -11,6 +11,7 @@ import PageNavbar from "../../components/pageNavbar/PageNavbar";
 import { NavLink, useNavigate } from "react-router-dom";
 import LiveIcon from "./svg/liveIcon.svg";
 import HelpRequest from "./svg/helpRequest.svg";
+import SidebarBottom from "../../components/sidebar/SidebarBottom";
 
 function MyReaquestScreen() {
   const { talepId } = useParams();
@@ -51,6 +52,8 @@ function MyReaquestScreen() {
       <>
         <div className="home">
           <Sidebar />
+          <SidebarBottom></SidebarBottom>
+
           <div className="homeContainer">
             <Navbar/>
             <div className="navigation">

@@ -6,6 +6,7 @@ import EditForm from "./EditForm";
 import "./myFirm.scss";
 import Edittwo from "./Edittwo";
 import PageNavbar from "../../components/pageNavbar/PageNavbar";
+import SidebarBottom from "../../components/sidebar/SidebarBottom";
 
 function MyFirm() {
   const pathData = [
@@ -17,6 +18,7 @@ function MyFirm() {
     <>
       <div className="home">
         <Sidebar />
+        <SidebarBottom></SidebarBottom>
         <div className="homeContainer">
         <PageNavbar />
           {/* <Navbar /> */}

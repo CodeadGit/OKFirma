@@ -19,7 +19,10 @@ import Center from "./singleComponents/Center";
 import Bottom from "./singleComponents/Bottom";
 import "./singleComponents/individual.scss";
 import PageNavbar from "../../components/pageNavbar/PageNavbar";
-
+import { statues } from "../../components/data/statues";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import { ReactComponent as Dowland } from "./singleComponents/singleMyJobComponents/download.svg";
+import { ReactComponent as Print } from "./singleComponents/singleMyJobComponents/print.svg";
 
 const SingleMyJobNew = () => {
   const { jobDoc } = useParams();
@@ -39,8 +42,11 @@ const SingleMyJobNew = () => {
         const response = await getDoc(docreferance, {
           signal: controller.signal,
         });
-        const getData = response.data();
-        setThisPage(getData);
+        if(response.exists()){
+          const getData = response.data();
+          setThisPage(getData);
+          
+        }
         setThisPageLoading(false);
         controller = null;
       } catch (e) {
@@ -48,6 +54,7 @@ const SingleMyJobNew = () => {
         alert("bir hata meydana geldi");
         console.log(e.message);
       }
+      
     })();
     return () => controller?.abort();
   }, [jobDoc, thisPageChanged]);
@@ -58,14 +65,14 @@ const SingleMyJobNew = () => {
       const q = query(collection(db, "Jobs", jobDoc, "RelatedProducts"));
 
       const querySnapshot = await getDocs(q);
-      const fetchedProducts = querySnapshot.docs.map((doc) => doc.data().id);
+      const fetchedProducts = !querySnapshot.empty?querySnapshot.docs?.map((doc) => doc.data().id):[]
       //setThisProducts(fetchedProducts)
       const q2 = query(doc(db, "Jobs", jobDoc, "Offers", auth.currentUser.uid));
 
       const querySnapshot2 = await getDoc(q2);
-      var totalProducts = fetchedProducts.map((i, idx) => ({
+      var totalProducts = querySnapshot2.exists()?fetchedProducts?.map((i, idx) => ({
         ...querySnapshot2.data()[i],
-      }));
+      })):[]
       console.log("ups", totalProducts);
       setThisProducts(totalProducts);
     })();
@@ -89,6 +96,25 @@ const calculateRemainingTime = (time) => {
     if (remainingHours < 0) return "Süre Bitti";
     return `${remainingHours} SAAT`;
   };
+  function handlePrint() {
+    window.print()
+}
+
+const onButtonClick = () => {
+     
+  fetch("SamplePDF.pdf").then((response) => {
+      response.blob().then((blob) => {
+       
+          const fileURL =
+              window.URL.createObjectURL(blob);
+               
+          let alink = document.createElement("a");
+          alink.href = fileURL;
+          alink.download = "Keşif.pdf";
+          alink.click();
+      });
+  });
+};
 
 
 
@@ -114,12 +140,36 @@ const calculateRemainingTime = (time) => {
         <Sidebar />
         <div className="homeContainer">
           {/* <Navbar /> */}
-
           <PageNavbar />
 
+
+
+          <div className="keşif-top-router">
+            <div className="keşif-top-router-left">
+             <a href="/kesifler"><ArrowBackIosIcon fontSize="small" color="action"/></a>
+              {/* <Brightness1Icon color="primary" /> */}
+              <div className={`status ${statues[thisPage.statue].class}`}></div>
+              <div>{`${statues[thisPage.statue].label}`}</div>
+            </div>
+
+            <div className="keşif-top-router-right">
+              {/* <button className="keşif-top-router-right-text">
+                Teklifi İptal Et
+              </button> */}
+              <button className="keşif-top-router-right-button" onClick={handlePrint}>
+                <Print /> Çıktı Al
+              </button>
+              <button className="keşif-top-router-right-button" onClick={onButtonClick}>
+                <Dowland /> PDF İndir
+              </button>
+              {/* <button className="keşif-top-router-right-buttontwo">
+                Güncelle
+              </button> */}
+            </div>
+          </div>
+
+
           <div className="">
-
-
           <div className="talep-info">
             <h3>Keşif Talebi Bilgileri</h3>
             <div className="titles">

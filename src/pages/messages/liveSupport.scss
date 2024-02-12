@@ -2,6 +2,7 @@
   // border: 1px solid red;
   display: flex;
   gap: 1rem;
+ 
 
   .leftButton,
   .rightButton {
@@ -29,10 +30,15 @@
       align-items: center;
       display: flex;
       gap: 1rem;
+      @media screen and (max-width: 500px) {
+        font-size: 20px;
+        padding-left: 1rem;
+      }
 
       &.active {
         background-color: #f9d640;
         color: white;
+        border-radius: 20px;
         img {
           // background-color: white;
           filter: invert(0%) sepia(100%) saturate(1%) hue-rotate(61deg)
@@ -51,10 +57,15 @@
       align-items: center;
       display: flex;
       gap: 1rem;
+      @media screen and (max-width: 500px) {
+        font-size: 20px;
+        padding-left: 1rem;
+      }
 
       &.active {
         background-color: #f9d640;
         color: white;
+        border-radius: 20px;
 
         img {
           filter: invert(0%) sepia(100%) saturate(1%) hue-rotate(61deg)
@@ -76,7 +87,9 @@
   flex: 1;
   gap: 1rem;
   // justify-content: space-between;
-
+  @media screen and (max-width:1070px) {
+    display: block;
+  }
   .liveChat {
     // width: 70%;
     flex: 28;
@@ -96,6 +109,9 @@
     -webkit-box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
     -moz-box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
     box-shadow: 0px 0px 5px 0px rgba(213, 213, 213, 1);
+    @media screen and (max-width:1070px) {
+     margin-top: 1rem;
+    }
 
     .innerChatStatus {
       padding: 1rem;

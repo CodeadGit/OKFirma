@@ -10,6 +10,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import LiveIcon from "./svg/liveIcon.svg";
 import HelpRequest from "./svg/helpRequest.svg";
 import Mesajlar from "../../components/sidebar/svg/messages.svg";
+import SidebarBottom from "../../components/sidebar/SidebarBottom";
 
 function LiveSupport() {
   const pathData = [
@@ -24,6 +25,8 @@ function LiveSupport() {
     <>
       <div className="home">
         <Sidebar />
+        <SidebarBottom></SidebarBottom>
+
         <div className="homeContainer">
           {/* <Navbar /> */}
           {/* <Navigation children={pathData} /> */}

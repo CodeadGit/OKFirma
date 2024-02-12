@@ -24,6 +24,7 @@ import LiveIcon from "./svg/liveIcon.svg";
 import HelpRequest from "./svg/helpRequest.svg";
 import LiveChatTablo from "../../components/tablolar/liveChatTablo/LiveChatTablo";
 import LiveChat from "../../components/livechat/LiveChat";
+import SidebarBottom from "../../components/sidebar/SidebarBottom";
 
 function SupportRequest() {
   const [myRequests, setMyRequests] = useState([]);
@@ -71,6 +72,7 @@ function SupportRequest() {
     <>
       <div className="home">
         <Sidebar />
+        <SidebarBottom></SidebarBottom>
         <div className="supportContainer">
           <div className="homeContainer">
             <PageNavbar />

@@ -9,8 +9,10 @@ import { AuthenticationContext } from "../../context/authentication.context";
 import Empty from "./svg/empty.svg";
 import { Navigate, NavLink } from "react-router-dom";  
 import PageNavbar from "../../components/pageNavbar/PageNavbar";
+import { Margin } from "@mui/icons-material";
 // import { addDoc, collection } from "firebase/firestore";
 // import { auth, db } from "../../firebase/firebase.config";
+import SidebarBottom from "../../components/sidebar/SidebarBottom";
 
 function Home({ setLoading }) {
   const { myJobsData } = useContext(CloudContext);
@@ -52,14 +54,18 @@ function Home({ setLoading }) {
 
   return (
     <div className="home">
+     <SidebarBottom></SidebarBottom>
+
       <Sidebar setLoading={setLoading} />
       <div className="homeContainer">
+
         <PageNavbar />
         <Navbar />
         {/* <Button onClick={sendNotification}>
             bildirim gönder
           </Button> */}
         {/* <Navigation children={pathData} /> */}
+       
         <div className="contentArea">
           {myJobsData?.length > 0 ? (
             <TeklifTablosu data={myJobsData} />

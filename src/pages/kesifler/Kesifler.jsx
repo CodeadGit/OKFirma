@@ -6,6 +6,7 @@ import "./kesifler.scss";
 import KesifFirsatiTablo from "../../components/tablolar/kesifFirsatiTablo/KesifFirsatiTablo.jsx";
 import PageNavbar from "../../components/pageNavbar/PageNavbar.js";
 import { useLocation } from "react-router-dom";
+import SidebarBottom from "../../components/sidebar/SidebarBottom";
 
 function Kesifler({ data }) {
 
@@ -22,6 +23,7 @@ function Kesifler({ data }) {
     <>
       <div className="home">
         <Sidebar />
+        <SidebarBottom></SidebarBottom>
         <div className={`homeContainer ${kesiflerPage ? "kesiflerim" : ""}`}>
           {/* <Navbar /> */}
           {/* <Navigation children={pathData} /> */}
