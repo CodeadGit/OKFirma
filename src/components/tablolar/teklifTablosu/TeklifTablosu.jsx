@@ -248,7 +248,7 @@ export function CustomToolbar({calculateFilterDays, data, setallRowsData, filter
           <div className="color"></div>
           <div className="color"></div>
         </div>
-        <select style={{outline:"none", cursor:"pointer"}} value={filteredInterval} onChange={(e) => {
+        <select style={{outline:"none", cursor:"pointer",border:"none"}} value={filteredInterval} onChange={(e) => {
           handleChange(e);
           calculateFilterDays(data, e.target.value, setallRowsData);
         }}>

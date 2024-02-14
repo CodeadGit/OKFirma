@@ -172,6 +172,7 @@ const onButtonClick = () => {
           <div className="">
           <div className="talep-info">
             <h3>Keşif Talebi Bilgileri</h3>
+
             <div className="titles">
               <span>Teklif No</span>
               <span>Ana Talep</span>

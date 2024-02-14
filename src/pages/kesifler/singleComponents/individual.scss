@@ -88,6 +88,9 @@
   padding: 3rem;
   border-radius: 16px;
   color: #535353;
+  @media screen and (max-width:1000px) {
+padding: 1rem;
+}
 
   .titles,
   .infos {
@@ -95,10 +98,13 @@
     display: flex;
     margin-top: 0.5rem;
     color: #535353;
+    @media screen and (max-width:900px) {
+      font-size: 12px;
+ }
 
     span {
       flex: 1;
-      text-align: center;
+      text-align: center;s
 
       &:first-child {
         text-align: left;

@@ -51,12 +51,16 @@
 
 .contentArea{
   @media screen and (max-width:1000px) {
-margin-top: 20rem;
+margin-top: 15rem;
   }
 
   @media screen and (max-width:500px) {
     margin-top: 10rem;
       }
+
+      @media screen and (max-width:430px) {
+        margin-top: 2rem;
+          }
 }
 
 

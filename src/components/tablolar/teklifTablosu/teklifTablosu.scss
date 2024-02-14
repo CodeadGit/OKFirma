@@ -25,10 +25,20 @@
     justify-content: flex-end;
     flex: 1;
     gap: 2.25rem;
+    @media screen and (max-width:1000px) {
+      gap: 1rem;
+
+    }
 
     .colors {
       display: flex;
       gap: 2.75rem;
+      @media screen and (max-width:1100px) {
+        gap: 1.2rem;
+      }
+      @media screen and (max-width:900px) {
+display: none;
+      }
 
       .color {
         width: 1rem;
@@ -54,8 +64,29 @@
         &:nth-child(5) {
           background-color: #cbcbcb;
         }
+
+        // @media screen and (max-width:) {
+          
+        // }
+
       }
     }
+
+    .css-1h48w69-MuiButtonBase-root-MuiButton-root{
+                    color: black;
+                    font-size: 10px;
+
+    }
+    .css-kuwtqt{
+      color: black;
+      font-size: 10px;
+}
+.css-kuwtqt-MuiButtonBase-root-MuiButton-root{
+  color: black;
+  font-size: 10px;
+
+}
+
   }
 
   button {
@@ -141,6 +172,9 @@
       color: var(--black);
       text-transform: capitalize;
       // border: 1px solid red;
+      @media screen and (max-width:500px) {
+        font-size: 14px;
+      }
     }
 
     .new {
@@ -233,6 +267,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   width: auto;
 }
 
+
 .MuiDataGrid-filterForm {
   background-color: #fff;
   position: absolute;
@@ -241,10 +276,32 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   top: -70px;
 }
 
+
+
+
 .css-fd5b8u-MuiDataGrid-root .MuiDataGrid-cell {
   box-sizing: content-box !important; 
   font-size: 14px;
 }
+
+//
+.css-1mxdmse-MuiDataGrid-root .MuiDataGrid-cell {
+  box-sizing: content-box !important; 
+  font-size: 14px;
+  
+
+}
+//
+.css-1mxdmse .MuiDataGrid-columnHeader, .css-1mxdmse .MuiDataGrid-cell {
+  -webkit-tap-highlight-color: transparent;
+  padding: 0px 10px;
+  box-sizing: content-box !important; 
+  @media screen and (max-width:600px) {
+    min-width: 80px !important;
+
+}
+}
+
 
 .css-fd5b8u-MuiDataGrid-root .MuiDataGrid-withBorderColor {
   @media screen and (max-width:600px) {
@@ -253,6 +310,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 }
 
+//
+.css-1mxdmse-MuiDataGrid-root .MuiDataGrid-withBorderColor {
+  @media screen and (max-width:600px) {
+    min-width: 80px !important;
+
+}
+}
+
+
 
 .css-fd5b8u-MuiDataGrid-root .MuiDataGrid-columnHeader{
 
@@ -260,9 +326,28 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 
+//
+.css-1mxdmse-MuiDataGrid-root .MuiDataGrid-columnHeader{
 
+  box-sizing: content-box !important;
+}
+//
+.css-1mxdmse .MuiDataGrid-columnHeader, .css-1mxdmse .MuiDataGrid-cell {
+  @media screen and (max-width:600px) {
+-webkit-tap-highlight-color: transparent;
+  padding: 0px 10px;
+  box-sizing: content-box !important;
+  min-width: 80px !important;
+}
+}
+//
+.css-1mxdmse-MuiDataGrid-root .MuiDataGrid-withBorderColor {
+  @media screen and (max-width: 600px){
 
+      min-width: 80px !important;
 
+  }
+}
 
 
 
@@ -277,10 +362,31 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   box-sizing: content-box !important;
 }
 
+//
+.css-1si6n65-MuiDataGrid-root .MuiDataGrid-columnHeader, .css-1si6n65-MuiDataGrid-root .MuiDataGrid-cell{
+
+  box-sizing: content-box !important;
+}
+//
+.css-1si6n65 .MuiDataGrid-columnHeader, .css-1si6n65 .MuiDataGrid-cell {
+  @media screen and (max-width:1000px) {
+      -webkit-tap-highlight-color: transparent;
+  padding: 0px 10px;
+  box-sizing: content-box !important;
+  }
+
+}
+
 .tableParent .MuiDataGrid-cell {
   font-size: 14px;
 }
 
 .css-12u49z-MuiDataGrid-root .MuiDataGrid-row:not(.MuiDataGrid-row--dynamicHeight)>.MuiDataGrid-cell {
   overflow: visible !important;
+}
+
+//
+.css-1si6n65 .MuiDataGrid-row:not(.MuiDataGrid-row--dynamicHeight) > .MuiDataGrid-cell {
+  overflow: visible !important;
+
 }

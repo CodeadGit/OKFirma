@@ -156,7 +156,10 @@ height: auto;
         align-items: center;
         justify-content: space-between;
         border-bottom: 2px solid #cdcdcd;
-        
+        @media screen and (max-width:500px) {
+                  padding: 1rem;
+
+        }
 
         .destekHeaderLeft {
           display: flex;

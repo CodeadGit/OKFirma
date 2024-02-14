@@ -11,6 +11,7 @@ import LiveIcon from "./svg/liveIcon.svg";
 import { NavLink, useNavigate } from "react-router-dom";
 import Mesajlar from "../../components/sidebar/svg/messages.svg";
 import LiveChatTablo from "../../components/tablolar/liveChatTablo/LiveChatTablo";
+import SidebarBottom from "../../components/sidebar/SidebarBottom";
 
 function NewSupportRequest() {
   const [alert, setAlert] = useState("");
@@ -32,6 +33,8 @@ function NewSupportRequest() {
     <>
       <div className="home">
         <Sidebar />
+        <SidebarBottom></SidebarBottom>
+
         <div className="homeContainer">
           {alert ? (
             <Alert
