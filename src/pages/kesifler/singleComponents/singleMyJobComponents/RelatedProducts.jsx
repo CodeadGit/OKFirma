@@ -19,7 +19,7 @@ export default function RelatedProducts({ job, data, handleChange }) {
     {
       field: "sira",
       headerName: "Sıra No",
-      flex: 0.5,
+      flex: 0.2,
       headerAlign: "center",
       align: "center",
     },
@@ -86,7 +86,7 @@ export default function RelatedProducts({ job, data, handleChange }) {
     {
       field: "kdv",
       headerName: "KDV",
-      flex: .6,
+      flex: .4,
       headerAlign: "center",
       align: "center",
     },

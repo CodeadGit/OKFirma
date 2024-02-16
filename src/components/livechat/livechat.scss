@@ -43,6 +43,10 @@ margin-left: 1.5rem;
       display: flex;
       img {
         width: 150px;
+        @media screen and (max-width:480px) {
+          width: 100px;
+
+        }
       }
     }
     .chat-top-right {
@@ -60,6 +64,12 @@ margin-left: 1.5rem;
         // border-bottom-left-radius: 15px;
         // border-top-right-radius: 15px;
         width: max-content;
+        @media screen and (max-width:480px) {
+          font-size: 14px;
+          padding: 5px 5px;
+
+        }
+
       }
     }
   }

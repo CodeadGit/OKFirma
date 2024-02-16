@@ -301,8 +301,8 @@ var jobButtons=[
   {id:"03",label:"İşi Tamamladım",conditions:[2,3,4,5,6,7,8,10,11],variant:"contained",className:"done",onClick:handleComplete},
 ]
 var offerButtons=[
-  {id:"01",label:"Teklifi İptal Et",conditions:[],variant:"outlined",className:"cancel",onClick:handleCancelOffer,active:true},
-  {id:"02",label:"Teklifi Sil",conditions:[],variant:"outlined",className:"delete",onClick:handleDelete,active:false},
+  // {id:"01",label:"Teklifi İptal Et",conditions:[],variant:"outlined",className:"cancel",onClick:handleCancelOffer,active:true},
+  // {id:"02",label:"Teklifi Sil",conditions:[],variant:"outlined",className:"delete",onClick:handleDelete,active:false},
   {id:"03",label:"Tekrar Teklif Yap",conditions:[],variant:"outlined",className:"again",onClick:handleRepeatOffer,active:false},
 ]
 var canceledButtons=[

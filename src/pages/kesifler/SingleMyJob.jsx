@@ -179,8 +179,8 @@ const onButtonClick = () => {
               <span>Müşteri İsmi</span>
               <span>Müşteri Telefon</span>
               <span>Müşteri Adres</span>
-              <span>Keşif Talebi</span>
-              <span>Teklif Kalan Zaman</span>
+              <span  className="title-mobile">Keşif Talebi</span>
+              <span className="title-mobile">Teklif Kalan Zaman</span>
             </div>
             <div className="infos">
               <span>{thisPage.id}</span>
@@ -188,12 +188,12 @@ const onButtonClick = () => {
               <span>{thisPage.name}</span>
               <span>{thisPage.phone.substring(0, 4).concat("*******")}</span>
               <span>{`${thisPage.city}/${thisPage.region}`}</span>
-              <span>
+              <span  className="title-mobile">
                 {new Date(thisPage.createdAt.seconds * 1000).toLocaleDateString(
                   "tr-TR"
                 )}
               </span>
-              <span>{calculateRemainingTime(thisPage.termin)}</span>
+              <span  className="title-mobile">{calculateRemainingTime(thisPage.termin)}</span>
             </div>
           </div>
 

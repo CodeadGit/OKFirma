@@ -24,12 +24,13 @@ const columns = [
     sortable: false,
     editable: false,
     disableColumnMenu: true,
-    width: 70,
+    width: 30,
+    
   },
   {
     field: "doc",
     headerName: "Talep ID",
-    flex: 2.5,
+    flex: 2,
     sortable: false,
     editable: false,
     disableColumnMenu: true,
@@ -37,7 +38,7 @@ const columns = [
   {
     field: "createdAt",
     headerName: "Tarih/Zaman",
-    flex: 1.25,
+    flex: 1,
     sortable: false,
     editable: false,
     disableColumnMenu: true,
@@ -45,7 +46,7 @@ const columns = [
    {
     field: "statue",
     headerName: "Durum",
-    flex: 1.5,
+    flex: 1,
     sortable: false,
     editable: false,
     disableColumnMenu: true,
@@ -72,7 +73,7 @@ const columns = [
     sortable: false,
     editable: false,
     disableColumnMenu: true,
-    flex: 1,
+    flex: 2,
     cellClassName: "navigate",
     renderCell: (e) => {
       return (
@@ -86,8 +87,11 @@ const columns = [
 ];
 
 function DestekTalepTablo({data, padding}) {
+
   
   const { user } = useContext(AuthenticationContext);
+
+  const filteredData = data.filter((i) => i.fromName === user.displayName )
   
   const pathData = [
     { text: "Panelim", to: "/", id: "01" },
@@ -102,7 +106,7 @@ function DestekTalepTablo({data, padding}) {
       <DataGrid
         className="dataGridStyles"
         columns={columns}
-        rows={data.map((item, index) => (
+        rows={filteredData.map((item, index) => (
             {
               id: index + 1,
               doc: item.id,

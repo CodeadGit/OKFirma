@@ -122,7 +122,7 @@ function KesifFirsatiTablo({ data, kesiflerPage }) {
       sortable: false,
       editable: false,
       disableColumnMenu: true,
-      flex: 1,
+      flex: 1.5,
       cellClassName: "navigate",
       renderCell: (props) => {
         return (

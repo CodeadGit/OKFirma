@@ -28,4 +28,3 @@ export const statues = [
   },
 ];
 export const supportStatues = ["Cevap Bekliyor", "Cevaplandı", "Kapandı"];
-

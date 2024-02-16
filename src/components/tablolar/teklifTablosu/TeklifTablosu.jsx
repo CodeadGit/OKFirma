@@ -29,7 +29,7 @@ function TeklifTablosu({ data, kesiflerimPage }) {
       sortable: false,
       editable: false,
       disableColumnMenu: true,
-      flex: 0.5,
+      flex: .2,
     },
     {
       field: "teklifId",
@@ -82,7 +82,7 @@ function TeklifTablosu({ data, kesiflerimPage }) {
       editable: false,
       disableColumnMenu: true,
       cellClassName: "statue-holder",
-      flex: 1.5,
+      flex: 1,
       renderCell: (e) => {
         const statueData = data.map((item) => item.statue);
         return statueData.length < 0 ? (
@@ -102,7 +102,7 @@ function TeklifTablosu({ data, kesiflerimPage }) {
       sortable: false,
       editable: false,
       disableColumnMenu: true,
-      flex: 1,
+      flex: 2,
       cellClassName: "navigate",
       renderCell: (e) => {
         //const stateData = data.find((item) => item.id === e.row.teklifId);

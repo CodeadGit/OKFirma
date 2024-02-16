@@ -163,7 +163,7 @@ display: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 0.75rem;
+    gap: 0.5rem;
 
     p {
       font-size: 16px;
@@ -199,15 +199,37 @@ display: none;
     }
 
     &.approved {
-      border: 1px solid #2490f6;
-      color: #2490f6;
-      background-color: #2491f642;
+      // border: 1px solid #2490f6;
+      // color: #2490f6;
+      // background-color: #2491f642;
+
+      // width: 12px;
+      // height: 12px;
+      // border-radius: 50%;
+      // background-color: #2491f642;
+
+      display: flex;
+    padding-left: 1.5rem;
+      
+    }
+    .approved{
+       width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #2490f6;
+      
     }
 
     &.refused {
-      border: 1px solid #505050;
+      // border: 1px solid #505050;
       color: var(--black);
-      background-color: #5050501c;
+      // background-color: #5050501c;
+    }
+    .refused {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--black);
     }
 
     .cancelled {
@@ -218,10 +240,17 @@ display: none;
     }
 
     &.completed {
-      border: 1px solid #2dab66;
+      // border: 1px solid #2dab66;
       color: #2dab66;
-      background-color: #2dab661f;
+      // background-color: #2dab661f;
     }
+    .completed {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #2dab66;
+    }
+
   }
 }
 
@@ -354,6 +383,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .tableParent .MuiDataGrid-columnHeaderTitle  {
   font-size: 14px;
   font-weight: 700;
+
 }
 
 
@@ -371,7 +401,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .css-1si6n65 .MuiDataGrid-columnHeader, .css-1si6n65 .MuiDataGrid-cell {
   @media screen and (max-width:1000px) {
       -webkit-tap-highlight-color: transparent;
-  padding: 0px 10px;
+  padding: 0px 15px;
   box-sizing: content-box !important;
   }
 
@@ -379,6 +409,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .tableParent .MuiDataGrid-cell {
   font-size: 14px;
+ 
 }
 
 .css-12u49z-MuiDataGrid-root .MuiDataGrid-row:not(.MuiDataGrid-row--dynamicHeight)>.MuiDataGrid-cell {
@@ -389,4 +420,26 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .css-1si6n65 .MuiDataGrid-row:not(.MuiDataGrid-row--dynamicHeight) > .MuiDataGrid-cell {
   overflow: visible !important;
 
+}
+
+.css-1si6n65 .MuiDataGrid-columnHeader {
+
+  min-width: 60px !important;
+}
+
+.css-fd5b8u-MuiDataGrid-root .MuiDataGrid-row:not(.MuiDataGrid-row--dynamicHeight)>.MuiDataGrid-cell {
+  overflow: visible !important;
+}
+
+//
+.css-1mxdmse-MuiDataGrid-root .MuiDataGrid-row:not(.MuiDataGrid-row--dynamicHeight)>.MuiDataGrid-cell {
+  overflow: visible !important;
+}
+.css-1mxdmse .MuiDataGrid-row:not(.MuiDataGrid-row--dynamicHeight) > .MuiDataGrid-cell {
+  overflow: visible !important;
+}
+
+
+.css-1si6n65 .MuiDataGrid-withBorderColor {
+  // min-width: 100px !important;
 }
