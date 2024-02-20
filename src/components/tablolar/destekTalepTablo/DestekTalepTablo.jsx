@@ -24,7 +24,7 @@ const columns = [
     sortable: false,
     editable: false,
     disableColumnMenu: true,
-    width: 30,
+    width: 30
     
   },
   {

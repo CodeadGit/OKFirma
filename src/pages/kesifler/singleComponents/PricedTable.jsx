@@ -53,9 +53,18 @@ export default function PricedTable({job,data,handleChange}) {
         headerName: 'Malzeme / Servis Adı',
         flex: 2,
         headerAlign:"left",
-        align:"left"
+        align:"left",
+ 
       },
+   
       {
+        field: "kdv",
+        headerName: "KDV",
+        flex: .5,
+        headerAlign: "center",
+        align: "center",
+      },
+     {
         field: 'price',
         headerName: 'Birim Fiyat',
         flex: .5,
@@ -67,14 +76,7 @@ export default function PricedTable({job,data,handleChange}) {
           )
         
       },
-      {
-        field: "kdv",
-        headerName: "KDV",
-        flex: .5,
-        headerAlign: "center",
-        align: "center",
-      },
-  
+
       {
         field: 'adet',
         headerName: 'Adet',

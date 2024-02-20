@@ -20,26 +20,18 @@ export default function RelatedProducts({ job, data, handleChange }) {
       field: "sira",
       headerName: "Sıra No",
       flex: 0.2,
-      headerAlign: "center",
-      align: "center",
+      headerAlign: "start",
+      align: "start",
     },
 
     {
       field: "id",
       headerName: "Parça Kodu",
       flex: 1,
-      headerAlign: "center",
-      align: "center",
-    },
-
-    {
-      field: "label",
-      headerName: "Malzeme / Servis Adı",
-      flex: 2,
       headerAlign: "start",
       align: "start",
     },
-    {
+   {
       field: "adet",
       headerName: "Adet",
       flex: 0.3,
@@ -47,6 +39,15 @@ export default function RelatedProducts({ job, data, handleChange }) {
       align: "center",
       sortable: false
     },
+    {
+      field: "label",
+      headerName: "Malzeme / Servis Adı",
+      flex: 2,
+      headerAlign: "start",
+      align: "start",
+      
+    },
+ 
 
     {
       field: "price",
@@ -57,6 +58,7 @@ export default function RelatedProducts({ job, data, handleChange }) {
       //editable: true,
 
       renderCell: (params) => {
+        
         return (
           <div className="input-row">
             <input
@@ -94,7 +96,7 @@ export default function RelatedProducts({ job, data, handleChange }) {
     {
       field: "toplamfiyat",
       headerName: "TOPLAM FİYAT",
-      flex: 0.6,
+      flex: 2,
       headerAlign: "center",
       align: "center",
       renderCell:(params)=>(

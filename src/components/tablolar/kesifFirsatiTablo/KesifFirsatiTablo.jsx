@@ -16,7 +16,7 @@ function KesifFirsatiTablo({ data, kesiflerPage }) {
     {
       field: "id",
       headerName: "Sıralama",
-      flex: 0.5,
+      flex: 0.2,
       sortable: false,
       editable: false,
       disableColumnMenu: true,
@@ -27,7 +27,7 @@ function KesifFirsatiTablo({ data, kesiflerPage }) {
     {
       field: "mainWish",
       headerName: "Kategori",
-      flex: 1,
+      flex: .5,
       sortable: false,
       editable: false,
       disableColumnMenu: true,
@@ -50,7 +50,7 @@ function KesifFirsatiTablo({ data, kesiflerPage }) {
     {
       field: "city",
       headerName: "Adres Bilgileri",
-      flex: 1,
+      flex: .4,
       sortable: false,
       editable: false,
       disableColumnMenu: true,
@@ -74,7 +74,7 @@ function KesifFirsatiTablo({ data, kesiflerPage }) {
     {
       field: "termin",
       headerName: "KALAN ZAMAN",
-      flex: 1,
+      flex: .4,
       sortable: false,
       editable: false,
       disableColumnMenu: true,
@@ -118,11 +118,12 @@ function KesifFirsatiTablo({ data, kesiflerPage }) {
     //     }
     //   },
     // },
+    
     {
       sortable: false,
       editable: false,
       disableColumnMenu: true,
-      flex: 1.5,
+      flex: 1,
       cellClassName: "navigate",
       renderCell: (props) => {
         return (

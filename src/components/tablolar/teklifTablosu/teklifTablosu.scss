@@ -390,12 +390,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .css-12u49z-MuiDataGrid-root .MuiDataGrid-columnHeader, .css-12u49z-MuiDataGrid-root .MuiDataGrid-cell{
 
   box-sizing: content-box !important;
+  @media screen and (max-width:1480px) {
+      padding: 0 22px !important;
+
+  }
 }
 
 //
 .css-1si6n65-MuiDataGrid-root .MuiDataGrid-columnHeader, .css-1si6n65-MuiDataGrid-root .MuiDataGrid-cell{
 
   box-sizing: content-box !important;
+  @media screen and (max-width:1480px) {
+    padding: 0 22px !important;
+}
 }
 //
 .css-1si6n65 .MuiDataGrid-columnHeader, .css-1si6n65 .MuiDataGrid-cell {
