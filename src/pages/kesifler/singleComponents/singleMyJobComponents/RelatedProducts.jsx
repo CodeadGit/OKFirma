@@ -27,7 +27,7 @@ export default function RelatedProducts({ job, data, handleChange }) {
     {
       field: "id",
       headerName: "Parça Kodu",
-      flex: 1,
+      flex: .75,
       headerAlign: "start",
       align: "start",
     },
@@ -42,7 +42,7 @@ export default function RelatedProducts({ job, data, handleChange }) {
     {
       field: "label",
       headerName: "Malzeme / Servis Adı",
-      flex: 2,
+      flex: 1.5,
       headerAlign: "start",
       align: "start",
       
@@ -51,8 +51,8 @@ export default function RelatedProducts({ job, data, handleChange }) {
 
     {
       field: "price",
-      headerName: "Birim Fiyat (₺)",
-      flex: 1.5,
+      headerName: "Birim Fiyat (KDV Dahil)",
+      flex: 1,
       headerAlign: "center",
       align: "center",
       //editable: true,
@@ -85,18 +85,18 @@ export default function RelatedProducts({ job, data, handleChange }) {
       },
     },
 
-    {
-      field: "kdv",
-      headerName: "KDV",
-      flex: .4,
-      headerAlign: "center",
-      align: "center",
-    },
+    // {
+    //   field: "kdv",
+    //   headerName: "KDV",
+    //   flex: .4,
+    //   headerAlign: "center",
+    //   align: "center",
+    // },
 
     {
       field: "toplamfiyat",
       headerName: "TOPLAM FİYAT",
-      flex: 2,
+      flex: 1,
       headerAlign: "center",
       align: "center",
       renderCell:(params)=>(
@@ -116,6 +116,7 @@ export default function RelatedProducts({ job, data, handleChange }) {
             },
           },
         }}
+        hideFooter
         pageSizeOptions={[25, 50, 75]}
         localeText={LocaleText}
         autoHeight

@@ -11,33 +11,32 @@ import { useApis } from '../../../context/api.context';
 
 
 export default function PricedTable({job,data,handleChange}) {
-    console.log(data)
     const [thistotal,setThistotal]=useState(0)
     const {doviz} = useApis()
     const [currency,setCurrency]=useState("₺")
     let TLLocale = Intl.NumberFormat('tr-TR');
 
 
-    useEffect(()=>{
-        const initialValue = 0;
-              const sumWithInitial = data.reduce(
-                  (accumulator, currentValue) => accumulator + 
-              (Number(currentValue.price)*Number(currentValue.adet)*Number(doviz[currentValue?.curr]?.satis)),
-              initialValue
-              );
-              setThistotal(sumWithInitial)
-    },[data])
+    // useEffect(()=>{
+    //     const initialValue = 0;
+    //           const sumWithInitial = data.reduce(
+    //               (accumulator, currentValue) => accumulator + 
+    //           (Number(currentValue.price)*Number(currentValue.adet)*Number(doviz[currentValue?.curr]?.satis)),
+    //           initialValue
+    //           );
+    //           setThistotal(sumWithInitial)
+    // },[data])
     const columns = [
   
   
         { 
-          field: 'sira', 
+          field: 'index', 
           headerName: 'Sıra No', 
           flex: .5,
           headerAlign:"left",
           align:"left",
           renderCell:(params)=>(
-            <span>{params.row.sira+1}</span>
+            <span>{params.row.index}</span>
           )
       },
     //   { 
@@ -72,7 +71,7 @@ export default function PricedTable({job,data,handleChange}) {
         align:"left",
         //editable: true,
         renderCell:(params)=>(
-            <span>{TLLocale.format(params.row.price)} {params.row.curr}</span>
+            <span>{TLLocale.format(params.row.price)} {params.row.curr||"₺"}</span>
           )
         
       },
@@ -100,6 +99,7 @@ export default function PricedTable({job,data,handleChange}) {
         
         
       ];
+      console.log("iç sayfa",data)
   return (
     <Box sx={{ height: "auto", width: "100%" }}>
       <DataGrid
@@ -112,11 +112,11 @@ export default function PricedTable({job,data,handleChange}) {
             },
           },
         }}
-        getRowId={(row) => row}
+        getRowId={(row) => row.id}
         pageSizeOptions={[25,50,75]}
         localeText={LocaleText}
         autoHeight
-        experimentalFeatures={{ newEditingApi: true }}
+        //experimentalFeatures={{ newEditingApi: true }}
         //checkboxSelection
         disableRowSelectionOnClick
         getRowClassName={(params) =>

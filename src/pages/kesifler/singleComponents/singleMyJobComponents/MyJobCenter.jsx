@@ -32,7 +32,7 @@ const MyJobCenter = ({ job, products }) => {
   const [offerNotes, setOfferNotes] = useState([]);
   const [uploading, setUploading] = useState(false);
   const [conditions, setConditions] = useState({
-    KDVincluded: false,
+    KDVincluded: true,
     angaryaIsOur: false,
     deliveryTime: "",
     deliveryTimeUnit: "gün",

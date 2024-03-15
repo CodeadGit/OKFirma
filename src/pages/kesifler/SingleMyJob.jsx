@@ -9,6 +9,7 @@ import {
   getDoc,
   getDocs,
   onSnapshot,
+  orderBy,
   query,
 } from "firebase/firestore";
 import { auth, db } from "../../firebase/firebase.config";
@@ -62,23 +63,42 @@ const SingleMyJobNew = () => {
   useEffect(() => {
     let controller = new AbortController();
     (async () => {
-      const q = query(collection(db, "Jobs", jobDoc, "RelatedProducts"));
 
-      const querySnapshot = await getDocs(q);
-      const fetchedProducts = !querySnapshot.empty?querySnapshot.docs?.map((doc) => doc.data().id):[]
-      //setThisProducts(fetchedProducts)
       const q2 = query(doc(db, "Jobs", jobDoc, "Offers", auth.currentUser.uid));
 
       const querySnapshot2 = await getDoc(q2);
-      var totalProducts = querySnapshot2.exists()?fetchedProducts?.map((i, idx) => ({
-        ...querySnapshot2.data()[i],
-      })):[]
-      console.log("ups", totalProducts);
-      setThisProducts(totalProducts);
+      
+    
+            
     })();
 
     return () => controller?.abort();
   }, [thisPage, jobDoc, thisPageLoading]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const q = query(collection(db, "Jobs", jobDoc, "RelatedProducts"),orderBy("index","asc"));
+        const querySnapshot = await getDocs(q);
+
+        var list = [];
+
+        if (!querySnapshot.empty) {
+          querySnapshot.forEach((doc) => {
+            list.push({ ...doc.data(), id: doc.id });
+          });
+        }
+
+        setThisProducts(list);
+        setThisProductsLoading(false);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+        // Handle the error as needed
+      }
+    };
+
+    fetchData();
+  }, [jobDoc]);
+
 
   const pathData = [
     { text: "Panelim", to: "/", id: "01" },
@@ -115,6 +135,8 @@ const onButtonClick = () => {
       });
   });
 };
+
+console.log("ürünler",thisProducts)
 
 
 

@@ -18,12 +18,13 @@ let Dolar = Intl.NumberFormat("us-US");
     
   return (
     <div className="one-job-bottom">
-    <div className="total-grand">Toplam: {TLLocale.format(sumWithInitial)} ₺</div>
+    <div className="total-grand">Toplam (KDV Dahil) : {TLLocale.format(sumWithInitial)} ₺</div>
     <div className="one-job-buttons">
         {showButton&&<button
             disabled={uploading?true:false}
             onClick={handleSubmit}
             className='send-offer'
+            style={{minWidth:150,marginTop:"1rem"}}
         >
             {uploading?<CircularProgress
                 color="warning"

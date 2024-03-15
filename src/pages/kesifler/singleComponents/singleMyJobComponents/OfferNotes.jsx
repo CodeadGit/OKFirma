@@ -84,9 +84,9 @@ const OfferNotes = ({
       <div className="one-question">
         <span className="index">1.</span>
         <span className="question">
-          FİYATLARIMIZ TL OLARAK VERİLMİŞTİR. FİYATLARIMIZA %20 KDV
+          Fiyatlarımız TL olarak verilmiştir. Fiyatlarımıza %20 KDV dahildir.
         </span>
-        <div className="selectors">
+        {/* <div className="selectors">
           <span
             onClick={() => handleConditionBoolean("KDVincluded", true)}
             className={`selector ${
@@ -103,12 +103,12 @@ const OfferNotes = ({
           >
             İLAVE EDİLECEKTİR
           </span>
-        </div>
+        </div> */}
       </div>
       <div className="one-question">
         <span className="index">2.</span>
-        <span className="question">ELEKTRİK, İNŞAİİ VE VİNÇ İŞLEMLERİ</span>
-        <div className="selectors">
+        <span className="question">Elektrik, inşaii ve vinç işlemleri müşteriye aittir</span>
+        {/* <div className="selectors">
           <span
             onClick={() => handleConditionBoolean("angaryaIsOur", false)}
             className={`selector ${
@@ -125,11 +125,11 @@ const OfferNotes = ({
           >
             İŞ YAPANA AİTTİR
           </span>
-        </div>
+        </div> */}
       </div>
       <div className="one-question">
         <span className="index">3. </span>
-        <span className="question">ÜRÜN TEMİN SÜRESİ</span>
+        <span className="question">Ürün temin süresi</span>
         <input
           onChange={handleCondition}
           name="recruitment"
@@ -138,7 +138,8 @@ const OfferNotes = ({
           type="text"
           placeholder="temin süresi"
         />
-        <select
+        <span>gün içerisinde</span>
+        {/* <select
           onChange={handleCondition}
           name="recruitmentUnit"
           value={conditions.recruitmentUnit}
@@ -147,16 +148,15 @@ const OfferNotes = ({
           <option value="gün">gün</option>
           <option value={"hafta"}>hafta</option>
           <option value={"ay"}>ay</option>
-        </select>
-        <span className="answer-end">İÇERİSİNDE</span>
+        </select> */}
       </div>
-      <div className="one-question answered">
+      {/* <div className="one-question answered">
         <span className="index">4. </span>
         <span className="question">ÖDEME ŞEKLİ : İŞ BİTİMİNDE</span>
-      </div>
+      </div> */}
       <div className="one-question">
-        <span className="index">5. </span>
-        <span className="question">İŞ TESLİM SÜRESİ</span>
+        <span className="index">4. </span>
+        <span className="question">İş teslim süresi</span>
         <input
           onChange={handleCondition}
           name="deliveryTime"
@@ -165,7 +165,9 @@ const OfferNotes = ({
           type="text"
           placeholder="iş teslim süresi"
         />
-        <select
+                <span>gün içerisinde</span>
+
+        {/* <select
           onChange={handleCondition}
           name="deliveryTimeUnit"
           value={conditions.deliveryTimeUnit}
@@ -174,12 +176,11 @@ const OfferNotes = ({
           <option value="gün">gün</option>
           <option value={"hafta"}>hafta</option>
           <option value={"ay"}>ay</option>
-        </select>
-        <span className="answer-end">İÇERİSİNDE</span>
+        </select> */}
       </div>
       <div className="one-question">
-        <span className="index">6. </span>
-        <span className="question">TEKLİFİN GEÇERLİLİK SÜRESİ</span>
+        <span className="index">5. </span>
+        <span className="question">Teklifin geçerlilik süresi</span>
         <input
           onChange={handleCondition}
           name="expiration"
@@ -188,7 +189,9 @@ const OfferNotes = ({
           type="text"
           placeholder="geçerlilik süresi"
         />
-        <select
+                <span>gün içerisinde</span>
+
+        {/* <select
           onChange={handleCondition}
           name="expirationUnit"
           value={conditions.expirationUnit}
@@ -197,7 +200,8 @@ const OfferNotes = ({
           <option value="gün">gün</option>
           <option value={"hafta"}>hafta</option>
           <option value={"ay"}>ay</option>
-        </select>
+        </select> */}
+
       </div>
       {noteList.map((i, idx) => {
         return (
@@ -221,7 +225,7 @@ const OfferNotes = ({
         );
       })}
 
-      <div className="action-buttons">
+      {/* <div className="action-buttons">
         <div className="notes">Notlar</div>
 
         <div className="notes-button">
@@ -296,7 +300,7 @@ const OfferNotes = ({
             </Button>
           )}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

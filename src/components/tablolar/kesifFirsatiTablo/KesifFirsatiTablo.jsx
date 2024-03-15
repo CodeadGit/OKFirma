@@ -14,7 +14,7 @@ function KesifFirsatiTablo({ data, kesiflerPage }) {
   
   const columns = [
     {
-      field: "id",
+      field: "",
       headerName: "Sıralama",
       flex: 0.2,
       sortable: false,
@@ -23,6 +23,15 @@ function KesifFirsatiTablo({ data, kesiflerPage }) {
       renderCell: (props) => {
         return <span>{data.findIndex((i) => i.id === props.row.id) + 1}</span>;
       },
+    },
+    {
+      field: "id",
+      headerName: "ID",
+      flex: 0.2,
+      sortable: false,
+      editable: false,
+      disableColumnMenu: true,
+      
     },
     {
       field: "mainWish",

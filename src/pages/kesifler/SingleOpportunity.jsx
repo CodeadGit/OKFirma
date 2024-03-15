@@ -3,7 +3,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import { useParams } from "react-router-dom";
 import Navigation from "../../components/boxes/Navigation";
-import { collection, doc, getDoc, onSnapshot, query } from "firebase/firestore";
+import { collection, doc, getDoc, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../../firebase/firebase.config";
 import Logo from "./singleComponents/logo.svg";
 import { Button, CircularProgress } from "@mui/material";
@@ -39,7 +39,8 @@ const SingleOpportunity = () => {
     (async () => {
       var docreferance = doc(db, "Jobs", document);
       const productsReferance = query(
-        collection(db, "Jobs", document, "RelatedProducts")
+        collection(db, "Jobs", document, "RelatedProducts"),
+        orderBy("index","asc")
       );
 
       try {
